@@ -13,15 +13,55 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Halaman Admin
 Route::get('/', function () {
-    return view('home.dashboard');
+    return view('admin.dashboard');
 });
 
 Route::get('/dashboard', function () {
-    return view('home.dashboard');
+    return view('admin.dashboard');
 });
 
 
 Route::get('/index', function () {
     return view('master.index');
 });
+
+// Route::get('/home', function () {
+//     return view('master.index_user');
+// });
+
+
+// Halaman User
+Route::get('/home', function () {
+    return view('users.home');
+});
+
+Route::get('/about', function () {
+    return view('users.about');
+});
+
+Route::get('/store', function () {
+    return view('users.store');
+});
+
+Route::get('/cart', function () {
+    return view('users.cart');
+});
+
+Route::get('/detailproduk', function () {
+    return view('users.detailproduk');
+});
+
+Route::get('/contact', function () {
+    return view('users.contact');
+});
+
+Route::get('/checkout', function () {
+    return view('users.checkout');
+});
+
+Route::get('/thankyou', function () {
+    return view('users.thankyou');
+});
+
