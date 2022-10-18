@@ -21,13 +21,13 @@
           </div>
         </div>
         <div class="col-md-6">
-          <h2 class="text-black">Ibuprofen Tablets, 200mg</h2>
+          <h2 class="text-black">Nama Produk</h2>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, vitae, explicabo? Incidunt facere, natus
             soluta dolores iusto! Molestiae expedita veritatis nesciunt doloremque sint asperiores fuga voluptas,
             distinctio, aperiam, ratione dolore.</p>
           
 
-          <p><del>$95.00</del>  <strong class="text-primary h4">$55.00</strong></p>
+          <p><del>$95.00</del>  <strong class="text-primary h4">Rp55.000</strong></p>
 
           
           
@@ -47,7 +47,7 @@
           <p><a href="cart.html" class="buy-now btn btn-sm height-auto px-4 py-3 btn-primary">Add To Cart</a></p>
 
           <div class="mt-5">
-            <ul class="nav nav-pills mb-3 custom-pill" id="pills-tab" role="tablist">
+            {{-- <ul class="nav nav-pills mb-3 custom-pill" id="pills-tab" role="tablist">
               <li class="nav-item">
                 <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
                   aria-controls="pills-home" aria-selected="true">Ordering Information</a>
@@ -57,13 +57,14 @@
                   aria-controls="pills-profile" aria-selected="false">Specifications</a>
               </li>
           
-            </ul>
+            </ul> --}}
+
             <div class="tab-content" id="pills-tabContent">
               <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                 <table class="table custom-table">
                   <thead>
                     <th>Material</th>
-                    <th>Description</th>
+                    <th>Specification</th>
                     <th>Packaging</th>
                   </thead>
                   <tbody>

@@ -5,7 +5,7 @@
 
 
 <div class="owl-carousel owl-single px-0">
-    <div class="site-blocks-cover overlay" style="background-image: url('../template_user/images/h2.jpg');">
+    <div class="site-blocks-cover overlay" style="background-image: url('../template_user/images/h4.jpg');">
       <div class="container">
         <div class="row">
           <div class="col-lg-12 mx-auto align-self-center">
@@ -90,27 +90,27 @@
 
             <div class="text-center item mb-4 item-v2">
               <span class="onsale">Rent</span>
-              <a href="shop-single.html"> <img  src="{{ asset('template_user/images/p1.jpg') }}" class="img-thumbnail" alt="Image"></a>
-              <h3 class="text-dark"><a href="{{ asset('template_user/shop-single.html') }}">Pipet Tetes</a></h3>
+              <a href="/detailproduk"> <img  src="{{ asset('template_user/images/p1.jpg') }}" class="img-thumbnail" alt="Image"></a>
+              <h3 class="text-dark"><a href="/detailproduk">Pipet Tetes</a></h3>
               <p class="price">$120.00</p>
             </div>
 
             <div class="text-center item mb-4 item-v2">
-              <a href="shop-single.html"> <img src="{{ asset('template_user/images/p2.jpg') }}" class="img-thumbnail" alt="Image"></a>
-              <h3 class="text-dark"><a href="{{ asset('template_user/shop-single.html') }}">Pipet Ukur</a></h3>
+              <a href="/detailproduk"> <img src="{{ asset('template_user/images/p2.jpg') }}" class="img-thumbnail" alt="Image"></a>
+              <h3 class="text-dark"><a href="/detailproduk">Pipet Ukur</a></h3>
               <p class="price">$120.00</p>
             </div>
 
             <div class="text-center item mb-4 item-v2">
               <span class="onsale">Sale</span>
-              <a href="shop-single.html"> <img src="{{ asset('template_user/images/p3.jpg') }}" class="img-thumbnail" alt="Image"></a>
-              <h3 class="text-dark"><a href="{{ asset('template_user/shop-single.html') }}">Pipet Volume</a></h3>
+              <a href="/detailproduk"> <img src="{{ asset('template_user/images/p3.jpg') }}" class="img-thumbnail" alt="Image"></a>
+              <h3 class="text-dark"><a href="/detailproduk">Pipet Volume</a></h3>
               <p class="price">$120.00</p>
             </div>
 
             <div class="text-center item mb-4 item-v2">
-              <a href="shop-single.html"> <img src="{{ asset('template_user/images/p4.jpg') }}" alt="Image"></a>
-              <h3 class="text-dark"><a href="{{ asset('template_user/shop-single.html') }}">Umcka Cold Care</a></h3>
+              <a href="/detailproduk"> <img src="{{ asset('template_user/images/p4.jpg') }}" alt="Image"></a>
+              <h3 class="text-dark"><a href="/detailproduk">Umcka Cold Care</a></h3>
               <p class="price">$120.00</p>
             </div>
 

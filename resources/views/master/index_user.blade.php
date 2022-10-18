@@ -49,8 +49,8 @@
           <div class="main-nav d-none d-lg-block">
             <nav class="site-navigation text-right text-md-center" role="navigation">
               <ul class="site-menu js-clone-nav d-none d-lg-block">
-                <li class="active"><a href="/home">Home</a></li>
-                <li><a href="/store">Store</a></li>
+                <li class="@if(Request::is('home')) active @endif"><a href="/home">Home</a></li>
+                <li class="@if(Request::is('store')) active @endif"><a href="/store">Store</a></li>
                 {{-- <li class="has-children">
                   <a href="#">Products</a>
                   <ul class="dropdown">
@@ -69,8 +69,8 @@
                     
                   </ul>
                 </li> --}}
-                <li><a href="/about">About</a></li>
-                <li><a href="/contact">Contact</a></li>
+                <li class="@if(Request::is('about')) active @endif"><a href="/about">About</a></li>
+                <li class="@if(Request::is('contact')) active @endif"><a href="/contact">Contact</a></li>
               </ul>
             </nav>
           </div>
