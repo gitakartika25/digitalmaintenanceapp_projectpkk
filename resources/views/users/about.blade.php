@@ -14,7 +14,7 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis ex perspiciatis non quibusdam vel quidem.</p>
               </div>
             </div>
-            <p><a href="#" class="btn btn-primary px-5 py-3">Shop Now</a></p>
+            {{-- <p><a href="" class="btn btn-primary px-5 py-3">Shop Now</a></p> --}}
           </div>
         </div>
       </div>
