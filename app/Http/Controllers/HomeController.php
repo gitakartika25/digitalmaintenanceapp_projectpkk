@@ -28,7 +28,7 @@ class HomeController extends Controller
         if (Auth::user()->role_id == '2') {
             return redirect('dashboard');
         } elseif (Auth::user()->role_id == '1') {
-            return redirect('home');
+            return redirect('user');
         }
     }
 }

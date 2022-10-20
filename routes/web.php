@@ -36,7 +36,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
 // Halaman User
 Route::middleware(['auth', 'user'])->group(function () {
-    Route::get('/home', function () {
+    Route::get('/user', function () {
         return view('users.home');
     });
     Route::get('/about', function () {
