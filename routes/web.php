@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,10 +17,10 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/', function () {
-    return view('auth.login');
+    return view('master.index_user');
 });
 
 // Halaman Admin
@@ -35,7 +36,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
 // Halaman User
 Route::middleware(['auth', 'user'])->group(function () {
-    Route::get('user', function () {
+    Route::get('/home', function () {
         return view('users.home');
     });
     Route::get('/about', function () {
