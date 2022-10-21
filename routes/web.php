@@ -27,6 +27,11 @@ Route::get('/index', function () {
     return view('master.index');
 });
 
+Route::get('/userCRUD', function () {
+    return view('admin.useradminCRUD');
+});
+
+
 // Route::get('/home', function () {
 //     return view('master.index_user');
 // });
