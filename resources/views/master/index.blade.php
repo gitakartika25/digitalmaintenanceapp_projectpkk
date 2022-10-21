@@ -105,10 +105,18 @@
                 <i class="ti-settings text-primary"></i>
                 Settings
               </a>
-              <a class="dropdown-item">
+              <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                <i class="ti-power-off text-primary"></i>
+                {{ __('Logout') }}
+              </a>
+           
+               <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                   @csrf
+               </form>
+              {{-- <a class="dropdown-item">
                 <i class="ti-power-off text-primary"></i>
                 Logout
-              </a>
+              </a> --}}
             </div>
           </li>
           <li class="nav-item nav-settings d-none d-lg-flex">
@@ -122,7 +130,6 @@
         </button>
       </div>
     </nav>
-
     <!-- partial navbar-->
 
 
@@ -303,7 +310,7 @@
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="{{ url('dashboard') }}">
               <i class="icon-grid menu-icon"></i>
               <span class="menu-title">Dashboard</span>
             </a>
@@ -311,18 +318,19 @@
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <i class="icon-layout menu-icon"></i>
-              <span class="menu-title">UI Elements</span>
+              <span class="menu-title">Product</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{{ asset('template/pages/ui-features/buttons.html') }}">Buttons</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{ asset('template/pages/ui-features/dropdowns.html') }}">Dropdowns</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{ asset('template/pages/ui-features/typography.html') }}">Typography</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ asset('template/pages/ui-features/buttons.html') }}">Products</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ asset('template/pages/ui-features/buttons.html') }}">Orders In</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ asset('template/pages/ui-features/dropdowns.html') }}">Orders</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ asset('template/pages/ui-features/typography.html') }}">Report</a></li>
               </ul>
             </div>
           </li>
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
               <i class="icon-columns menu-icon"></i>
               <span class="menu-title">Form elements</span>
@@ -369,21 +377,21 @@
                 <li class="nav-item"> <a class="nav-link" href="pages/icons/mdi.html">Mdi icons</a></li>
               </ul>
             </div>
-          </li>
+          </li> --}}
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
               <i class="icon-head menu-icon"></i>
-              <span class="menu-title">User Pages</span>
+              <span class="menu-title">User</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="auth">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{{ asset('template/pages/samples/login.html') }}"> Login </a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{ asset('template/pages/samples/register.html') }}"> Register </a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ asset('template/pages/samples/login.html') }}"> Employees</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ asset('template/pages/samples/register.html') }}"> Members </a></li>
               </ul>
             </div>
           </li>
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#error" aria-expanded="false" aria-controls="error">
               <i class="icon-ban menu-icon"></i>
               <span class="menu-title">Error pages</span>
@@ -401,7 +409,7 @@
               <i class="icon-paper menu-icon"></i>
               <span class="menu-title">Documentation</span>
             </a>
-          </li>
+          </li> --}}
         </ul>
       </nav>
 
