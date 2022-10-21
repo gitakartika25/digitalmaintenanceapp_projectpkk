@@ -315,10 +315,11 @@
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{{ asset('template/pages/ui-features/buttons.html') }}">Products</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{ asset('template/pages/ui-features/buttons.html') }}">Orders In</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{ asset('template/pages/ui-features/dropdowns.html') }}">Orders</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{ asset('template/pages/ui-features/typography.html') }}">Report</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ url('product') }}">Products</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ url('category') }}">Categories</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ url('') }}">Orders In</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ url('') }}">Orders</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ url('') }}">Report</a></li>
               </ul>
             </div>
           </li>
