@@ -75,6 +75,65 @@
             </nav>
           </div>
           <div class="icons">
+            @guest
+              @if (Route::has('login'))
+                  <button class="btn btn-primary">
+                      <a href="{{ route('login') }}">{{ __('Login') }}</a>
+                  </button>
+              @endif
+
+              @if (Route::has('register'))
+                  <button class="btn btn-primary">
+                      <a href="{{ route('register') }}">{{ __('Register') }}</a>
+                  </button>
+              @endif
+            @else
+            <a href="#" class="icons-btn d-inline-block js-search-open"><span class="icon-search"></span></a>
+            <a href="/cart" class="icons-btn d-inline-block bag"><span class="icon-shopping-bag"></span><span class="number">2</span></a>
+            <a class="nav-item dropdown">
+              {{-- <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                  {{ Auth::user()->name }}
+              </a> --}}
+              <a href="#" class="icons-btn d-inline-block bag" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                <div class="btn-group">
+                  <span class="icon-user"></span><span>{{ Auth::user()->name }}</span>
+                </div>
+              </a>
+
+
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                                  document.getElementById('logout-form').submit();">
+                      {{ __('Logout') }}
+                  </a>
+
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                      @csrf
+                  </form>
+              </div>
+            </a>
+            <a href="#" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none"><span class="icon-menu"></span></a>
+                  {{-- <li class="nav-item dropdown">
+                      <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                          {{ Auth::user()->name }}
+                      </a>
+
+                      <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                          document.getElementById('logout-form').submit();">
+                              {{ __('Logout') }}
+                          </a>
+
+                          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                              @csrf
+                          </form>
+                      </div>
+                  </li> --}}
+            @endguest
+          </div>
+          {{-- <div class="icons">
             <a href="#" class="icons-btn d-inline-block js-search-open"><span class="icon-search"></span></a>
             <a href="/cart" class="icons-btn d-inline-block bag">
               <span class="icon-shopping-bag"></span>
@@ -82,7 +141,7 @@
             </a>
             <a href="#" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none"><span
                 class="icon-menu"></span></a>
-          </div>
+          </div> --}}
         </div>
       </div>
     </div>
