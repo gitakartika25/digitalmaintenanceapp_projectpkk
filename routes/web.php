@@ -17,7 +17,28 @@ use App\Http\Controllers\HomeController;
 
 Auth::routes();
 
+
+Route::get('/index', function () {
+    return view('master.index');
+});
+
+Route::get('/userCRUD', function () {
+    return view('admin.useradminCRUD');
+});
+
+
+// Route::get('/home', function () {
+//     return view('master.index_user');
+// });
+
+
+// Halaman User
+Route::get('/home', function () {
+    return view('users.home');
+});
+
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+
 
 Route::get('/', function () {
     return view('master.index_user');
