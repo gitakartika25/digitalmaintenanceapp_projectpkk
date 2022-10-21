@@ -3,35 +3,38 @@
 @section('title', 'dashboard')
 
 @section('content')
-<h1>Halaman Dashboard</h1>
+<h1>Data User</h1>
 
 
 <div class="col-lg-12 grid-margin stretch-card">
 
     <div class="card">
       <div class="card-body">
-        <h4 class="card-title">Bordered table</h4>
-        <p class="card-description">
-          Add class <code>.table-bordered</code>
-        </p>
+        <h4 class="card-title">Tabel data user</h4>
         <div class="table-responsive pt-3">
           <table class="table table-bordered">
             <thead>
               <tr>
                 <th>
-                  #
+                  id
                 </th>
                 <th>
-                  First name
+                  Name
                 </th>
                 <th>
-                  Progress
+                  Email
                 </th>
                 <th>
-                  Amount
+                  Password
                 </th>
                 <th>
-                  Deadline
+                  Address
+                </th>
+                <th>
+                  telephone
+                </th>
+                <th>
+                  Photo
                 </th>
               </tr>
             </thead>
