@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('template_user/fonts/icomoon/style.css') }}">
 
   <link rel="stylesheet" href="{{ asset('template_user/css/bootstrap.min.css') }}">
@@ -94,23 +95,21 @@
               {{-- <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                   {{ Auth::user()->name }}
               </a> --}}
+
               <a href="#" class="icons-btn d-inline-block bag" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                <div class="btn-group">
-                  <span class="icon-user"></span><span>{{ Auth::user()->name }}</span>
-                </div>
+                  <span class="icon-user"></span>
               </a>
-
-
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="{{ route('logout') }}"
-                    onclick="event.preventDefault();
-                                  document.getElementById('logout-form').submit();">
-                      {{ __('Logout') }}
+                  <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <i class="fa-solid fa-right-from-bracket"></i>&nbsp;&nbsp;Logout
                   </a>
-
                   <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                       @csrf
                   </form>
+
+                  <a class="dropdown-item" href="{{ url ('profile') }}">
+                    <i class="fa-solid fa-gear"></i>&nbsp;&nbsp;Profile
+                </a>
               </div>
             </a>
             <a href="#" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none"><span class="icon-menu"></span></a>
@@ -202,6 +201,11 @@
     </footer>
   </div>
 
+  <script>
+      function preview() {
+      frame.src=URL.createObjectURL(event.target.files[0]);
+  }
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <script src="{{ asset('template_user/js/jquery-3.3.1.min.js') }}"></script>
   <script src="{{ asset('template_user/js/jquery-ui.js') }}"></script>

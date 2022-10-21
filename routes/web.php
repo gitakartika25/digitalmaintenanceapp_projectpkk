@@ -39,6 +39,9 @@ Route::middleware(['auth', 'user'])->group(function () {
     Route::get('/user', function () {
         return view('users.home');
     });
+    Route::get('/profile', function () {
+        return view('users.profile');
+    });
     Route::get('/about', function () {
         return view('users.about');
     });
