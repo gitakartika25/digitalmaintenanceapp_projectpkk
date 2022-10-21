@@ -73,6 +73,7 @@
               </ul>
             </nav>
           </div>
+          
           <div class="icons">
             @guest
               @if (Route::has('login'))
