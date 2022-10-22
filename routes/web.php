@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfileController;
+use Illuminate\Routing\Router;
+use Symfony\Component\HttpKernel\Profiler\Profile;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +23,7 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/', function () {
-    return view('master.index_user');
+    return view('users.home');
 });
 
 // Halaman Admin
@@ -33,15 +36,17 @@ Route::middleware(['auth', 'admin'])->group(function () {
     });
 });
 
+Route::get('/profile/profinsi/{id}', [ProfileController::class, 'kota'])->name('profile.profinsi');
 
 // Halaman User
 Route::middleware(['auth', 'user'])->group(function () {
     Route::get('/user', function () {
         return view('users.home');
     });
-    Route::get('/profile', function () {
-        return view('users.profile');
-    });
+    Route::resource('profile', ProfileController::class);
+    // Route::get('/profile', function () {
+    //     return view('users.profile');
+    // });
     Route::get('/about', function () {
         return view('users.about');
     });

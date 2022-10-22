@@ -1,5 +1,5 @@
 @extends('master.index_user')
-@section('title', 'Contact')
+@section('title', 'Profile')
 
 @section('content')
 
@@ -7,7 +7,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12 mb-0">
-          <a href="index.html">Home</a> <span class="mx-2 mb-0">/</span>
+          <a href="/home">Home</a> <span class="mx-2 mb-0">/</span>
           <strong class="text-black">Profile</strong>
         </div>
       </div>
@@ -21,59 +21,86 @@
           <h2 class="h3 mb-5 text-black">Profile</h2>
         </div>
         <div class="col-md-12">
-  
-          <form action="#" method="post">
-            {{-- <input type="file" onchange="preview()"> --}}
+        @foreach ( $profile as $data )
+          <form action="{{ route ('profile.update', $data->id) }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            @method('PUT')
             <div class="p-3 p-lg-5 border">
               <div class="form-group d-flex justify-content-center row">
-                <img id="frame" src="" width="150px" height="150px" style="border:1px solid black; border-radius: 50%"/>
+                <img id="frame" src="{{ asset('storage/'.$data->foto) }}" name="image" width="150px" height="150px" style="border:1px solid black; border-radius: 50%"/>
+                {{-- <img id="frame" src="{{ asset('storage/'.$data->foto) }}" name="image" width="150px" height="150px" style="border:1px solid black; border-radius: 50%"/> --}}
               </div>
               <div class="form-group row">
-                <div class="col-md-6">
+                <div class="col-md-4">
                   <label for="c_fname" class="text-black">Foto </label>
-                  <input type="file" class="form-control" onchange="preview()" id="c_fname" name="c_fname">
+                  <input type="file" class="form-control" onchange="preview()" id="" name="foto" value="">
                 </div>
-                <div class="col-md-6">
-                  <label for="c_lname" class="text-black">Username </label>
-                  <input type="text" class="form-control" id="c_lname" name="c_lname">
+                <div class="col-md-4">
+                  <label class="text-black">Username </label>
+                  <input type="text" class="form-control" id="" name="username" value="{{ $data->name }}">
                 </div>
-              </div>
-              <div class="form-group row">
-                <div class="col-md-6">
-                  <label for="c_email" class="text-black">First Name </label>
-                  <input type="text" class="form-control" id="c_email" name="c_email" placeholder="">
-                </div>
-                <div class="col-md-6">
-                  <label for="c_email" class="text-black">Last Name </label>
-                  <input type="text" class="form-control" id="c_email" name="c_email" placeholder="">
+                <div class="col-md-4">
+                  <label class="text-black">Email </label>
+                  <input type="email" class="form-control" id="" name="email" value="{{ $data->email }}">
                 </div>
               </div>
               <div class="form-group row">
-                <div class="col-md-3">
+                <div class="col-md-6">
+                  <label class="text-black">First Name </label>
+                  <input type="text" class="form-control" id="" name="first_name" value="{{ $data->first_name }}">
+                </div>
+                <div class="col-md-6">
+                  <label class="text-black">Last Name </label>
+                  <input type="text" class="form-control" id="" name="last_name" value="{{ $data->last_name }}">
+                </div>
+              </div>
+        @endforeach
+              <div class="form-group row">
+                {{-- <div class="col-md-3">
                   <label for="c_subject" class="text-black">Province/Provinsi </label>
-                  <input type="text" class="form-control" id="c_subject" name="c_subject">
-                </div>
-                <div class="col-md-3">
+                  <select class="form-control" id="" name="profinsi" value="{{ old('profinsi') }}">
+                    @foreach($prof as $profinsi)
+                      <option value="{{ $profinsi['name'] }}">
+                          {{ $profinsi['name'] }}
+                      </option>
+                    @endforeach
+                  </select>
+                </div> --}}
+                {{-- <div class="col-md-3">
                   <label for="c_subject" class="text-black">City/Kota </label>
-                  <input type="text" class="form-control" id="c_subject" name="c_subject">
-                </div>
-                <div class="col-md-3">
+                  <select class="form-control" id="" name="kota" value="{{ old('kota') }}">
+                      @foreach($kot as $kota)
+                        <option value="{{ $kota['name'] }}">{{ $kota['name'] }}</option>
+                      @endforeach
+                  </select>
+                </div> --}}
+                {{-- <div class="col-md-3">
                   <label for="c_subject" class="text-black">Districts/Kecamatan </label>
-                  <input type="text" class="form-control" id="c_subject" name="c_subject">
-                </div>
-                <div class="col-md-3">
+                  <select class="form-control" id="" name="kecamatan" value="{{ old('kecamatan') }}">
+                    @foreach($kec as $kecamatan)
+                      <option value="{{ $kecamatan['name'] }}">
+                          {{ $kecamatan['name'] }}
+                      </option>
+                    @endforeach
+                  </select>
+                </div> --}}
+                {{-- <div class="col-md-3">
                   <label for="c_subject" class="text-black">Ward/Kelurahan </label>
-                  <input type="text" class="form-control" id="c_subject" name="c_subject">
-                </div>
+                  <select class="form-control" id="" name="kelurahan" value="{{ old('kelurahan') }}">
+                    @foreach($kel as $kelurahan)
+                      <option value="{{ $kelurahan['name'] }}">
+                          {{ $kelurahan['name'] }}
+                      </option>
+                    @endforeach
+                  </select>
+                </div> --}}
               </div>
               <div class="form-group row">
                 <div class="col-md-12">
-                  <label for="c_subject" class="text-black">Address </label>
-                  <input type="text" class="form-control" id="c_subject" name="c_subject">
+                  <label class="text-black">Address </label>
+                  <input type="text" class="form-control" id="" name="">
                 </div>
               </div>
-
-  
               <div class="form-group row">
                 <div class="col-lg-12">
                   <input type="submit" class="btn btn-primary btn-lg btn-block" value="Submit Profile">

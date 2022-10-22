@@ -21,6 +21,12 @@
   <link rel="stylesheet" href="{{ asset('template_user/css/aos.css') }}">
 
   <link rel="stylesheet" href="{{ asset('template_user/css/style.css') }}">
+  <style>
+    a.btn-hover:hover{
+      color: black !important;
+    }
+  </style>
+
 
 </head>
 
@@ -78,15 +84,11 @@
           <div class="icons">
             @guest
               @if (Route::has('login'))
-                  <button class="btn btn-primary">
-                      <a href="{{ route('login') }}">{{ __('Login') }}</a>
-                  </button>
+                <a class="btn btn-primary btn-hover text-light" style="border-radius: 20px;" href="{{ route('login') }}">Login</a>
               @endif
 
               @if (Route::has('register'))
-                  <button class="btn btn-primary">
-                      <a href="{{ route('register') }}">{{ __('Register') }}</a>
-                  </button>
+                      <a class="btn btn-primary btn-hover text-light" style="border-radius: 20px;" href="{{ route('register') }}">Register</a>
               @endif
             @else
             <a href="#" class="icons-btn d-inline-block js-search-open"><span class="icon-search"></span></a>
@@ -107,7 +109,7 @@
                       @csrf
                   </form>
 
-                  <a class="dropdown-item" href="{{ url ('profile') }}">
+                  <a class="dropdown-item" href="{{ route ('profile.edit', Auth::user()->id) }}">
                     <i class="fa-solid fa-gear"></i>&nbsp;&nbsp;Profile
                 </a>
               </div>
