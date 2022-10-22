@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,6 +27,8 @@ Route::get('/dashboard', function () {
 Route::get('/index', function () {
     return view('master.index');
 });
+
+Route::resource('product', ProductController::class);
 
 // Route::get('/home', function () {
 //     return view('master.index_user');
