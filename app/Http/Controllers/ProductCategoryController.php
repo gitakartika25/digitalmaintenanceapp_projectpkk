@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-
-use App\Models\Product;
+use App\Models\ProductCategory;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class ProductCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $product = Product::all();
-        return view('admin.products', compact('product'));
+        $category = ProductCategory::all();
+        return view('admin.category', compact('category'));
     }
 
     /**
@@ -26,7 +25,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.add_category');
     }
 
     /**
@@ -37,7 +36,11 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        ProductCategory::create([
+            'category' => $request-> category,
+        ]);
+
+        return redirect()->route('category.index');
     }
 
     /**
@@ -59,7 +62,9 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+       $category = ProductCategory::find($id);
+
+        return view('admin.edit_category', compact('category') );
     }
 
     /**
@@ -71,7 +76,13 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $category = ProductCategory::find($id);
+
+        $category->category = $request->editcategory;
+
+        $category->save();
+
+        return redirect()->route('category.index')->with('success', 'Data Berhasil Diupdate !');
     }
 
     /**
@@ -82,6 +93,9 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = ProductCategory::find($id);
+        $category->delete();
+
+        return redirect()->route('category.index')->with('success', 'Data berhasil dihapus');
     }
 }
