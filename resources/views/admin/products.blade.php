@@ -35,6 +35,17 @@
                     <tbody>
                         @foreach ($product as $p)
                             <tr>
+                                <td> <img src="{{ asset('storage/'.$p->image) }}" alt="">
+                                
+                                </td>
+                                <td> {{ $p->product_name }}</td>
+                                <td> {{ $p->category }}</td>
+                                <td> {{ $p->description }}</td>
+                                <td> {{ $p->price }}</td>
+                                <td> {{ $p->stock }}</td>
+                                <td> {{ $p->specification }}</td>
+                                <td> {{ $p->packaging }}</td>
+                                <td> {{ $p->material }}</td>
                                 <td class="">
                                     <div class="d-flex align-items-center list-user-action">
                                         <a class="btn btn-sm btn-icon btn-primary py-2"
@@ -46,7 +57,7 @@
                                     </svg>
                                 </a>
                                 <a>
-                                    <form action="{{ route('product.destroy', $c->id) }}" method="POST">
+                                    <form action="{{ route('product.destroy', $p->id) }}" method="POST">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-sm btn-icon btn-danger mx-3"

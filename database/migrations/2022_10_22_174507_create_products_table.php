@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('description');
             $table->double('price');
             $table->integer('stock');
-            $table->string('spesification');
+            $table->string('specification');
             $table->string('packaging');
             $table->string('material');
             $table->string('image');
