@@ -86,27 +86,37 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $file=$request->file('foto')->store('img');
-        $data = DB::table('users')->where('id',$id)->update([
-            'name' => $request->username,
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'email' => $request->email,
-            // 'foto'=>$file,
-        ]);
-        
         $data = DB::table('users')->where('id',$id);
         if($request->file('foto')){
             $file = $request->file('foto')->store('img');
 
             $data->update([
+                'name' => $request->username,
+                'first_name' => $request->first_name,
+                'last_name' => $request->last_name,
+                'email' => $request->email,
                 'foto'=>$file,
             ]);
         }else{
             $data->update([
+                'name' => $request->username,
+                'first_name' => $request->first_name,
+                'last_name' => $request->last_name,
+                'email' => $request->email,
                 'foto'=>$request->foto,
             ]);
         }
+        
+        // $file=$request->file('foto')->store('img');
+        // $data = DB::table('users')->where('id',$id)->update([
+        //     'name' => $request->username,
+        //     'first_name' => $request->first_name,
+        //     'last_name' => $request->last_name,
+        //     'email' => $request->email,
+        //     // 'foto'=>$file,
+        // ]);
+        
+        
         // dd($data->foto);
 	    return redirect('profile/'.$id.'/edit');
 

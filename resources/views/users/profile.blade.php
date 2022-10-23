@@ -33,7 +33,7 @@
               <div class="form-group row">
                 <div class="col-md-4">
                   <label for="c_fname" class="text-black">Foto </label>
-                  <input type="file" class="form-control" onchange="preview()" id="" name="foto" value="">
+                  <input type="file" class="form-control" onchange="preview()" id="" name="foto" value="{{ $data->foto }}">
                 </div>
                 <div class="col-md-4">
                   <label class="text-black">Username </label>
