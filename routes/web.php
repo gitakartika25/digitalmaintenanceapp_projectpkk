@@ -5,6 +5,7 @@ use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MidtransController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,7 @@ use App\Http\Controllers\HomeController;
 
 Auth::routes();
 
+Route::get('/midtranstest',[MidtransController::class, 'index']);
 
 Route::get('/index', function () {
     return view('master.index');
