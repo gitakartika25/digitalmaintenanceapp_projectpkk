@@ -1,5 +1,6 @@
 <?php
 
+
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ProductController;
@@ -26,10 +27,10 @@ Route::get('/index', function () {
     return view('master.index');
 });
 
+
 Route::get('/userCRUD', function () {
     return view('admin.useradminCRUD');
 });
-
 
 Route::resource('product', ProductController::class);
 Route::resource('category', ProductCategoryController::class);
