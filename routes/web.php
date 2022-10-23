@@ -76,9 +76,7 @@ Route::middleware(['auth', 'user'])->group(function () {
         return view('users.store');
     });
 
-    Route::get('/cart', function () {
-        return view('users.cart');
-    });
+    Route::get('/cart',[CartController::class, 'index']);
 
     Route::get('/detailproduk', function () {
         return view('users.detailproduk');

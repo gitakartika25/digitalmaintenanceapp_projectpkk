@@ -136,7 +136,7 @@
   
               <div class="row">
                 <div class="col-md-12">
-                  <button class="btn btn-primary btn-lg btn-block" onclick="window.location='/checkout'">Proceed To
+                  <button class="btn btn-primary btn-lg btn-block" id="pay-button">Proceed To
                     Checkout</button>
                 </div>
               </div>
