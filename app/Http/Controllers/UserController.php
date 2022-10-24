@@ -13,7 +13,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $data = User::all();
+        return view ('useradminCRUD', compact('data'));
     }
 
     /**
@@ -23,7 +24,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $data = User::all();
+        return view ('addUser', compact('data'));
     }
 
     /**
@@ -34,7 +36,21 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        User::create([
+            'name'=>$request->name,
+            'email'=> $request->email,
+            'password'=>$request->password,
+            'role_id'=>$request->role_id,
+            'photo',$request->photo,
+            'address',$request->address,
+            'telephone',$request->telephone,
+    
+    
+    
+    
+            ]);
+    
+            return redirect('useradminCRUD')->with('success','Data berhasil masuk');
     }
 
     /**
@@ -56,8 +72,12 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = User::find($id);
+
+        return view('updateUser', compact('data'));
+       
     }
+    
 
     /**
      * Update the specified resource in storage.
@@ -68,7 +88,9 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = User::all();
+        $data->update($request->all());
+        return redirect('useradminCRUD')->with('success', 'Data berhasil dirubah');
     }
 
     /**
@@ -79,6 +101,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = User::FindOrFail($id);
+        $data->delete();
+        return redirect('useradminCRUD') ->with ('success', 'Data Berhasil Dihapus');
     }
 }
