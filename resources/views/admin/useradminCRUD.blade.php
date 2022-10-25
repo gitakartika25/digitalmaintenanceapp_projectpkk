@@ -11,7 +11,7 @@
     <div class="card">
       <div class="card-body">
         <h4 class="card-title">Tabel data user</h4>
-        <a href="{{ url('admin/create') }}" class="btn btn-primary">Add User</a>
+        <a href="{{ url('userCRUD/create') }}" class="btn btn-primary">Add User</a>
         
         <div class="table-responsive pt-3">
           <table class="table table-bordered">
@@ -30,7 +30,7 @@
             <tbody>
               @foreach ($data as $d)
               <tr>
-                <td> <img src="{{ asset('storage/'.$p->image) }}" alt="">
+                <td> <img src="{{ asset('storage/'.$d->image) }}" alt="">
                 
                 </td>
                 <td> {{ $d->id }}</td>
@@ -43,7 +43,7 @@
                 <td class="">
                     <div class="d-flex align-items-center list-user-action">
                         <a class="btn btn-sm btn-icon btn-primary py-2"
-                        href="{{ url('product/' . $p->id . '/edit') }}">
+                        href="{{ url('user/' . $d->id . '/edit') }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                         fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
                         <path
@@ -51,7 +51,7 @@
                     </svg>
                 </a>
                 <a>
-                    <form action="{{ route('product.destroy', $p->id) }}" method="POST">
+                    <form action="{{ route('user.destroy', $d->id) }}" method="POST">
                         @csrf
                         @method('delete')
                         <button type="submit" class="btn btn-sm btn-icon btn-danger mx-3"

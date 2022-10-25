@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+// use App\Http\Controllers\User;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -14,7 +16,10 @@ class UserController extends Controller
     public function index()
     {
         $data = User::all();
-        return view ('useradminCRUD', compact('data'));
+        // dd($data);
+        return view ('admin/useradminCRUD', compact('data'));
+
+        
     }
 
     /**
@@ -25,7 +30,7 @@ class UserController extends Controller
     public function create()
     {
         $data = User::all();
-        return view ('addUser', compact('data'));
+        return view ('admin/create', compact('data'));
     }
 
     /**
@@ -50,7 +55,7 @@ class UserController extends Controller
     
             ]);
     
-            return redirect('useradminCRUD')->with('success','Data berhasil masuk');
+            return redirect('admin/useradminCRUD')->with('success','Data berhasil masuk');
     }
 
     /**
@@ -74,7 +79,7 @@ class UserController extends Controller
     {
         $data = User::find($id);
 
-        return view('updateUser', compact('data'));
+        return view('admin/edit', compact('data'));
        
     }
     
@@ -90,7 +95,7 @@ class UserController extends Controller
     {
         $data = User::all();
         $data->update($request->all());
-        return redirect('useradminCRUD')->with('success', 'Data berhasil dirubah');
+        return redirect('admin/useradminCRUD')->with('success', 'Data berhasil dirubah');
     }
 
     /**
@@ -103,6 +108,6 @@ class UserController extends Controller
     {
         $data = User::FindOrFail($id);
         $data->delete();
-        return redirect('useradminCRUD') ->with ('success', 'Data Berhasil Dihapus');
+        return redirect('admin/useradminCRUD') ->with ('success', 'Data Berhasil Dihapus');
     }
 }

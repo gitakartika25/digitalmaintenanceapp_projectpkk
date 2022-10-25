@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +28,8 @@ Route::get('/userCRUD', function () {
     return view('admin.useradminCRUD');
 });
 
+
+Route::resource('/userCRUD', UserController::class);
 
 // Route::get('/home', function () {
 //     return view('master.index_user');
