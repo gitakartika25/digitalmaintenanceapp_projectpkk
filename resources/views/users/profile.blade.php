@@ -56,7 +56,7 @@
               </div>
         @endforeach
               <div class="form-group row">
-                {{-- <div class="col-md-3">
+                <div class="col-md-3">
                   <label for="c_subject" class="text-black">Province/Provinsi </label>
                   <select class="form-control" id="" name="profinsi" value="{{ old('profinsi') }}">
                     @foreach($prof as $profinsi)
@@ -65,16 +65,16 @@
                       </option>
                     @endforeach
                   </select>
-                </div> --}}
-                {{-- <div class="col-md-3">
+                </div>
+                <div class="col-md-3">
                   <label for="c_subject" class="text-black">City/Kota </label>
                   <select class="form-control" id="" name="kota" value="{{ old('kota') }}">
                       @foreach($kot as $kota)
                         <option value="{{ $kota['name'] }}">{{ $kota['name'] }}</option>
                       @endforeach
                   </select>
-                </div> --}}
-                {{-- <div class="col-md-3">
+                </div>
+                <div class="col-md-3">
                   <label for="c_subject" class="text-black">Districts/Kecamatan </label>
                   <select class="form-control" id="" name="kecamatan" value="{{ old('kecamatan') }}">
                     @foreach($kec as $kecamatan)
@@ -83,8 +83,8 @@
                       </option>
                     @endforeach
                   </select>
-                </div> --}}
-                {{-- <div class="col-md-3">
+                </div>
+                <div class="col-md-3">
                   <label for="c_subject" class="text-black">Ward/Kelurahan </label>
                   <select class="form-control" id="" name="kelurahan" value="{{ old('kelurahan') }}">
                     @foreach($kel as $kelurahan)
@@ -93,7 +93,7 @@
                       </option>
                     @endforeach
                   </select>
-                </div> --}}
+                </div>
               </div>
               <div class="form-group row">
                 <div class="col-md-12">

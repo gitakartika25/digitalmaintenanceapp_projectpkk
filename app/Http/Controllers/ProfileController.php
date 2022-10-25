@@ -63,18 +63,19 @@ class ProfileController extends Controller
         // Akses database user
         $profile = DB::table('users')->select('*')->where('id',$id_user)->get();
         // akses API Profinsi
-        // $profinsi = Http::get('https://emsifa.github.io/api-wilayah-indonesia/api/provinces.json');
-        // $prof = $profinsi->json();
+        $profinsi = Http::get('https://emsifa.github.io/api-wilayah-indonesia/api/provinces.json');
+        $prof = $profinsi->json();
         // akses API Kota
-        // $kota = Http::get('https://emsifa.github.io/api-wilayah-indonesia/api/regencies/11.json');
-        // $kot = $kota->json();
+        $kota = Http::get('https://emsifa.github.io/api-wilayah-indonesia/api/regencies/11.json');
+        $kot = $kota->json();
         // akses API kecamatan
-        // $kecamatan = Http::get('https://emsifa.github.io/api-wilayah-indonesia/api/districts/1103.json');
-        // $kec = $kecamatan->json();
+        $kecamatan = Http::get('https://emsifa.github.io/api-wilayah-indonesia/api/districts/1101.json');
+        $kec = $kecamatan->json();
         // akses API kelurahan
-        // $kelurahan = Http::get('https://emsifa.github.io/api-wilayah-indonesia/api/villages/1103010.json');
-        // $kel = $kelurahan->json();
-        return view('users.profile', compact('profile'));
+        $kelurahan = Http::get('https://emsifa.github.io/api-wilayah-indonesia/api/villages/1101010.json');
+        $kel = $kelurahan->json();
+        // dd($kec);
+        return view('users.profile', compact('profile', 'prof', 'kot', 'kec', 'kel'));
     }
 
     /**
@@ -99,24 +100,14 @@ class ProfileController extends Controller
             ]);
         }else{
             $data->update([
+                
                 'name' => $request->username,
                 'first_name' => $request->first_name,
                 'last_name' => $request->last_name,
                 'email' => $request->email,
-                'foto'=>$request->foto,
+                'foto'=>$data->foto,
             ]);
-        }
-        
-        // $file=$request->file('foto')->store('img');
-        // $data = DB::table('users')->where('id',$id)->update([
-        //     'name' => $request->username,
-        //     'first_name' => $request->first_name,
-        //     'last_name' => $request->last_name,
-        //     'email' => $request->email,
-        //     // 'foto'=>$file,
-        // ]);
-        
-        
+        } 
         // dd($data->foto);
 	    return redirect('profile/'.$id.'/edit');
 
