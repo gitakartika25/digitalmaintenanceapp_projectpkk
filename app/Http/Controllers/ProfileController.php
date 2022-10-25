@@ -61,7 +61,8 @@ class ProfileController extends Controller
     public function edit($id_user)
     {
         // Akses database user
-        $profile = DB::table('users')->select('*')->where('id',$id_user)->get();
+        // $profile = DB::table('users')->select('*')->where('id',$id_user)->get();
+        $profile = User::select('*')->where('id',$id_user)->get();
         // akses API Profinsi
         $profinsi = Http::get('https://emsifa.github.io/api-wilayah-indonesia/api/provinces.json');
         $prof = $profinsi->json();
@@ -87,7 +88,8 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = DB::table('users')->where('id',$id);
+        // $data = DB::table('users')->where('id',$id)->get();
+        $data = User::findOrFail($id);
         if($request->file('foto')){
             $file = $request->file('foto')->store('img');
 
@@ -108,9 +110,7 @@ class ProfileController extends Controller
                 'foto'=>$data->foto,
             ]);
         } 
-        // dd($data->foto);
 	    return redirect('profile/'.$id.'/edit');
-
     }
 
     /**
