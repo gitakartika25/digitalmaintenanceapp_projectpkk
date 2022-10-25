@@ -1,5 +1,5 @@
 @extends('master.index')
-@section('title', 'dashboard')
+@section('title', 'category')
 
 @section('content')
 
@@ -67,6 +67,5 @@
             </div>
         </div>
     </div>
-    </div>
-    </div>
+  
 @endsection

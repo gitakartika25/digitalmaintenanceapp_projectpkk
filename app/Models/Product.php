@@ -12,4 +12,8 @@ class Product extends Model
     protected $guarded = ['id'];
     protected $fillable = ['product_name', 'description','price','stock','specification','packaging','material','image','category_id'];
 
+    public function category() {
+        return $this->belongsTo(ProductCategory::class);
+    }
+
 }

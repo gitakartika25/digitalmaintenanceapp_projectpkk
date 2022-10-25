@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Validator;
 
 class ProductController extends Controller
 {
@@ -76,7 +77,10 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Product::with('category')->find($id);
+        $category = ProductCategory::all();
+
+        return view('admin.edit_product', compact('category', 'product'));
     }
 
     /**
@@ -88,7 +92,44 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // dd($request);
+        $product = Product::find($id);
+        $validator = $request->validate ([
+            'product_name' => 'required|string',
+            'category_id' => 'required',
+            'price' => 'required|integer',
+            'stock' => 'required|integer',
+            'specification' => 'required|string',
+            'packaging' => 'required|string',
+            'material' => 'required|string',
+            'description' => 'required|string',
+           
+        ]);
+
+        // dd($validator);
+            try {
+                $file = $request->file('image')->store('img');
+                $validator['image'] = $file;
+
+                //  dd($validator);
+                 $product->update($validator);
+
+
+            }catch (\Throwable $th) {
+               
+
+                $validator['image'] = $product->image;
+
+                //   dd($validator);
+                  $product->update($validator);
+                // $product->update($validator);
+            }
+           
+        
+           
+            
+        return redirect('product');
+
     }
 
     /**
@@ -99,6 +140,9 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Product::find($id);
+        $product->delete();
+
+        return redirect()->route('product.index')->with('success', 'Data berhasil dihapus !');
     }
 }
