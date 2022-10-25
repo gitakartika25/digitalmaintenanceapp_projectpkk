@@ -36,15 +36,16 @@
     </div>
     <div class="site-section bg-light">
       <div class="container">
-        
-        
         <div class="row">  
           @foreach ($product as $p)
           <div class="col-sm-6 col-lg-4 text-center item mb-4 item-v2">
+            <form action="{{ url('detailproduct/'.$p->id) }}" method="POST" enctype="multipart/form-data">
+              @method('put')
             <span class="onsale">Rent</span>
-            <img src="{{  asset('storage/'. $p->image)  }}" style="width: 300px">
-            <h3 class="text-dark"><a href="/detailproduk"></a>{{ $p->product_name }}</h3>
+            <a href="{{ url('detailproduct/'.$p->id) }}"><img src="{{  asset('storage/'. $p->image)  }}" style="width: 300px"></a>
+            <h3 class="text-dark"><a href="{{ url('detailproduct/'.$p->id) }}"></a>{{ $p->product_name }}</h3>
             <p class="price"> Rp{{ $p->price }}</p>
+          </form>
           </div>
           @endforeach
         </div>
@@ -65,7 +66,6 @@
         </div>
       </div>
     </div>
-
 @endsection
 
    

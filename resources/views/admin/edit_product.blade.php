@@ -2,9 +2,7 @@
 @section('title', 'edit product')
 
 @section('content')
-@error('any')
-<h1>error</h1>
-@enderror
+
     <div class="card">
         <div class="card-body ">
             <h4 class="card-title">Edit Product</h4>

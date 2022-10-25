@@ -27,6 +27,12 @@ class ProductController extends Controller
         return view('users.store', compact('product'));
     }
 
+    public function detailproduct($id)
+    {
+        $product = Product::find($id);
+        return view('users.detailproduct', compact('product'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
