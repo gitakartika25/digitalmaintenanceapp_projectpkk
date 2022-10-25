@@ -38,77 +38,15 @@
       <div class="container">
         
         
-    
-        <div class="row">
+        <div class="row">  
+          @foreach ($product as $p)
           <div class="col-sm-6 col-lg-4 text-center item mb-4 item-v2">
-            <span class="onsale">Sale</span>
-            <a href="/detailproduk"> <img src="{{ asset('template_user/images/p1.jpg') }}" alt="Image"></a>
-            <h3 class="text-dark"><a href="/detailproduk">Bioderma</a></h3>
-            <p class="price"><del>95.00</del> &mdash; $55.00</p>
+            <span class="onsale">Rent</span>
+            <img src="{{  asset('storage/'. $p->image)  }}" style="width: 300px">
+            <h3 class="text-dark"><a href="/detailproduk"></a>{{ $p->product_name }}</h3>
+            <p class="price"> Rp{{ $p->price }}</p>
           </div>
-          <div class="col-sm-6 col-lg-4 text-center item mb-4 item-v2">
-            <a href="/detailproduk"> <img src="{{ asset('template_user/images/p2.jpg') }}" alt="Image"></a>
-            <h3 class="text-dark"><a href="/detailproduk">Chanca Piedra</a></h3>
-            <p class="price">$70.00</p>
-          </div>
-          <div class="col-sm-6 col-lg-4 text-center item mb-4 item-v2">
-            <a href="/detailproduk"> <img src="{{ asset('template_user/images/p3.jpg') }}" alt="Image"></a>
-            <h3 class="text-dark"><a href="/detailproduk">Umcka Cold Care</a></h3>
-            <p class="price">$120.00</p>
-          </div>
-    
-          <div class="col-sm-6 col-lg-4 text-center item mb-4 item-v2">
-    
-            <a href="/detailproduk"> <img src="{{ asset('template_user/images/p4.jpg') }}" alt="Image"></a>
-            <h3 class="text-dark"><a href="/detailproduk">Cetyl Pure</a></h3>
-            <p class="price"><del>45.00</del> &mdash; $20.00</p>
-          </div>
-          <div class="col-sm-6 col-lg-4 text-center item mb-4 item-v2">
-            <a href="/detailproduk"> <img src="{{ asset('template_user/images/p5.jpg') }}" alt="Image"></a>
-            <h3 class="text-dark"><a href="/detailproduk">CLA Core</a></h3>
-            <p class="price">$38.00</p>
-          </div>
-          <div class="col-sm-6 col-lg-4 text-center item mb-4 item-v2">
-            <span class="onsale">Sale</span>
-            <a href="/detailproduk"> <img src="{{ asset('template_user/images/p6.jpg') }}" alt="Image"></a>
-            <h3 class="text-dark"><a href="/detailproduk">Poo Pourri</a></h3>
-            <p class="price"><del>$89</del> &mdash; $38.00</p>
-          </div>
-
-          <div class="col-sm-6 col-lg-4 text-center item mb-4 item-v2">
-            <span class="onsale">Sale</span>
-            <a href="/detailproduk"> <img src="{{ asset('template_user/images/p7.jpg') }}" alt="Image"></a>
-            <h3 class="text-dark"><a href="/detailproduk">Bioderma</a></h3>
-            <p class="price"><del>95.00</del> &mdash; $55.00</p>
-          </div>
-          <div class="col-sm-6 col-lg-4 text-center item mb-4 item-v2">
-            <a href="/detailproduk"> <img src="{{ asset('template_user/images/p8.jpg') }}" alt="Image"></a>
-            <h3 class="text-dark"><a href="/detailproduk">Chanca Piedra</a></h3>
-            <p class="price">$70.00</p>
-          </div>
-          <div class="col-sm-6 col-lg-4 text-center item mb-4 item-v2">
-            <a href="/detailproduk"> <img src="{{ asset('template_user/images/p9.jpg') }}" alt="Image"></a>
-            <h3 class="text-dark"><a href="/detailproduk">Umcka Cold Care</a></h3>
-            <p class="price">$120.00</p>
-          </div>
-          
-          <div class="col-sm-6 col-lg-4 text-center item mb-4 item-v2">
-          
-            <a href="/detailproduk"> <img src="{{ asset('template_user/images/p10.jpg') }}" alt="Image"></a>
-            <h3 class="text-dark"><a href="/detailproduk">Cetyl Pure</a></h3>
-            <p class="price"><del>45.00</del> &mdash; $20.00</p>
-          </div>
-          <div class="col-sm-6 col-lg-4 text-center item mb-4 item-v2">
-            <a href="/detailproduk"> <img src="{{ asset('template_user/images/p1.jpg') }}" alt="Image"></a>
-            <h3 class="text-dark"><a href="/detailproduk">CLA Core</a></h3>
-            <p class="price">$38.00</p>
-          </div>
-          <div class="col-sm-6 col-lg-4 text-center item mb-4 item-v2">
-            <span class="onsale">Sale</span>
-            <a href="/detailproduk"> <img src="{{ asset('template_user/images/p1.jpg') }}" alt="Image"></a>
-            <h3 class="text-dark"><a href="/detailproduk">Poo Pourri</a></h3>
-            <p class="price"><del>$89</del> &mdash; $38.00</p>
-          </div>
+          @endforeach
         </div>
         <div class="row mt-5">
           <div class="col-md-12 text-center">

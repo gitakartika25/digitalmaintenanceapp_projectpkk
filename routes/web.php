@@ -44,6 +44,7 @@ Route::get('/home', function () {
 });
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/store2', [ProductController::class, 'index2'])->name('store');
 
 
 Route::get('/', function () {
