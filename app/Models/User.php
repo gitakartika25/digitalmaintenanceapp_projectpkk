@@ -16,16 +16,18 @@ class User extends Authenticatable
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
+     * 
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'role_id',
-        'photo',
-        'address',
-        'telephone',
-    ];
+
+
+    protected $table = 'users';
+    protected $guarded = ['id'];
+    protected $fillable = ['name', 'email','photo','address','password','telephone','role_id'];
+
+    public function role(){
+
+         return $this ->belongsTo(User::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.
@@ -35,6 +37,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'role_id',
+
+
     ];
 
     /**

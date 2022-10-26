@@ -18,9 +18,9 @@
             <thead>
               <tr>
                             
-                            <th>Id</th>
-                            <th>Photo</th>
-                            <th>Name</th>
+                            {{-- <th>Id</th> --}}
+                            <th>photo</th>
+                            <th>name</th>
                             <th>email</th>
                             <th>password</th>
                             <th>address</th>
@@ -43,7 +43,7 @@
                 <td class="">
                     <div class="d-flex align-items-center list-user-action">
                         <a class="btn btn-sm btn-icon btn-primary py-2"
-                        href="{{ url('user/' . $d->id . '/edit') }}">
+                        href="{{ url('userCRUD/' . $d->id . '/edit') }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                         fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
                         <path
@@ -51,7 +51,7 @@
                     </svg>
                 </a>
                 <a>
-                    <form action="{{ route('user.destroy', $d->id) }}" method="POST">
+                    <form action="{{ route('userCRUD.destroy', $d->id) }}" method="POST">
                         @csrf
                         @method('delete')
                         <button type="submit" class="btn btn-sm btn-icon btn-danger mx-3"

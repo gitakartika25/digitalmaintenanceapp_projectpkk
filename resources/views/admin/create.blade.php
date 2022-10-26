@@ -8,49 +8,37 @@
             <h4 class="card-title">Add Product</h4>
             <form action="{{ route('userCRUD.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label for="exampleInputName1">id</label>
                     <input type="number" class="form-control" name="Id" placeholder="input product's name...">
-                </div>
-                    {{-- <select class="form-control @error('category_id') is-invalid @enderror"
-                        aria-label="Default select example" name="category_id">
-                        <option selected value="" disabled>Select Category</option>
-                        {{-- @foreach ($category as $c)
-                            <option value="{{ $c->id }}" @selected(old('category_id') == $c->id)>{{ $c->category }}</option>
-                        @endforeach --}}
-                    {{-- </select>  --}}
+                </div> --}}
+
                 <div class="form-group">
-                    <label for="exampleInputName1">Name</label>
-                    <input type="text" class="form-control" name="Name" placeholder="input Name">
-                    {{-- <div class="input-group">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text bg-primary text-white">Rp</span>
-                        </div>
-                        <input type="number" class="form-control" name="price" placeholder="input price..." aria-label="Amount (to the nearest rupiah)">
-                        <div class="input-group-append">
-                          <span class="input-group-text">.00</span>
-                        </div>
-                      </div> --}}
+                    <label>name</label>
+                    <input  class="form-control" @error('name') id-invalid @enderror name="name" value="{{ old('name') }}">
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputName1">email</label>
-                    <input type="text" class="form-control" name="email" placeholder="input email">
+                    <label>email</label>
+                    <input type="text" class="form-control" @error('email') id-invalid @enderror name="email" value="{{ old('email') }}">
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputName1">password</label>
-                    <input type="text" class="form-control" name="password" placeholder="input specification...">
+                    <label>password</label>
+                    <input type="text" class="form-control" @error('password') id-invalid @enderror name="password" value="{{ old('password') }}">
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputName1">address</label>
-                    <input type="text" class="form-control" name="address" placeholder="input packaging...">
+                    <label>address</label>
+                    <input  class="form-control" @error('address') id-invalid @enderror name="address" value="{{ old('address') }}">
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputName1">telephone</label>
-                    <input type="number" class="form-control" name="telephone" placeholder="input material...">
+                    <label>telephone</label>
+                    <input  class="form-control" @error('telephone') id-invalid @enderror name="telephone" value="{{ old('telephone') }}">
                 </div>
+
+                
+
                 <div class="form-group">
                     <label>File upload</label>
-                    <input type="file" name="image" class="file-upload-default">
+                    <input type="file" name="photo" class="file-upload-default">
                     <div class="input-group col-xs-12">
                       <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Photo">
                       <span class="input-group-append">

@@ -42,20 +42,22 @@ class UserController extends Controller
     public function store(Request $request)
     {
         User::create([
-            'name'=>$request->name,
+            'name'=> $request->name,
             'email'=> $request->email,
-            'password'=>$request->password,
-            'role_id'=>$request->role_id,
-            'photo',$request->photo,
-            'address',$request->address,
-            'telephone',$request->telephone,
+            'password'=> $request->password,
+            'role_id'=>1,
+            'photo'=> $request->photo,
+            'address'=> $request->address,
+            'telephone'=> $request->telephone,
     
     
     
     
             ]);
+
+            
     
-            return redirect('admin/useradminCRUD')->with('success','Data berhasil masuk');
+            return redirect('userCRUD')->with('success','Data berhasil masuk');
     }
 
     /**
@@ -95,7 +97,7 @@ class UserController extends Controller
     {
         $data = User::all();
         $data->update($request->all());
-        return redirect('admin/useradminCRUD')->with('success', 'Data berhasil dirubah');
+        return redirect('userCRUD')->with('success', 'Data berhasil dirubah');
     }
 
     /**
@@ -108,6 +110,6 @@ class UserController extends Controller
     {
         $data = User::FindOrFail($id);
         $data->delete();
-        return redirect('admin/useradminCRUD') ->with ('success', 'Data Berhasil Dihapus');
+        return redirect('userCRUD') ->with ('success', 'Data Berhasil Dihapus');
     }
 }
