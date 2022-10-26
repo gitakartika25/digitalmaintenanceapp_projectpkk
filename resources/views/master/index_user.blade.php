@@ -20,6 +20,12 @@
   <link rel="stylesheet" href="{{ asset('template_user/css/aos.css') }}">
 
   <link rel="stylesheet" href="{{ asset('template_user/css/style.css') }}">
+  
+    <!-- @TODO: replace SET_YOUR_CLIENT_KEY_HERE with your client key -->
+    <script type="text/javascript"
+      src="https://app.sandbox.midtrans.com/snap/snap.js"
+      data-client-key="SB-Mid-client-jn_QXOuWTdYCj_Jj"></script>
+    <!-- Note: replace with src="https://app.midtrans.com/snap/snap.js" for Production environment -->
 
 </head>
 
@@ -201,6 +207,7 @@
       </div>
     </footer>
   </div>
+  
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <script src="{{ asset('template_user/js/jquery-3.3.1.min.js') }}"></script>
