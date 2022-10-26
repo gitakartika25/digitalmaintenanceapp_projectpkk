@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ProductCategory;
+use App\Models\testimonies;
 use Illuminate\Http\Request;
 
-class ProductCategoryController extends Controller
+class TestimoniesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,7 @@ class ProductCategoryController extends Controller
      */
     public function index()
     {
-        $category = ProductCategory::all();
-        return view('admin.category', compact('category'));
+        //
     }
 
     /**
@@ -25,7 +24,7 @@ class ProductCategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.add_category');
+        //
     }
 
     /**
@@ -36,20 +35,16 @@ class ProductCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        ProductCategory::create([
-            'category' => $request-> category,
-        ]);
-
-        return redirect()->route('category.index');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\testimonies  $testimonies
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(testimonies $testimonies)
     {
         //
     }
@@ -57,45 +52,34 @@ class ProductCategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\testimonies  $testimonies
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(testimonies $testimonies)
     {
-       $category = ProductCategory::find($id);
-
-        return view('admin.edit_category', compact('category') );
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\testimonies  $testimonies
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, testimonies $testimonies)
     {
-        $category = ProductCategory::find($id);
-
-        $category->category = $request->editcategory;
-
-        $category->save();
-
-        return redirect()->route('category.index')->with('success', 'Data Berhasil Diupdate !');
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\testimonies  $testimonies
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(testimonies $testimonies)
     {
-        $category = ProductCategory::find($id);
-        $category->delete();
-
-        return redirect()->route('category.index')->with('success', 'Data berhasil dihapus');
+        //
     }
 }
