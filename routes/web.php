@@ -4,6 +4,7 @@
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MidtransController;
@@ -64,6 +65,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
 
 // Halaman User
+    Route::get('/cart',[CartController::class, 'index']);
 Route::middleware(['auth', 'user'])->group(function () {
     Route::get('/user', function () {
         return view('users.home');
@@ -76,7 +78,6 @@ Route::middleware(['auth', 'user'])->group(function () {
         return view('users.store');
     });
 
-    Route::get('/cart',[CartController::class, 'index']);
 
     Route::get('/detailproduk', function () {
         return view('users.detailproduk');
