@@ -22,66 +22,44 @@ use App\Http\Controllers\MidtransController;
 
 Auth::routes();
 
-Route::get('/midtranstest',[MidtransController::class, 'index']);
-
+// Halaman Admin
 Route::get('/index', function () {
     return view('master.index');
 });
-
-
-Route::get('/userCRUD', function () {
-    return view('admin.useradminCRUD');
-});
-
-Route::resource('product', ProductController::class);
-Route::resource('category', ProductCategoryController::class);
-
-// Route::get('/home', function () {
-//     return view('master.index_user');
-// });
-
-
-// Halaman User
-Route::get('/home', function () {
-    return view('users.home');
-});
-
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-
-
-Route::get('/', function () {
-    return view('master.index_user');
-});
-
-// Halaman Admin
 Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/userCRUD', function () {
+        return view('admin.useradminCRUD');
+    });
     Route::get('dashboard', function () {
         return view('admin.dashboard');
     });
     Route::get('/index', function () {
         return view('master.index');
     });
+    Route::resource('product', ProductController::class);
+    Route::resource('category', ProductCategoryController::class);
 });
 
 
-// Halaman User
-    Route::get('/cart',[CartController::class, 'index']);
+
+///halaman user
+Route::get('/', function () {
+    return view('master.index_user');
+});
 Route::middleware(['auth', 'user'])->group(function () {
-    Route::get('/user', function () {
-        return view('users.home');
-    });
+    Route::get('/user', [HomeController::class, 'index'])->name('user.index');
+    Route::get('/home', [HomeController::class, 'index'])->name('user.index');
+    Route::get('/store', [ProductController::class, 'index2'])->name('store');
+    Route::get('/detailproduct/{id}', [ProductController::class, 'detailproduct'])->name('product.detailproduct');
+    
+    Route::get('/cart',[CartController::class, 'index']);
     Route::get('/about', function () {
         return view('users.about');
     });
-
     Route::get('/store', function () {
         return view('users.store');
     });
 
-
-    Route::get('/detailproduk', function () {
-        return view('users.detailproduk');
-    });
 
     Route::get('/contact', function () {
         return view('users.contact');

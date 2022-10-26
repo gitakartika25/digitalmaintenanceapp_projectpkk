@@ -3,17 +3,17 @@
 
 @section('content')
 
-<div class="card">
-    <div class="card-body ">
-        <h4 class="card-title">Edit Categories</h4>      
-                <form action="{{ url('category/'.$category->id) }}"  method="POST" enctype="multipart/form-data">
+    <div class="card">
+        <div class="card-body ">
+            <h4 class="card-title">Edit Categories</h4>
+            <form action="{{ url('category/' . $category->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('put')
-                  <div class="form-group">
+                <div class="form-group">
                     <label for="exampleInputName1">Category</label>
-                    <input type="text" class="form-control"  name="editcategory" value="{{ $category->category }}">
-                  </div>
-                  {{-- <div class="form-group">
+                    <input type="text" class="form-control" name="editcategory" value="{{ $category->category }}">
+                </div>
+                {{-- <div class="form-group">
                     <label for="exampleInputEmail3">Email address</label>
                     <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email">
                   </div>
@@ -46,12 +46,10 @@
                     <label for="exampleTextarea1">Textarea</label>
                     <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
                   </div> --}}
-                  <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                  {{-- <button  class="btn btn-light">Cancel</button> --}}
-                </form>
-              </div> 
-            </div>
-          </div>     
+                <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                {{-- <button  class="btn btn-light">Cancel</button> --}}
+            </form>
+        </div>
     </div>
 
 
