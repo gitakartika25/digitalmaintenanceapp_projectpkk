@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 
-=======
+
 use App\Http\Controllers\MidtransController;
 
 
@@ -57,7 +57,7 @@ Route::get('/', function () {
 });
 
 // Halaman Admin
-=======
+
 
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/userCRUD', function () {
