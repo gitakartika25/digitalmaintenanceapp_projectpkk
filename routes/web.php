@@ -7,7 +7,11 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
+
+
 use App\Http\Controllers\MidtransController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +30,35 @@ Auth::routes();
 Route::get('/index', function () {
     return view('master.index');
 });
+
+
+Route::get('/userCRUD', function () {
+    return view('admin.useradminCRUD');
+});
+
+
+Route::resource('/userCRUD', UserController::class);
+
+// Route::get('/home', function () {
+//     return view('master.index_user');
+// });
+
+
+// Halaman User
+Route::get('/home', function () {
+    return view('users.home');
+});
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+
+Route::get('/', function () {
+    return view('master.index_user');
+});
+
+// Halaman Admin
+
+
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/userCRUD', function () {
         return view('admin.useradminCRUD');

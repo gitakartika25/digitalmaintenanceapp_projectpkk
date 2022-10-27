@@ -19,10 +19,17 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+
+            $table->string('photo')->nullable();
+            $table->string('address')->nullable();
+            $table->string('telephone')->nullable();
+            $table->foreignId('role_id')->constrained('role')->cascadeOnDelete('')->cascadeOnUpdate();
+=======
             $table->string('photo')->nullable();;
             $table->string('address')->nullable();;
             $table->string('telephone')->nullable();;
             $table->foreignId('role_id')->constrained('roles')->cascadeOnDelete()->cascadeOnUpdate();
+
             // $table->integer('role_id')->default('1');
             // $table->string('role')->default('user');
             $table->rememberToken();
