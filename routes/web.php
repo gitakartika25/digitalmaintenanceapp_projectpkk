@@ -1,9 +1,16 @@
 <?php
 
+
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ProductCategoryController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+
+=======
+use App\Http\Controllers\MidtransController;
 
 
 /*
@@ -19,10 +26,11 @@ use App\Http\Controllers\UserController;
 
 Auth::routes();
 
-
+// Halaman Admin
 Route::get('/index', function () {
     return view('master.index');
 });
+
 
 Route::get('/userCRUD', function () {
     return view('admin.useradminCRUD');
@@ -49,36 +57,42 @@ Route::get('/', function () {
 });
 
 // Halaman Admin
+=======
+
 Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/userCRUD', function () {
+        return view('admin.useradminCRUD');
+    });
     Route::get('dashboard', function () {
         return view('admin.dashboard');
     });
     Route::get('/index', function () {
         return view('master.index');
     });
+    Route::resource('product', ProductController::class);
+    Route::resource('category', ProductCategoryController::class);
 });
 
 
-// Halaman User
+
+///halaman user
+Route::get('/', function () {
+    return view('master.index_user');
+});
 Route::middleware(['auth', 'user'])->group(function () {
-    Route::get('/user', function () {
-        return view('users.home');
-    });
+    Route::get('/user', [HomeController::class, 'index'])->name('user.index');
+    Route::get('/home', [HomeController::class, 'index'])->name('user.index');
+    Route::get('/store', [ProductController::class, 'index2'])->name('store');
+    Route::get('/detailproduct/{id}', [ProductController::class, 'detailproduct'])->name('product.detailproduct');
+    
+    Route::get('/cart',[CartController::class, 'index']);
     Route::get('/about', function () {
         return view('users.about');
     });
-
     Route::get('/store', function () {
         return view('users.store');
     });
 
-    Route::get('/cart', function () {
-        return view('users.cart');
-    });
-
-    Route::get('/detailproduk', function () {
-        return view('users.detailproduk');
-    });
 
     Route::get('/contact', function () {
         return view('users.contact');
