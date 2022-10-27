@@ -20,6 +20,7 @@
                             
                             {{-- <th>Id</th> --}}
                             <th>photo</th>
+                            <th>id</th>
                             <th>name</th>
                             <th>email</th>
                             <th>password</th>
@@ -31,10 +32,8 @@
               @foreach ($data as $d)
               <tr>
                 <td> <img src="{{ asset('storage/'.$d->image) }}" alt="">
-                
                 </td>
                 <td> {{ $d->id }}</td>
-                <td> {{ $d->photo }}</td>
                 <td> {{ $d->name }}</td>
                 <td> {{ $d->email }}</td>
                 <td> {{ $d->password }}</td>
@@ -68,16 +67,7 @@
         </a>
     </div>
 </td>
-<td scope="row">
-    {{ $loop->iteration }}
-</td>
-<td> {{ $d->id }}</td>
-<td> {{ $d->photo }}</td>
-<td> {{ $d->name }}</td>
-<td> {{ $d->email }}</td>
-<td> {{ $d->password }}</td>
-<td> {{ $d->address }}</td>
-<td> {{ $d->telephone }}</td>
+
 </tr>
 @endforeach
             </tbody>
