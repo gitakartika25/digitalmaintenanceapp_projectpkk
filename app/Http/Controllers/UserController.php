@@ -16,7 +16,7 @@ class UserController extends Controller
     public function index()
     {
         $data = User::all();
-        // dd($data);
+        
         return view ('admin/useradminCRUD', compact('data'));
 
         
@@ -41,12 +41,13 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $file =  $request->file('photo')->store('img');
         User::create([
             'name'=> $request->name,
             'email'=> $request->email,
             'password'=> $request->password,
             'role_id'=>1,
-            'photo'=> $request->photo,
+            'photo'=> $file,
             'address'=> $request->address,
             'telephone'=> $request->telephone,
     

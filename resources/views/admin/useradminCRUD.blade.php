@@ -31,12 +31,12 @@
             <tbody>
               @foreach ($data as $d)
               <tr>
-                <td> <img src="{{ asset('storage/'.$d->image) }}" alt="">
+                <td> <img src="{{ asset('storage/'.$d->photo) }}" alt="">
                 </td>
                 <td> {{ $d->id }}</td>
                 <td> {{ $d->name }}</td>
                 <td> {{ $d->email }}</td>
-                <td> {{ $d->password }}</td>
+                <td> ********</td>
                 <td> {{ $d->address }}</td>
                 <td> {{ $d->telephone }}</td>
                 <td class="">
