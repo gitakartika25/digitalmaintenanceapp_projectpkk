@@ -56,9 +56,6 @@ Route::middleware(['auth', 'user'])->group(function () {
     Route::get('/about', function () {
         return view('users.about');
     });
-    Route::get('/store', function () {
-        return view('users.store');
-    });
 
 
     Route::get('/contact', function () {
