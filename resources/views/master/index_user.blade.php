@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('template_user/fonts/icomoon/style.css') }}">
 
   <link rel="stylesheet" href="{{ asset('template_user/css/bootstrap.min.css') }}">
@@ -20,12 +21,20 @@
   <link rel="stylesheet" href="{{ asset('template_user/css/aos.css') }}">
 
   <link rel="stylesheet" href="{{ asset('template_user/css/style.css') }}">
+
+  <style>
+    a.btn-hover:hover{
+      color: black !important;
+    }
+  </style>
+
   
     <!-- @TODO: replace SET_YOUR_CLIENT_KEY_HERE with your client key -->
     <script type="text/javascript"
       src="https://app.sandbox.midtrans.com/snap/snap.js"
       data-client-key="SB-Mid-client-jn_QXOuWTdYCj_Jj"></script>
     <!-- Note: replace with src="https://app.midtrans.com/snap/snap.js" for Production environment -->
+
 
 </head>
 
@@ -83,15 +92,11 @@
           <div class="icons">
             @guest
               @if (Route::has('login'))
-                  <button class="btn btn-primary">
-                      <a href="{{ route('login') }}">{{ __('Login') }}</a>
-                  </button>
+                <a class="btn btn-primary btn-hover text-light" style="border-radius: 20px;" href="{{ route('login') }}">Login</a>
               @endif
 
               @if (Route::has('register'))
-                  <button class="btn btn-primary">
-                      <a href="{{ route('register') }}">{{ __('Register') }}</a>
-                  </button>
+                      <a class="btn btn-primary btn-hover text-light" style="border-radius: 20px;" href="{{ route('register') }}">Register</a>
               @endif
             @else
             <a href="#" class="icons-btn d-inline-block js-search-open"><span class="icon-search"></span></a>
@@ -100,20 +105,18 @@
               {{-- <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                   {{ Auth::user()->name }}
               </a> --}}
+
               <a href="#" class="icons-btn d-inline-block bag" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                <div class="btn-group">
-                  <span class="icon-user"></span><span>{{ Auth::user()->name }}</span>
-                </div>
+                  <span class="icon-user"></span>
               </a>
-
-
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="{{ route('logout') }}"
-                    onclick="event.preventDefault();
-                                  document.getElementById('logout-form').submit();">
-                      {{ __('Logout') }}
+                  <a class="dropdown-item" href="{{ route ('profile.edit', Auth::user()->id) }}">
+                    <i class="fa-solid fa-gear"></i>&nbsp;&nbsp;Profile
                   </a>
 
+                  <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <i class="fa-solid fa-right-from-bracket"></i>&nbsp;&nbsp;Logout
+                  </a>
                   <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                       @csrf
                   </form>
@@ -209,6 +212,8 @@
   </div>
   
 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <script src="{{ asset('template_user/js/jquery-3.3.1.min.js') }}"></script>
   <script src="{{ asset('template_user/js/jquery-ui.js') }}"></script>
@@ -219,6 +224,56 @@
   <script src="{{ asset('template_user/js/aos.js') }}"></script>
 
   <script src="{{ asset('template_user/js/main.js') }}"></script>
+  <script>
+    function preview() {
+    frame.src=URL.createObjectURL(event.target.files[0]);
+  }
+  // function azzam(id){
+  //   console.log(id);
+  //     $.ajax({
+  //       type: "get",
+  //       url:`http://www.emsifa.com/api-wilayah-indonesia/api/regencies/${id}.json`,
+  //       dataType: "json",
+  //       success: function(response){
+  //         console.log(response);
+  //         $('#a').children().remove();
+  //         response.map((value)=>{
+  //           $('#a').append($('<option>',{
+  //             value:value.id,
+  //             text:value.name,
+  //           }));
+  //         })
+  //       }
+  //     });
+  // }
+
+
+  function daerah(jenis, id){
+    let dr
+    if(jenis == 'provinces'){
+      dr = 'regencies'
+    }else if(jenis == 'regencies'){
+      dr = 'districts'
+    }else if(jenis == 'districts'){
+      dr = 'villages'
+    }
+      $.ajax({
+        type: "get",
+        url:`http://www.emsifa.com/api-wilayah-indonesia/api/${dr}/${id}.json`,
+        dataType: "json",
+        success: function(response){
+          $(`#${dr}`).children().remove();
+          response.map((value)=>{
+            $(`#${dr}`).append($('<option>',{
+              value:value.id,
+              text:value.name,
+            }));
+          })
+        }
+      });
+  }
+
+</script>
 
 </body>
 

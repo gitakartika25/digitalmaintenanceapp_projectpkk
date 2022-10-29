@@ -16,31 +16,21 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
+            $table->string('provinces')->nullable();
+            $table->string('regencies')->nullable();
+            $table->string('districts')->nullable();
+            $table->string('villages')->nullable();
+            $table->string('addres')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at');
             $table->string('password');
-
-            $table->string('photo');
-            $table->string('address');
-            $table->string('telephone');
-            $table->foreignId('role_id')->constrained('role')->cascadeOnDelete('')->cascadeOnUpdate();
-            $table->integer('role_id')->default('1');
-            $table->string('role')->default('user');
-
-
-            $table->string('photo')->nullable();
-            $table->string('address')->nullable();
+            $table->string('foto')->nullable();
             $table->string('telephone')->nullable();
             $table->foreignId('role_id')->constrained('role')->cascadeOnDelete('')->cascadeOnUpdate();
-
-            $table->string('photo')->nullable();;
-            $table->string('address')->nullable();;
-            $table->string('telephone')->nullable();;
-            $table->foreignId('role_id')->constrained('roles')->cascadeOnDelete()->cascadeOnUpdate();
-
-            // $table->integer('role_id')->default('1');
-            // $table->string('role')->default('user');
-
+            //$table->integer('role_id')->default('1');
+            //$table->string('role')->default('user');
             $table->rememberToken();
             $table->timestamps();
         });
