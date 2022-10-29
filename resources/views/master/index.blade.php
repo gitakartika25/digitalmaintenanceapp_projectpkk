@@ -12,9 +12,11 @@
   <link rel="stylesheet" href="{{ asset('template/vendors/css/vendor.bundle.base.css') }}">
   <!-- endinject -->
   <!-- Plugin css for this page -->
+  <link rel="stylesheet" href="`{{ asset('template/vendors/select2/select2.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('template/vendors/select2-bootstrap-theme/select2-bootstrap.min.css') }}">
   <link rel="stylesheet" href="{{ asset('template/vendors/datatables.net-bs4/dataTables.bootstrap4.css') }}">
   <link rel="stylesheet" href="{{ asset('template/vendors/ti-icons/css/themify-icons.css') }}">
-  <link rel="stylesheet" type="text/css" href="js/select.dataTables.min.css">
+  <link rel="stylesheet" type="text/css" href="{{ asset('js/select.dataTables.min.css') }}">
   <!-- End plugin css for this page -->
   <!-- inject:css -->
   <link rel="stylesheet" href="{{ asset('template/css/vertical-layout-light/style.css') }}">
@@ -111,10 +113,8 @@
               <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                   @csrf
               </form>
-              {{-- <a class="dropdown-item" href="{{ route('logout') }}">
-                <i class="ti-power-off text-primary"></i>
-                Logout
-              </a> --}}
+
+                
             </div>
           </li>
           <li class="nav-item nav-settings d-none d-lg-flex">
@@ -321,10 +321,11 @@
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{{ asset('template/pages/ui-features/buttons.html') }}">Products</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{ asset('template/pages/ui-features/buttons.html') }}">Orders In</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{ asset('template/pages/ui-features/dropdowns.html') }}">Orders</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{ asset('template/pages/ui-features/typography.html') }}">Report</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ url('product') }}">Products</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ url('category') }}">Categories</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ url('') }}">Orders In</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ url('') }}">Orders</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ url('') }}">Report</a></li>
               </ul>
             </div>
           </li>

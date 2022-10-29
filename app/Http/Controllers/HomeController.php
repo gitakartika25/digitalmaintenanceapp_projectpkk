@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -28,7 +29,10 @@ class HomeController extends Controller
         if (Auth::user()->role_id == '2') {
             return redirect('dashboard');
         } elseif (Auth::user()->role_id == '1') {
-            return redirect('user');
+            $product = Product::all();
+            return view('users.home', compact('product'));
         }
+
+          
     }
 }

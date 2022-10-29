@@ -2,20 +2,49 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ProductCategory;
 use Illuminate\Http\Request;
+use Veritrans;
+use App\Models\Product;
 
-class ProductCategoryController extends Controller
+class MidtransController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $category = ProductCategory::all();
-        return view('admin.category', compact('category'));
+        //
+        // Set your Merchant Server Key
+        \Midtrans\Config::$serverKey = 'SB-Mid-server-tbxZcKbGDBZvnJfKqFUvEA56';
+        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+        \Midtrans\Config::$isProduction = false;
+        // Set sanitization on (default)
+        \Midtrans\Config::$isSanitized = true;
+        // Set 3DS transaction for credit card to true
+        \Midtrans\Config::$is3ds = true;
+        
+        $params = array(
+            'transaction_details' => array(
+                'order_id' => rand(),
+                'gross_amount' => 10000,
+            ),
+            'customer_details' => array(
+                'first_name' => 'budi',
+                'last_name' => 'pratama',
+                'email' => 'budi.pra@example.com',
+                'phone' => '08111222333',
+            ),
+        );
+        
+        $snapToken = \Midtrans\Snap::getSnapToken($params);
+        return view('test', ['snap_token'=>$snapToken]);
+
+        // $data = Product::all();
+        // // dd($data['product_name']);
+        // return view('test',compact('data'));
     }
 
     /**
@@ -25,7 +54,7 @@ class ProductCategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.add_category');
+        //
     }
 
     /**
@@ -36,11 +65,7 @@ class ProductCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        ProductCategory::create([
-            'category' => $request-> category,
-        ]);
-
-        return redirect()->route('category.index');
+        //
     }
 
     /**
@@ -62,9 +87,7 @@ class ProductCategoryController extends Controller
      */
     public function edit($id)
     {
-       $category = ProductCategory::find($id);
-
-        return view('admin.edit_category', compact('category') );
+        //
     }
 
     /**
@@ -76,13 +99,7 @@ class ProductCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $category = ProductCategory::find($id);
-
-        $category->category = $request->editcategory;
-
-        $category->save();
-
-        return redirect()->route('category.index')->with('success', 'Data Berhasil Diupdate !');
+        //
     }
 
     /**
@@ -93,9 +110,6 @@ class ProductCategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category = ProductCategory::find($id);
-        $category->delete();
-
-        return redirect()->route('category.index')->with('success', 'Data berhasil dihapus');
+        //
     }
 }

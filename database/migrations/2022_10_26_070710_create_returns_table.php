@@ -13,9 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('roles', function (Blueprint $table) {
+        Schema::create('returns', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->foreignId('transaction_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('testimonies_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists('returns');
     }
 };

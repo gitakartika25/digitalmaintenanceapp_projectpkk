@@ -21,11 +21,19 @@
   <link rel="stylesheet" href="{{ asset('template_user/css/aos.css') }}">
 
   <link rel="stylesheet" href="{{ asset('template_user/css/style.css') }}">
+
   <style>
     a.btn-hover:hover{
       color: black !important;
     }
   </style>
+
+  
+    <!-- @TODO: replace SET_YOUR_CLIENT_KEY_HERE with your client key -->
+    <script type="text/javascript"
+      src="https://app.sandbox.midtrans.com/snap/snap.js"
+      data-client-key="SB-Mid-client-jn_QXOuWTdYCj_Jj"></script>
+    <!-- Note: replace with src="https://app.midtrans.com/snap/snap.js" for Production environment -->
 
 
 </head>
@@ -202,6 +210,7 @@
       </div>
     </footer>
   </div>
+  
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" crossorigin="anonymous"></script>

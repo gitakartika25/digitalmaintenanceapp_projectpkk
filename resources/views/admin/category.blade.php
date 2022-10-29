@@ -1,14 +1,16 @@
 @extends('master.index')
-@section('title', 'product')
+@section('title', 'category')
 
 @section('content')
 
+    {{-- <h1>Halaman Categori</h1> --}}
 
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">Product</h4>
+            <h4 class="card-title">Product Categories</h4>
 
-            <a href="{{ url('product/create') }}" class="btn btn-primary">Add Product</a>
+            <a href="{{ url('category/create') }}" class="btn btn-primary" data-bs-toggle="modal"
+                data-bs-target="#exampleModal">Add Category</a>
 
 
             <div class="table-responsive">
@@ -16,27 +18,23 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>Action</th>
                             <th>No</th>
                             {{-- <th>Id</th> --}}
-                            <th>Image</th>
-                            <th>Product</th>
                             <th>Category</th>
-                            <th>Description</th>
-                            <th>Price</th>
-                            <th>Stock</th>
-                            <th>Specification</th>
-                            <th>Packaging</th>
-                            <th>Material</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($product as $p)
+                        @foreach ($category as $c)
                             <tr>
+                                <td scope="row">
+                                    {{ $loop->iteration }}
+                                </td>
+                                <td>{{ $c->category }}</td>
                                 <td class="">
                                     <div class="d-flex align-items-center list-user-action">
                                         <a class="btn btn-sm btn-icon btn-primary py-2"
-                                            href="{{ url('product/' . $p->id . '/edit') }}">
+                                            href="{{ url('category/' . $c->id . '/edit') }}">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                 fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
                                                 <path
@@ -44,7 +42,7 @@
                                             </svg>
                                         </a>
                                         <a>
-                                            <form action="{{ route('product.destroy', $p->id) }}" method="POST">
+                                            <form action="{{ route('category.destroy', $c->id) }}" method="POST">
                                                 @csrf
                                                 @method('delete')
                                                 <button type="submit" class="btn btn-sm btn-icon btn-danger mx-3"
@@ -61,21 +59,13 @@
                                         </a>
                                     </div>
                                 </td>
-                                <td scope="row">{{ $loop->iteration }}</td>
-                                <td> <img src="{{ asset('storage/' . $p->image) }}" alt=""></td>
-                                <td> {{ $p->product_name }}</td>
-                                <td> {{ $p->category->category }}</td>
-                                <td> {{ $p->description }}</td>
-                                <td> {{ $p->price }}</td>
-                                <td> {{ $p->stock }}</td>
-                                <td> {{ $p->specification }}</td>
-                                <td> {{ $p->packaging }}</td>
-                                <td> {{ $p->material }}</td>
                             </tr>
                         @endforeach
+
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
+  
 @endsection

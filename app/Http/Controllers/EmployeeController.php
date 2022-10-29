@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ProductCategory;
 use Illuminate\Http\Request;
 
-class ProductCategoryController extends Controller
+class EmployeeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +13,7 @@ class ProductCategoryController extends Controller
      */
     public function index()
     {
-        $category = ProductCategory::all();
-        return view('admin.category', compact('category'));
+        //
     }
 
     /**
@@ -25,7 +23,7 @@ class ProductCategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.add_category');
+        //
     }
 
     /**
@@ -36,11 +34,7 @@ class ProductCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        ProductCategory::create([
-            'category' => $request-> category,
-        ]);
-
-        return redirect()->route('category.index');
+        //
     }
 
     /**
@@ -62,9 +56,7 @@ class ProductCategoryController extends Controller
      */
     public function edit($id)
     {
-       $category = ProductCategory::find($id);
-
-        return view('admin.edit_category', compact('category') );
+        //
     }
 
     /**
@@ -76,13 +68,7 @@ class ProductCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $category = ProductCategory::find($id);
-
-        $category->category = $request->editcategory;
-
-        $category->save();
-
-        return redirect()->route('category.index')->with('success', 'Data Berhasil Diupdate !');
+        //
     }
 
     /**
@@ -93,9 +79,6 @@ class ProductCategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category = ProductCategory::find($id);
-        $category->delete();
-
-        return redirect()->route('category.index')->with('success', 'Data berhasil dihapus');
+        //
     }
 }
