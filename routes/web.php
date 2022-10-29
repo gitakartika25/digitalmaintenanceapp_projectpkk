@@ -37,7 +37,7 @@ Route::get('/userCRUD', function () {
 });
 
 
-Route::resource('/userCRUD', UserController::class);
+
 
 // Route::get('/home', function () {
 //     return view('master.index_user');
@@ -63,7 +63,6 @@ Route::middleware(['auth', 'admin'])->group(function () {
     // Route::get('/userCRUD', function () {
     //     return view('admin.useradminCRUD');
     // });
-    
     Route::get('dashboard', function () {
         return view('admin.dashboard');
     });
@@ -72,6 +71,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     });
     Route::resource('product', ProductController::class);
     Route::resource('category', ProductCategoryController::class);
+    Route::resource('userCRUD', UserController::class);
 });
 
 
@@ -89,9 +89,6 @@ Route::middleware(['auth', 'user'])->group(function () {
     Route::get('/cart',[CartController::class, 'index']);
     Route::get('/about', function () {
         return view('users.about');
-    });
-    Route::get('/store', function () {
-        return view('users.store');
     });
 
 

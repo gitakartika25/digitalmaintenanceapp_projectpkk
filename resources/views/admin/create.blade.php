@@ -12,30 +12,42 @@
                     <label for="exampleInputName1">id</label>
                     <input type="number" class="form-control" name="Id" placeholder="input product's name...">
                 </div> --}}
-
+                    {{-- <select class="form-control @error('category_id') is-invalid @enderror"
+                        aria-label="Default select example" name="category_id">
+                        <option selected value="" disabled>Select Category</option>
+                        {{-- @foreach ($category as $c)
+                            <option value="{{ $c->id }}" @selected(old('category_id') == $c->id)>{{ $c->category }}</option>
+                        @endforeach --}}
+                    {{-- </select>  --}}
                 <div class="form-group">
-                    <label>name</label>
-                    <input  class="form-control" @error('name') id-invalid @enderror name="name" value="{{ old('name') }}">
+                    <label for="exampleInputName1">Name</label>
+                    <input type="text" class="form-control" name="name" placeholder="input Name">
+                    {{-- <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text bg-primary text-white">Rp</span>
+                        </div>
+                        <input type="number" class="form-control" name="price" placeholder="input price..." aria-label="Amount (to the nearest rupiah)">
+                        <div class="input-group-append">
+                          <span class="input-group-text">.00</span>
+                        </div>
+                      </div> --}}
                 </div>
                 <div class="form-group">
-                    <label>email</label>
-                    <input type="text" class="form-control" @error('email') id-invalid @enderror name="email" value="{{ old('email') }}">
+                    <label for="exampleInputName1">email</label>
+                    <input type="text" class="form-control" name="email" placeholder="input email">
                 </div>
                 <div class="form-group">
-                    <label>password</label>
-                    <input type="text" class="form-control" @error('password') id-invalid @enderror name="password" value="{{ old('password') }}">
+                    <label for="exampleInputName1">password</label>
+                    <input type="text" class="form-control" name="password" placeholder="input specification...">
                 </div>
                 <div class="form-group">
-                    <label>address</label>
-                    <input  class="form-control" @error('address') id-invalid @enderror name="address" value="{{ old('address') }}">
+                    <label for="exampleInputName1">address</label>
+                    <input type="text" class="form-control" name="address" placeholder="input packaging...">
                 </div>
                 <div class="form-group">
-                    <label>telephone</label>
-                    <input  class="form-control" @error('telephone') id-invalid @enderror name="telephone" value="{{ old('telephone') }}">
+                    <label for="exampleInputName1">telephone</label>
+                    <input type="text" class="form-control" name="telephone" placeholder="input material...">
                 </div>
-
-                
-
                 <div class="form-group">
                     <label>File upload</label>
                     <input type="file" name="photo" class="file-upload-default">

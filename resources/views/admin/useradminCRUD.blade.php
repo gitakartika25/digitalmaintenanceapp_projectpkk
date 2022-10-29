@@ -18,10 +18,9 @@
             <thead>
               <tr>
                             
-                            {{-- <th>Id</th> --}}
-                            <th>photo</th>
-                            <th>id</th>
-                            <th>name</th>
+                            <th>Photo</th>
+                            <th>Id</th>
+                            <th>Name</th>
                             <th>email</th>
                             <th>password</th>
                             <th>address</th>
@@ -32,11 +31,12 @@
               @foreach ($data as $d)
               <tr>
                 <td> <img src="{{ asset('storage/'.$d->photo) }}" alt="">
+                
                 </td>
                 <td> {{ $d->id }}</td>
                 <td> {{ $d->name }}</td>
                 <td> {{ $d->email }}</td>
-                <td> ********</td>
+                <td> **************</td>
                 <td> {{ $d->address }}</td>
                 <td> {{ $d->telephone }}</td>
                 <td class="">
@@ -68,7 +68,6 @@
     </div>
 </td>
 
-</tr>
 @endforeach
             </tbody>
           </table>
