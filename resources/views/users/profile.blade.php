@@ -33,7 +33,7 @@
               <div class="form-group row">
                 <div class="col-md-4">
                   <label for="c_fname" class="text-black">Foto </label>
-                  <input type="file" class="form-control" onchange="preview()" id="" name="foto" value="{{ $data->foto }}">
+                  <input type="file" class="form-control" onchange="preview()" id="" name="foto">
                 </div>
                 <div class="col-md-4">
                   <label class="text-black">Username </label>
@@ -54,13 +54,16 @@
                   <input type="text" class="form-control" id="" name="last_name" value="{{ $data->last_name }}">
                 </div>
               </div>
-        @endforeach
+        {{-- @endforeach --}}
               <div class="form-group row">
                 <div class="col-md-3">
                   <label for="c_subject" class="text-black">Province/Provinsi </label>
-                  <select class="form-control" id="" name="profinsi" value="{{ old('profinsi') }}">
+                  <select class="form-control" id="provinces" name="provinces"  onchange="daerah(id, value)">
+                    @isset($pro)  
+                      <option value="{{ $pro['id'] }}">{{ $pro['name'] }}</option>
+                    @endisset
                     @foreach($prof as $profinsi)
-                      <option value="{{ $profinsi['name'] }}">
+                      <option value="{{ $profinsi['id'] }}">
                           {{ $profinsi['name'] }}
                       </option>
                     @endforeach
@@ -68,39 +71,51 @@
                 </div>
                 <div class="col-md-3">
                   <label for="c_subject" class="text-black">City/Kota </label>
-                  <select class="form-control" id="" name="kota" value="{{ old('kota') }}">
-                      @foreach($kot as $kota)
-                        <option value="{{ $kota['name'] }}">{{ $kota['name'] }}</option>
+                  <select class="form-control" id="regencies" name="regencies" onchange="daerah(id, value)">
+                    @isset($reg, $lreg)    
+                      <option value="{{ $reg['id'] }}">{{ $reg['name'] }}</option>
+                      @foreach($lreg as $profinsi)
+                        <option value="{{ $profinsi['id'] }}">
+                            {{ $profinsi['name'] }}
+                        </option>
                       @endforeach
+                    @endisset
                   </select>
                 </div>
                 <div class="col-md-3">
                   <label for="c_subject" class="text-black">Districts/Kecamatan </label>
-                  <select class="form-control" id="" name="kecamatan" value="{{ old('kecamatan') }}">
-                    @foreach($kec as $kecamatan)
-                      <option value="{{ $kecamatan['name'] }}">
-                          {{ $kecamatan['name'] }}
-                      </option>
-                    @endforeach
+                  <select class="form-control" id="districts" name="districts" onchange="daerah(id, value)">
+                    @isset($dis, $ldis)    
+                      <option value="{{ $dis['id'] }}">{{ $dis['name'] }}</option>
+                      @foreach($ldis as $profinsi)
+                        <option value="{{ $profinsi['id'] }}">
+                            {{ $profinsi['name'] }}
+                        </option>
+                      @endforeach
+                    @endisset
                   </select>
                 </div>
                 <div class="col-md-3">
                   <label for="c_subject" class="text-black">Ward/Kelurahan </label>
-                  <select class="form-control" id="" name="kelurahan" value="{{ old('kelurahan') }}">
-                    @foreach($kel as $kelurahan)
-                      <option value="{{ $kelurahan['name'] }}">
-                          {{ $kelurahan['name'] }}
-                      </option>
-                    @endforeach
+                  <select class="form-control" id="villages" name="villages" onchange="daerah(id, value)">
+                    @isset($vil, $lvil)    
+                      <option value="{{ $vil['id'] }}">{{ $vil['name'] }}</option>
+                      @foreach($lvil as $profinsi)
+                        <option value="{{ $profinsi['id'] }}">
+                            {{ $profinsi['name'] }}
+                        </option>
+                      @endforeach
+                    @endisset
                   </select>
                 </div>
               </div>
               <div class="form-group row">
                 <div class="col-md-12">
-                  <label class="text-black">Address </label>
-                  <input type="text" class="form-control" id="" name="">
+                  <label class="text-black">Address/Desa </label>
+                  <input type="text" class="form-control" id="addres" name="addres" value="{{ $data->addres }}">
                 </div>
               </div>
+        @endforeach
               <div class="form-group row">
                 <div class="col-lg-12">
                   <input type="submit" class="btn btn-primary btn-lg btn-block" value="Submit Profile">

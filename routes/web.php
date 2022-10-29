@@ -75,3 +75,7 @@ Route::middleware(['auth', 'user'])->group(function () {
         return view('users.thankyou');
     });
 });
+
+
+Route::post('/getkabupaten', [ProfileController::class, 'getkabupaten'])->name('getkabupaten');
+

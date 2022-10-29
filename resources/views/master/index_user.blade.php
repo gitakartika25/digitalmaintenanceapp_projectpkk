@@ -102,16 +102,16 @@
                   <span class="icon-user"></span>
               </a>
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{{ route ('profile.edit', Auth::user()->id) }}">
+                    <i class="fa-solid fa-gear"></i>&nbsp;&nbsp;Profile
+                  </a>
+
                   <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     <i class="fa-solid fa-right-from-bracket"></i>&nbsp;&nbsp;Logout
                   </a>
                   <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                       @csrf
                   </form>
-
-                  <a class="dropdown-item" href="{{ route ('profile.edit', Auth::user()->id) }}">
-                    <i class="fa-solid fa-gear"></i>&nbsp;&nbsp;Profile
-                </a>
               </div>
             </a>
             <a href="#" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none"><span class="icon-menu"></span></a>
@@ -203,13 +203,10 @@
     </footer>
   </div>
 
-  <script>
-      function preview() {
-      frame.src=URL.createObjectURL(event.target.files[0]);
-  }
-  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-  <script src="{{ asset('template_user/js/jquery-3.3.1.min.js') }}"></script>
+  {{-- <script src="{{ asset('template_user/js/jquery-3.3.1.min.js') }}"></script> --}}
   <script src="{{ asset('template_user/js/jquery-ui.js') }}"></script>
   <script src="{{ asset('template_user/js/popper.min.js') }}"></script>
   <script src="{{ asset('template_user/js/bootstrap.min.js') }}"></script>
@@ -218,6 +215,56 @@
   <script src="{{ asset('template_user/js/aos.js') }}"></script>
 
   <script src="{{ asset('template_user/js/main.js') }}"></script>
+  <script>
+    function preview() {
+    frame.src=URL.createObjectURL(event.target.files[0]);
+  }
+  // function azzam(id){
+  //   console.log(id);
+  //     $.ajax({
+  //       type: "get",
+  //       url:`http://www.emsifa.com/api-wilayah-indonesia/api/regencies/${id}.json`,
+  //       dataType: "json",
+  //       success: function(response){
+  //         console.log(response);
+  //         $('#a').children().remove();
+  //         response.map((value)=>{
+  //           $('#a').append($('<option>',{
+  //             value:value.id,
+  //             text:value.name,
+  //           }));
+  //         })
+  //       }
+  //     });
+  // }
+
+
+  function daerah(jenis, id){
+    let dr
+    if(jenis == 'provinces'){
+      dr = 'regencies'
+    }else if(jenis == 'regencies'){
+      dr = 'districts'
+    }else if(jenis == 'districts'){
+      dr = 'villages'
+    }
+      $.ajax({
+        type: "get",
+        url:`http://www.emsifa.com/api-wilayah-indonesia/api/${dr}/${id}.json`,
+        dataType: "json",
+        success: function(response){
+          $(`#${dr}`).children().remove();
+          response.map((value)=>{
+            $(`#${dr}`).append($('<option>',{
+              value:value.id,
+              text:value.name,
+            }));
+          })
+        }
+      });
+  }
+
+</script>
 
 </body>
 
