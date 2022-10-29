@@ -25,6 +25,9 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/', function () {
     return view('users.home');
 });
+Route::get('/ordersin', function () {
+    return view('admin.ordersin');
+});
 
 // Halaman Admin
 Route::middleware(['auth', 'admin'])->group(function () {
@@ -44,9 +47,6 @@ Route::middleware(['auth', 'user'])->group(function () {
         return view('users.home');
     });
     Route::resource('profile', ProfileController::class);
-    // Route::get('/profile', function () {
-    //     return view('users.profile');
-    // });
     Route::get('/about', function () {
         return view('users.about');
     });
