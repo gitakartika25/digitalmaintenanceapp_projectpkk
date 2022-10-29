@@ -18,8 +18,8 @@
             <thead>
               <tr>
                             
-                            <th>Id</th>
                             <th>Photo</th>
+                            <th>Id</th>
                             <th>Name</th>
                             <th>email</th>
                             <th>password</th>
@@ -30,20 +30,19 @@
             <tbody>
               @foreach ($data as $d)
               <tr>
-                <td> <img src="{{ asset('storage/'.$d->image) }}" alt="">
+                <td> <img src="{{ asset('storage/'.$d->photo) }}" alt="">
                 
                 </td>
                 <td> {{ $d->id }}</td>
-                <td> {{ $d->photo }}</td>
                 <td> {{ $d->name }}</td>
                 <td> {{ $d->email }}</td>
-                <td> {{ $d->password }}</td>
+                <td> **************</td>
                 <td> {{ $d->address }}</td>
                 <td> {{ $d->telephone }}</td>
                 <td class="">
                     <div class="d-flex align-items-center list-user-action">
                         <a class="btn btn-sm btn-icon btn-primary py-2"
-                        href="{{ url('user/' . $d->id . '/edit') }}">
+                        href="{{ url('userCRUD/' . $d->id . '/edit') }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                         fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
                         <path
@@ -51,7 +50,7 @@
                     </svg>
                 </a>
                 <a>
-                    <form action="{{ route('user.destroy', $d->id) }}" method="POST">
+                    <form action="{{ route('userCRUD.destroy', $d->id) }}" method="POST">
                         @csrf
                         @method('delete')
                         <button type="submit" class="btn btn-sm btn-icon btn-danger mx-3"
@@ -68,17 +67,7 @@
         </a>
     </div>
 </td>
-<td scope="row">
-    {{ $loop->iteration }}
-</td>
-<td> {{ $d->id }}</td>
-<td> {{ $d->photo }}</td>
-<td> {{ $d->name }}</td>
-<td> {{ $d->email }}</td>
-<td> {{ $d->password }}</td>
-<td> {{ $d->address }}</td>
-<td> {{ $d->telephone }}</td>
-</tr>
+
 @endforeach
             </tbody>
           </table>

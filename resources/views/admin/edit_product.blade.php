@@ -39,7 +39,7 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleInputName1">Stock</label>
-                    <input type="number" class="form-control @error('price') is-invalid @enderror" name="stock" value="{{ $product->stock }}">
+                    <input type="number" class="form-control @error('stock') is-invalid @enderror" name="stock" value="{{ $product->stock }}">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputName1">Specification</label>

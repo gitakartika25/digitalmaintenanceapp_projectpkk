@@ -41,21 +41,23 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $file =  $request->file('photo')->store('public/img');
         User::create([
             'name'=>$request->name,
             'email'=> $request->email,
             'password'=>$request->password,
-            'role_id'=>$request->role_id,
-            'photo',$request->photo,
-            'address',$request->address,
-            'telephone',$request->telephone,
+            'role_id'=>3,
+            'photo'=>$file,
+            'address'=>$request->address,
+            'telephone'=>$request->telephone,
     
     
     
     
             ]);
-    
-            return redirect('admin/useradminCRUD')->with('success','Data berhasil masuk');
+
+           
+            return redirect('userCRUD')->with('success','Data berhasil masuk');
     }
 
     /**
@@ -93,10 +95,44 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = User::all();
-        $data->update($request->all());
-        return redirect('admin/useradminCRUD')->with('success', 'Data berhasil dirubah');
+        $data = User::find($id);
+        $validator = $request->validate ([
+            'name' => 'required|string',
+            'email' => 'required|string',
+            'password' => 'required|string',
+            'address' => 'required|string',
+            'telephone' => 'required|string',
+            
+            
+           
+        ]);
+
+
+         // dd($validator);
+         try {
+            $file = $request->file('photo')->store('img');
+            $validator['photo'] = $file;
+
+            //   dd($validator);
+             $data->update($validator);
+
+
+        }catch (\Throwable $th) {
+           
+
+            $validator['photo'] = $data->photo;
+
+            //  dd($validator);
+              $data->update($validator);
+            // $product->update($validator);
+        }
+       
+
+        
+        return redirect('userCRUD');
     }
+
+
 
     /**
      * Remove the specified resource from storage.
@@ -108,6 +144,6 @@ class UserController extends Controller
     {
         $data = User::FindOrFail($id);
         $data->delete();
-        return redirect('admin/useradminCRUD') ->with ('success', 'Data Berhasil Dihapus');
+        return redirect('userCRUD') ->with ('success', 'Data Berhasil Dihapus');
     }
 }

@@ -8,10 +8,10 @@
             <h4 class="card-title">Add Product</h4>
             <form action="{{ route('userCRUD.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label for="exampleInputName1">id</label>
                     <input type="number" class="form-control" name="Id" placeholder="input product's name...">
-                </div>
+                </div> --}}
                     {{-- <select class="form-control @error('category_id') is-invalid @enderror"
                         aria-label="Default select example" name="category_id">
                         <option selected value="" disabled>Select Category</option>
@@ -21,7 +21,7 @@
                     {{-- </select>  --}}
                 <div class="form-group">
                     <label for="exampleInputName1">Name</label>
-                    <input type="text" class="form-control" name="Name" placeholder="input Name">
+                    <input type="text" class="form-control" name="name" placeholder="input Name">
                     {{-- <div class="input-group">
                         <div class="input-group-prepend">
                           <span class="input-group-text bg-primary text-white">Rp</span>
@@ -46,11 +46,11 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleInputName1">telephone</label>
-                    <input type="number" class="form-control" name="telephone" placeholder="input material...">
+                    <input type="text" class="form-control" name="telephone" placeholder="input material...">
                 </div>
                 <div class="form-group">
                     <label>File upload</label>
-                    <input type="file" name="image" class="file-upload-default">
+                    <input type="file" name="photo" class="file-upload-default">
                     <div class="input-group col-xs-12">
                       <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Photo">
                       <span class="input-group-append">
