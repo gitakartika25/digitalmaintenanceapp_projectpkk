@@ -100,6 +100,10 @@ Route::middleware(['auth', 'user'])->group(function () {
         return view('users.checkout');
     });
 
+    Route::get('/history', function () {
+        return view('users.history');
+    });
+
     Route::get('/thankyou', function () {
         return view('users.thankyou');
     });
