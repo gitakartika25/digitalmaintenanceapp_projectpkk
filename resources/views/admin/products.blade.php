@@ -2,8 +2,6 @@
 @section('title', 'product')
 
 @section('content')
-
-
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">Product</h4>

@@ -28,9 +28,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('foto')->nullable();
             $table->string('telephone')->nullable();
-            $table->foreignId('role_id')->constrained('role')->cascadeOnDelete('')->cascadeOnUpdate();
-            //$table->integer('role_id')->default('1');
-            //$table->string('role')->default('user');
+            $table->foreignId('role_id')->constrained('roles')->cascadeOnDelete('')->cascadeOnUpdate();
             $table->rememberToken();
             $table->timestamps();
         });

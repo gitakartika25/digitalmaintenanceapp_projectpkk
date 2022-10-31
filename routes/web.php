@@ -16,8 +16,7 @@ use App\Http\Controllers\UserController;
 
 
 use App\Http\Controllers\MidtransController;
-
-
+use App\Http\Controllers\OrdersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -75,15 +74,18 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('dashboard', function () {
         return view('admin.dashboard');
     });
+    // Route::get('/dashboard', [HomeController::class, 'index'])->name('admin.dashboard');
+
     Route::get('/index', function () {
         return view('master.index');
     });
     Route::resource('product', ProductController::class);
     Route::resource('category', ProductCategoryController::class);
     Route::resource('userCRUD', UserController::class);
+    Route::resource('orders', OrdersController::class);
 });
 
-Route::get('/profile/profinsi/{id}', [ProfileController::class, 'kota'])->name('profile.profinsi');
+// Route::get('/profile/profinsi/{id}', [ProfileController::class, 'kota'])->name('profile.profinsi');
 
 
 ///halaman user
@@ -98,7 +100,7 @@ Route::middleware(['auth', 'user'])->group(function () {
     Route::resource('profile', ProfileController::class);
 
     Route::get('/user', [HomeController::class, 'index'])->name('user.index');
-    Route::get('/home', [HomeController::class, 'index'])->name('user.index');
+    // Route::get('/home', [HomeController::class, 'index'])->name('user.index');
     Route::get('/store', [ProductController::class, 'index2'])->name('store');
     Route::get('/detailproduct/{id}', [ProductController::class, 'detailproduct'])->name('product.detailproduct');
     
