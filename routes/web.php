@@ -80,9 +80,12 @@ Route::middleware(['auth', 'admin'])->group(function () {
 Route::get('/', function () {
     return view('master.index_user');
 });
+
+Route::get('/home', [HomeController::class, 'index'])->name('user.index');
+
 Route::middleware(['auth', 'user'])->group(function () {
     Route::get('/user', [HomeController::class, 'index'])->name('user.index');
-    Route::get('/home', [HomeController::class, 'index'])->name('user.index');
+    
     Route::get('/store', [ProductController::class, 'index2'])->name('store');
     Route::get('/detailproduct/{id}', [ProductController::class, 'detailproduct'])->name('product.detailproduct');
     
