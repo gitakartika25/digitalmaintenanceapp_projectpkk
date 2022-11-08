@@ -100,14 +100,15 @@ class UserController extends Controller
             'telephone' => 'required|string',
             
             
+            
            
         ]);
 
 
          // dd($validator);
          try {
-            $file = $request->file('photo')->store('img');
-            $validator['photo'] = $file;
+            $file = $request->file('foto')->store('img');
+            $validator['foto'] = $file;
 
             //   dd($validator);
              $data->update($validator);
@@ -116,7 +117,7 @@ class UserController extends Controller
         }catch (\Throwable $th) {
            
 
-            $validator['photo'] = $data->photo;
+            $validator['foto'] = $data->photo;
 
             //  dd($validator);
               $data->update($validator);
