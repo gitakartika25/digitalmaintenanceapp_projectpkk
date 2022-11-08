@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class transaction_detail extends Model
 {
+    protected $guarded = ['id'];
     use HasFactory;
     protected $table = 'transaction_details';
     protected $guarded = ['id'];

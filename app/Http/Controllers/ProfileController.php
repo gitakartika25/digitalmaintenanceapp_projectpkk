@@ -63,11 +63,12 @@ class ProfileController extends Controller
         // $profile = DB::table('users')->select('*')->where('id',$id_user)->get();
         $profile = User::select('*')->where('id', $id_user)->get();
         // akses API Profinsi
-        $profinsi = Http::get('http://www.emsifa.com/api-wilayah-indonesia/api/provinces.json');
+        $profinsi = Http::get('https://emsifa.github.io/api-wilayah-indonesia/api/provinces.json');
         $prof = $profinsi->json();
+        // dd($prof);
         foreach ($profile as $alamat) {
             // Yg tampil di select
-            $provinces = Http::get('https://emsifa.github.io/api-wilayah-indonesia/api/province/' . $alamat->provinces . '.json');
+            $provinces = Http::get('http://www.emsifa.com/api-wilayah-indonesia/api/provinces/' . $alamat->provinces . '.json');
             $pro = $provinces->json();
             $regencies = Http::get('http://www.emsifa.com/api-wilayah-indonesia/api/regency/' . $alamat->regencies . '.json');
             $reg = $regencies->json();

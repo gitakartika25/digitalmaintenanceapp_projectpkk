@@ -46,7 +46,7 @@
 
                     </div>
                     
-                    <input type="submit">
+                    <input type="submit" class="btn btn-primary" value="Add to cart">
                 </form>
                     <div class="mt-5">
                         {{-- <ul class="nav nav-pills mb-3 custom-pill" id="pills-tab" role="tablist">
