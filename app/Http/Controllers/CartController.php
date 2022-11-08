@@ -128,14 +128,14 @@ class CartController extends Controller
         }
         transactions::create([
             'customer_id' => $userid,
-            'rent_date'=>date(),
-            'return_date'=>date(),
+            'rent_date'=>date('Y-m-d'),
+            'return_date'=>date('Y-m-d'),
             'status'=>'orderin',
             'token'=>'token'
         ]);
         transaction_detail::create([
             'products_id' => $idproduct,
-            'transactions_id'=>$lastid+1,
+            'transactions_id'=>(int)$lastid+1,
             'quantity'=>$quantity,
             'note'=>'testnote'
         ]);
