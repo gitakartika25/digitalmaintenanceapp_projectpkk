@@ -55,6 +55,12 @@ Route::get('/', function () {
     return view('master.index_user');
 });
 
+
+Route::get('/home', [HomeController::class, 'index'])->name('user.index');
+
+Route::middleware(['auth', 'user'])->group(function () {
+    Route::get('/user', [HomeController::class, 'index'])->name('user.index');
+
 Route::get('/home', [HomeController::class, 'index'])->name('user.index'); //jangan dimasukkan ke dalem middleware
 
 Route::middleware(['auth', 'user'])->group(function () {
@@ -65,6 +71,7 @@ Route::middleware(['auth', 'user'])->group(function () {
     });
     Route::resource('profile', ProfileController::class);
     
+
     
     Route::get('/store', [ProductController::class, 'index2'])->name('store');
     
@@ -86,6 +93,10 @@ Route::middleware(['auth', 'user'])->group(function () {
 
     Route::get('/checkout', function () {
         return view('users.checkout');
+    });
+
+    Route::get('/history', function () {
+        return view('users.history');
     });
 
     Route::get('/thankyou', function () {
