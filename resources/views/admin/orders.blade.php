@@ -59,9 +59,10 @@
                             @foreach ($employ as $e)
                                 <td> {{ $e->name }}</td>
                             @endforeach
-                            @foreach ($customer as $c)
+                            {{-- @foreach ($customer as $c)
                                 <td> {{ $c->name }}</td>
-                            @endforeach
+                            @endforeach --}}
+                            <td> {{ $t->product_id }}</td>
                             <td> {{ $t->quantity }}</td>
                             <td> {{ $t->rent_date }}</td>
                             <td> {{ $t->return_date }}</td>

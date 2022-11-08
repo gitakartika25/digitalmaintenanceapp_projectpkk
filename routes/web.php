@@ -17,6 +17,7 @@ use App\Http\Controllers\UserController;
 
 use App\Http\Controllers\MidtransController;
 use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\OrdersinController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,9 +61,9 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/', function () {
     return view('users.home');
 });
-Route::get('/ordersin', function () {
-    return view('admin.ordersin');
-});
+// Route::get('/ordersin', function () {
+//     return view('admin.ordersin');
+// });
 
 // Halaman Admin
 
@@ -83,6 +84,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('category', ProductCategoryController::class);
     Route::resource('userCRUD', UserController::class);
     Route::resource('orders', OrdersController::class);
+    Route::resource('ordersin', OrdersinController::class);
 });
 
 // Route::get('/profile/profinsi/{id}', [ProfileController::class, 'kota'])->name('profile.profinsi');

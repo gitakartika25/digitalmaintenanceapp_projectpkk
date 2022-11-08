@@ -68,9 +68,12 @@ class OrdersController extends Controller
      * @param  \App\Models\Orders  $orders
      * @return \Illuminate\Http\Response
      */
-    public function show(Orders $orders)
+    public function show(Orders $orders, $id)
     {
-        //
+        $orders;
+        dd($orders);
+        $data =  transactions::findOrFail($id);
+        dd($data);
     }
 
     /**

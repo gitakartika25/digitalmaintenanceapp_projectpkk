@@ -15,17 +15,16 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('employee_id');
-            $table->unsignedBigInteger('customer_id');
+            // $table->unsignedBigInteger('employee_id');
+            // $table->unsignedBigInteger('customer_id');
             $table->integer('quantity');
             $table->date('rent_date');
             $table->date('return_date');
             $table->string('status');
             $table->string('token');
             $table->timestamps();
-    
-            $table->foreign('employee_id')->references('id')->on('users');
-            $table->foreign('customer_id')->references('id')->on('users');
+
+            $table->foreignId('product_id')->constrained('products');
         });
     }
 
