@@ -120,9 +120,10 @@ Route::middleware(['auth', 'user'])->group(function () {
 
     Route::get('/detailproduct/{id}', [ProductController::class, 'detailproduct'])->name('product.detailproduct');
 
-    Route::get('/ordersin', function () {
-        return view('admin.ordersin');
-    });
+    // Route::get('/ordersin', function () {
+    //     return view('admin.ordersin');
+    // });
+    
     Route::get('/addtocard', [CartController::class, 'addtocard']);
     Route::get('/cart', [CartController::class, 'index']);
 

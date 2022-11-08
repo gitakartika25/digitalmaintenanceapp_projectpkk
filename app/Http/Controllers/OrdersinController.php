@@ -93,4 +93,8 @@ class OrdersinController extends Controller
     {
         //
     }
+    public function proses()
+    {
+        
+    }
 }
