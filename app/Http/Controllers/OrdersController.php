@@ -23,6 +23,7 @@ class OrdersController extends Controller
         ->join('users as c', 'c.id', '=', 'transactions.customer_id', )
         ->join('users as e', 'e.id', '=', 'transactions.employee_id')
         ->select('transactions.*', 'transaction_details.*', 'products.product_name', 'c.name as cname', 'e.name as ename')
+        ->where('status', 'onproces')
         ->get();
         // dd($orders);
         return view('admin.orders', compact('orders'));

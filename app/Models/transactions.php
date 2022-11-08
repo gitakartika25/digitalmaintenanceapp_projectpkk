@@ -9,5 +9,5 @@ class transactions extends Model
 {
     protected $guarded = ['id'];
     use HasFactory;
-    protected $guarded = ['id'];
+    // protected $guarded = ['id'];
 }

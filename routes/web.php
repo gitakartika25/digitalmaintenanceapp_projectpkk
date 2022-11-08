@@ -88,7 +88,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('userCRUD', UserController::class);
     Route::resource('orders', OrdersController::class);
     Route::resource('ordersin', OrdersinController::class);
-    Route::get('/history', [OrdersController::class, 'history']);
+    Route::get('/historya', [OrdersController::class, 'history']);
 });
 
 
@@ -123,7 +123,7 @@ Route::middleware(['auth', 'user'])->group(function () {
     // Route::get('/ordersin', function () {
     //     return view('admin.ordersin');
     // });
-    
+
     Route::get('/addtocard', [CartController::class, 'addtocard']);
     Route::get('/cart', [CartController::class, 'index']);
 
