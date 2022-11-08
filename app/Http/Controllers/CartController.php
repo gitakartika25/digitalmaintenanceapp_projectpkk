@@ -16,14 +16,14 @@ class CartController extends Controller
     public function index()
     {
         ////
-        // Set your Merchant Server Key
-        \Midtrans\Config::$serverKey = 'SB-Mid-server-tbxZcKbGDBZvnJfKqFUvEA56';
-        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
-        \Midtrans\Config::$isProduction = false;
-        // Set sanitization on (default)
-        \Midtrans\Config::$isSanitized = true;
-        // Set 3DS transaction for credit card to true
-        \Midtrans\Config::$is3ds = true;
+        // // Set your Merchant Server Key
+        // \Midtrans\Config::$serverKey = 'SB-Mid-server-tbxZcKbGDBZvnJfKqFUvEA56';
+        // // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+        // \Midtrans\Config::$isProduction = false;
+        // // Set sanitization on (default)
+        // \Midtrans\Config::$isSanitized = true;
+        // // Set 3DS transaction for credit card to true
+        // \Midtrans\Config::$is3ds = true;
         
         $params = array(
             'transaction_details' => array(
@@ -38,13 +38,14 @@ class CartController extends Controller
             ),
         );
         
-        $snapToken = \Midtrans\Snap::getSnapToken($params);
-        return view('users.cart', ['snap_token'=>$snapToken]);
+        // $snapToken = \Midtrans\Snap::getSnapToken($params);
+        // return view('users.cart', ['snap_token'=>$snapToken]);
     }
 
     public function index2(){
         $cart = transaction_detail::all();
-        return view('users.cart', compact ('cart'));
+        $cartnumb = transaction_detail::count();
+        return view('users.cart', compact ('cart','cartnumb'));
 
     }
 
@@ -115,7 +116,7 @@ class CartController extends Controller
         $cart = transaction_detail::find($id);
         $cart->delete();
 
-        return redirect()->route('cart')->with('success', 'Data berhasil dihapus !');
+        return redirect()->route('cart.index2')->with('success', 'Data berhasil dihapus !');
     }
 
     public function addtocard(Request $request){

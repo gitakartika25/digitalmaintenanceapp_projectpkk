@@ -13,14 +13,15 @@
 
     <div class="py-5">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
+            <div class="row justify-content-center">
+                <h2>Chemical's Tools</h2>
+                {{-- <div class="col-lg-6">
                     <h3 class="mb-3 h6 text-uppercase text-black d-block">Filter by Price</h3>
                     <div id="slider-range" class="border-primary"></div>
                     <input type="text" name="text" id="amount" class="form-control border-0 pl-0 bg-white"
                         disabled="" />
-                </div>
-                <div class="col-lg-6 text-lg-right">
+                </div> --}}
+                {{-- <div class="col-lg-6 text-lg-right">
                     <h3 class="mb-3 h6 text-uppercase text-black d-block">Filter</h3>
                     <button type="button" class="btn btn-primary btn-md dropdown-toggle px-4" id="dropdownMenuReference"
                         data-toggle="dropdown">Reference</button>
@@ -32,7 +33,7 @@
                         <a class="dropdown-item" href="#">Price, low to high</a>
                         <a class="dropdown-item" href="#">Price, high to low</a>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

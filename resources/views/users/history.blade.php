@@ -29,19 +29,6 @@
                 <td class="text-danger"> 28.76% <i class="ti-arrow-down"></i></td>
                 <td><label class="badge badge-danger">Pending</label></td>
               </tr>
-
-              {{-- @foreach ($data as $d)
-              <tr>
-                <td> <img src="{{ asset('storage/'.$d->image) }}" alt="">
-                
-                </td>
-                <td> {{ $d->id }}</td>
-                <td> {{ $d->image }}</td>
-                <td> {{ $d->product }}</td>
-                <td> {{ $d->price }}</td>
-                <td> {{ $d->quantity }}</td>
-                <td> {{ $d->total }}</td>
-              </tr> --}}
             </tbody>
           </table>
         </div>

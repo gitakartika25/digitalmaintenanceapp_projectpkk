@@ -74,7 +74,7 @@
             <div class="block-38-img">
               <div class="block-38-header">
                 <img src="{{ asset('template_user/images/gita.jpeg') }}" alt="Image placeholder" class="mb-4">
-                <h3 class="block-38-heading h4">Gita Kartika Pariwara A., Md</h3>
+                <h3 class="block-38-heading h4">Gita Kartika Pariwara A.Md.Kom</h3>
                 <p class="block-38-subheading">Head Informatics Laborative</p>
               </div>
               <div class="block-38-body">

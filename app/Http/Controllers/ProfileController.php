@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\transaction_detail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\DB;
@@ -66,6 +67,7 @@ class ProfileController extends Controller
         $profinsi = Http::get('https://emsifa.github.io/api-wilayah-indonesia/api/provinces.json');
         $prof = $profinsi->json();
         // dd($prof);
+        $cartnumb = transaction_detail::count();
         foreach ($profile as $alamat) {
             // Yg tampil di select
             $provinces = Http::get('http://www.emsifa.com/api-wilayah-indonesia/api/provinces/' . $alamat->provinces . '.json');
@@ -86,7 +88,7 @@ class ProfileController extends Controller
             $lvil = $lopvil->json();
         }
         // dd($lreg);
-        return view('users.profile', compact('profile', 'prof', 'pro', 'reg', 'dis', 'vil', 'lreg', 'ldis', 'lvil'));
+        return view('users.profile', compact('profile', 'prof', 'pro', 'reg', 'dis', 'vil', 'lreg', 'ldis', 'lvil', 'cartnumb'));
     }
 
     /**
