@@ -18,6 +18,7 @@
                         <th>No</th>
                         <th>Employ</th>
                         <th>Customer</th>
+                        <th>Product</th>
                         <th>Quantity</th>
                         <th>Rent Date</th>
                         <th>Rturn Date</th>
@@ -25,12 +26,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($transaksi as $t)
+                    @foreach ($orders as $o)
                         <tr>
                             <td class="">
                                 <div class="d-flex align-items-center list-user-action">
                                     <a class="btn btn-sm btn-icon btn-primary py-2"
-                                        href="{{ url('orders/' . $t->id . '/edit') }}">
+                                        href="{{ url('orders/' . $o->id . '/edit') }}">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                             fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
                                             <path
@@ -38,7 +39,7 @@
                                         </svg>
                                     </a>
                                     <a>
-                                        <form action="{{ route('orders.destroy', $t->id) }}" method="POST">
+                                        <form action="{{ route('orders.destroy', $o->id) }}" method="POST">
                                             @csrf
                                             @method('delete')
                                             <button type="submit" class="btn btn-sm btn-icon btn-danger mx-3"
@@ -56,17 +57,13 @@
                                 </div>
                             </td>
                             <td scope="row">{{ $loop->iteration }}</td>
-                            @foreach ($employ as $e)
-                                <td> {{ $e->name }}</td>
-                            @endforeach
-                            {{-- @foreach ($customer as $c)
-                                <td> {{ $c->name }}</td>
-                            @endforeach --}}
-                            <td> {{ $t->product_id }}</td>
-                            <td> {{ $t->quantity }}</td>
-                            <td> {{ $t->rent_date }}</td>
-                            <td> {{ $t->return_date }}</td>
-                            <td> <label class="badge badge-danger">{{ $t->status }}</label></td>
+                            <td> {{ $o->ename }}</td>
+                            <td> {{ $o->cname }}</td>
+                            <td> {{ $o->product_name }}</td>
+                            <td> {{ $o->quantity }}</td>
+                            <td> {{ $o->rent_date }}</td>
+                            <td> {{ $o->return_date }}</td>
+                            <td> <label class="badge badge-warning">In Process</label></td>
                         </tr>
                     @endforeach
                 </tbody>
