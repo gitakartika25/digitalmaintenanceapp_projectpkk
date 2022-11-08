@@ -14,16 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('transaction_details', function (Blueprint $table) {
-            // $table->primary(['id', 'product_id']);
-            // $table->unsignedInteger('id');
-            // $table->foreignId('product_id')->nullable()->constrained()->onDelete('cascade');
-            // $table->id();
-            $table->primary(['id', 'transaction_id','customer_id']);
-            $table->unsignedBigInteger('id');
-            $table->foreignId('transaction_id')->constrained('transactions');
-            $table->foreignId('customer_id')->references('id')->on('users');
-            $table->foreignId('employe_id')->nullable()->constrained('users');
-            $table->string('note');
+            $table->id();
+            // $table->primary(['id', 'transaction_id','customer_id']);
+            // $table->unsignedBigInteger('id');
+            // $table->foreignId('transaction_id')->constrained('transactions');
+            // $table->foreignId('customer_id')->references('id')->on('users');
+            // $table->foreignId('employe_id')->nullable()->constrained('users');
+            // $table->string('note');
 
             $table->timestamps();
         });

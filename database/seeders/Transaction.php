@@ -15,13 +15,13 @@ class Transaction extends Seeder
      */
     public function run()
     {
-        transactions::create([
-            'quantity' => '2',
-            'rent_date' => '2022-11-02',
-            'return_date' => '2022-11-05',
-            'status' => 'Baik',
-            'token' => '2',
-            'product_id' => '1',
-        ]);
+        // transactions::create([
+        //     'quantity' => '2',
+        //     'rent_date' => '2022-11-02',
+        //     'return_date' => '2022-11-05',
+        //     'status' => 'Baik',
+        //     'token' => '2',
+        //     'product_id' => '1',
+        // ]);
     }
 }

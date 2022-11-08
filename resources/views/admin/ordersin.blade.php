@@ -4,9 +4,9 @@
 @section('content')
 <div class="card">
     <div class="card-body">
-        <h4 class="card-title">Orders</h4>
+        <h4 class="card-title">Orders In</h4>
 
-        <a href="{{ url('orders/create') }}" class="btn btn-primary">Add Orders</a>
+        <a href="{{ url('ordersin/create') }}" class="btn btn-primary">Add Orders</a>
 
 
         <div class="table-responsive">
@@ -16,6 +16,7 @@
                     <tr>
                         <th>Action</th>
                         <th>No</th>
+                        <th>Product</th>
                         <th>Customer</th>
                         <th>Quantity</th>
                         <th>Rent Date</th>
@@ -55,16 +56,19 @@
                                 </div>
                             </td>
                             <td scope="row">{{ $loop->iteration }}</td>
-                            {{-- @foreach ($employ as $e)
-                                <td> {{ $e->name }}</td>
-                            @endforeach
-                            @foreach ($customer as $c)
-                                <td> {{ $c->name }}</td>
-                            @endforeach --}}
-                            <td> {{ $o->transaction_id }}</td>
-                            <td> {{ $o->customer_id }}</td>
-                            <td> {{ $o->note }}</td>
-                            {{-- <td> <label class="badge badge-danger">{{ $t->status }}</label></td> --}}
+                            <td> {{ $o->product_name }}</td>
+                            <td> {{ $o->name }}</td>
+                            <td> {{ $o->quantity }}</td>
+                            <td> {{ $o->rent_date }}</td>
+                            <td> {{ $o->return_date }}</td>
+                            <td> 
+                                @if ($o->payment_status == 'Paid')
+                                    <label class="badge badge-success">{{ $o->payment_status }}</label>
+                                @endif
+                                @if($o->payment_status == 'Panding')
+                                    <label class="badge badge-danger">{{ $o->payment_status }}</label>
+                                @endif
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
