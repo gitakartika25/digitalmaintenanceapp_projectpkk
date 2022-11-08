@@ -17,6 +17,10 @@
   <link rel="stylesheet" href="{{ asset('template_user/css/owl.carousel.min.css') }}">
   <link rel="stylesheet" href="{{ asset('template_user/css/owl.theme.default.min.css') }}">
 
+ <!-- inject:css -->
+ {{-- <link rel="stylesheet" href="{{ asset('template/css/vertical-layout-light/style.css') }}"> --}}
+ <!-- endinject -->
+ {{-- <link rel="shortcut icon" href="{{ asset('template/images/favicon.png') }}" /> --}}
 
   <link rel="stylesheet" href="{{ asset('template_user/css/aos.css') }}">
 
@@ -99,20 +103,21 @@
                       <a class="btn btn-primary btn-hover text-light" style="border-radius: 20px;" href="{{ route('register') }}">Register</a>
               @endif
             @else
-            <a href="#" class="icons-btn d-inline-block js-search-open"><span class="icon-search"></span></a>
-            <a href="/cart" class="icons-btn d-inline-block bag"><span class="icon-shopping-bag"></span><span class="number">2</span></a>
-            <a href="/history" class="btn btn-dark btn-rounded btn-icon"><span class="icon-cart-outline"></span></a>
+           
+            <a href="/cart" class="icons-btn d-inline-block bag"><span class="icon-shopping-bag"></span><span class="number">{{ $cartnumb }}</span></a>
+            <a href="/history" class="icons-btn d-inline-block book"><span class="icon-book"></span></a>
             <a class="nav-item dropdown">
               {{-- <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                   {{ Auth::user()->name }}
               </a> --}}
 
-              <a href="#" class="icons-btn d-inline-block bag" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                  <span class="icon-user"></span>
+              <a href="#" class="icons-btn d-inline-block user" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                <span class=""> <img src="{{ asset('storage/' .Auth::user()->foto) }}" width="30px" height="30px" style="border:1px solid black; border-radius: 50%" alt="profile"/></span></a>{{ Auth::user()->name }}
               </a>
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="{{ route ('profile.edit', Auth::user()->id) }}">
                     <i class="fa-solid fa-gear"></i>&nbsp;&nbsp;Profile
+                   
                   </a>
 
                   <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
