@@ -18,6 +18,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\MidtransController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\OrdersinController;
+use App\Models\Product;
 use App\Models\transaction_detail;
 
 /*
@@ -62,23 +63,28 @@ Route::middleware(['auth', 'admin'])->group(function () {
 //Halaman User
 Route::get('/', function () {
     $cartnumb = transaction_detail::count();
-    return view('master.index_user', compact('cartnumb'));
+    $product = Product::all();
+    return view('users.home', compact('cartnumb','product'));
 });
 
 Route::get('/home', [HomeController::class, 'index'])->name('user.index'); //jangan dimasukkan middleware
+
+Route::get('/about', function () {
+    $cartnumb = transaction_detail::count();
+    return view('users.about', compact('cartnumb')); //jangan dimasukkan middleware
+});
+Route::get('/store', [ProductController::class, 'index2'])->name('store'); //jangan dimasukkan middleware
 
 
 //Halaman user middleware
 Route::middleware(['auth', 'user'])->group(function () {
     
         Route::resource('profile', ProfileController::class);
-
+        
         Route::get('/user', [HomeController::class, 'index'])->name('user.index');
         
-        Route::get('/store', [ProductController::class, 'index2'])->name('store');
-        
-        Route::get('/detailproduct/{id}', [ProductController::class, 'detailproduct'])->name('product.detailproduct');
-        
+        Route::get('/detailproduct/{id}', [ProductController::class, 'detailproduct'])->name('product.detailproduct'); 
+    
         Route::get('/cart', [CartController::class, 'index2'])->name('cart.index2');
         
         Route::get('/cart/{id}', [CartController::class, 'destroy'])->name('destroy');
@@ -91,10 +97,6 @@ Route::middleware(['auth', 'user'])->group(function () {
             
         Route::get('/addtocard', [CartController::class, 'addtocard']);
         
-        Route::get('/about', function () {
-            $cartnumb = transaction_detail::count();
-            return view('users.about', compact('cartnumb'));
-        });
         
         Route::get('/contact', function () {
             return view('users.contact');

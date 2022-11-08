@@ -33,6 +33,10 @@ class HomeController extends Controller
             $product = Product::all();
             $cartnumb = transaction_detail::count();
             return view('users.home', compact('product', 'cartnumb'));
+        }else{
+            $product = Product::all();
+            $cartnumb = transaction_detail::count();
+            return view('users.home', compact('product', 'cartnumb'));
         }
 
           
