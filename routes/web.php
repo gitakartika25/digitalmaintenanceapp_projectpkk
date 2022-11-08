@@ -73,6 +73,7 @@ Route::middleware(['auth', 'user'])->group(function () {
     Route::get('/ordersin', function () {
         return view('admin.ordersin');
     });
+    Route::get('/addtocard', [CartController::class, 'addtocard']);
     Route::get('/cart', [CartController::class, 'index']);
 
     Route::get('/about', function () {
