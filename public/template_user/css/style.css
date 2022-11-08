@@ -70,9 +70,11 @@ a {
     outline: none;
     -webkit-box-shadow: none;
     box-shadow: none; }
+
   .btn.btn-primary:hover {
     background: transparent;
-    color: #3d0773; }
+    color: black;
+    border: 2px solid #3d0773; }
   .btn.btn-black {
     background: #000;
     color: #fff; }

@@ -18,11 +18,25 @@ class User extends Authenticatable
      * @var array<int, string>
      * 
      */
+    protected $fillable = [
+        'name',
+        'email',
+        'first_name',
+        'last_name',
+        'provinces',
+        'regencies',
+        'districts',
+        'villages',
+        'addres',
+        'foto',
+        'password',
+        'role_id',
+    ];
 
 
     protected $table = 'users';
     protected $guarded = ['id'];
-    protected $fillable = ['name', 'email','photo','address','password','telephone','role_id'];
+    // protected $fillable = ['name', 'email','photo','address','password','telephone','role_id'];
 
     public function role(){
 
