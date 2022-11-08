@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('status');
             $table->string('token');
             $table->timestamps();
-    
+
             $table->foreign('employee_id')->references('id')->on('users');
             $table->foreign('customer_id')->references('id')->on('users');
         });

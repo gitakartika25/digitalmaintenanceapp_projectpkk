@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('products_id')->constrained();
             $table->foreignId('transactions_id')->constrained();
-            
+
             $table->integer('quantity');
             $table->string('note');
 

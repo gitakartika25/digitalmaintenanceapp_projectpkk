@@ -323,8 +323,9 @@
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="{{ url('product') }}">Products</a></li>
                 <li class="nav-item"> <a class="nav-link" href="{{ url('category') }}">Categories</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{ url('') }}">Orders In</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{ url('') }}">Orders</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ url('ordersin') }}">Orders In</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ url('orders') }}">Orders</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ url('/historya') }}">History</a></li>
                 <li class="nav-item"> <a class="nav-link" href="{{ url('') }}">Report</a></li>
               </ul>
             </div>

@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Orders;
 use Illuminate\Http\Request;
+use App\Models\transactions;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class OrdersController extends Controller
 {
@@ -14,7 +17,15 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        //
+        $orders = DB::table('transactions')
+        ->join('transaction_details', 'transactions.id', '=', 'transaction_details.transactions_id')
+        ->join('products', 'products.id', '=', 'transaction_details.products_id')
+        ->join('users as c', 'c.id', '=', 'transactions.customer_id', )
+        ->join('users as e', 'e.id', '=', 'transactions.employee_id')
+        ->select('transactions.*', 'transaction_details.*', 'products.product_name', 'c.name as cname', 'e.name as ename')
+        ->get();
+        // dd($orders);
+        return view('admin.orders', compact('orders'));
     }
 
     /**
@@ -24,7 +35,7 @@ class OrdersController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -35,7 +46,7 @@ class OrdersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
     }
 
     /**
@@ -44,9 +55,9 @@ class OrdersController extends Controller
      * @param  \App\Models\Orders  $orders
      * @return \Illuminate\Http\Response
      */
-    public function show(Orders $orders)
+    public function show(Orders $orders, $id)
     {
-        //
+       
     }
 
     /**
@@ -55,9 +66,9 @@ class OrdersController extends Controller
      * @param  \App\Models\Orders  $orders
      * @return \Illuminate\Http\Response
      */
-    public function edit(Orders $orders)
+    public function edit(Orders $orders, $id)
     {
-        //
+       
     }
 
     /**
@@ -67,9 +78,9 @@ class OrdersController extends Controller
      * @param  \App\Models\Orders  $orders
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Orders $orders)
+    public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**
@@ -78,8 +89,21 @@ class OrdersController extends Controller
      * @param  \App\Models\Orders  $orders
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Orders $orders)
+    public function destroy($id)
     {
-        //
+        
+    }
+    public function history()
+    {
+        $orders = DB::table('transactions')
+        ->join('transaction_details', 'transactions.id', '=', 'transaction_details.transactions_id')
+        ->join('products', 'products.id', '=', 'transaction_details.products_id')
+        ->join('users as c', 'c.id', '=', 'transactions.customer_id', )
+        ->join('users as e', 'e.id', '=', 'transactions.employee_id')
+        ->select('transactions.*', 'transaction_details.*', 'products.product_name', 'c.name as cname', 'e.name as ename')
+        ->where('status', 'selesai')
+        ->get();
+        // dd($orders);
+        return view('admin.history', compact('orders'));
     }
 }

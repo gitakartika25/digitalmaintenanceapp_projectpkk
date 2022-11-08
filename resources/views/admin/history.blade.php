@@ -1,12 +1,12 @@
 @extends('master.index')
-@section('title', 'Orders In')
+@section('title', 'History')
 
 @section('content')
 <div class="card">
     <div class="card-body">
-        <h4 class="card-title">Orders In</h4>
+        <h4 class="card-title">History</h4>
 
-        <a href="{{ url('ordersin/create') }}" class="btn btn-primary">Add Orders</a>
+        <a href="{{ url('orders/create') }}" class="btn btn-primary">Add Orders</a>
 
 
         <div class="table-responsive">
@@ -16,21 +16,22 @@
                     <tr>
                         <th>Action</th>
                         <th>No</th>
-                        <th>Product</th>
+                        <th>Employ</th>
                         <th>Customer</th>
+                        <th>Product</th>
                         <th>Quantity</th>
                         <th>Rent Date</th>
                         <th>Rturn Date</th>
-                        <th>Paymen Status</th>
+                        <th>Setatus</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($orderin as $o)
+                    @foreach ($orders as $o)
                         <tr>
                             <td class="">
                                 <div class="d-flex align-items-center list-user-action">
                                     <a class="btn btn-sm btn-icon btn-primary py-2"
-                                        href="{{ url('ordersin/' . $o->id . '/edit') }}">
+                                        href="{{ url('orders/' . $o->id . '/edit') }}">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                             fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
                                             <path
@@ -38,7 +39,7 @@
                                         </svg>
                                     </a>
                                     <a>
-                                        <form action="{{ route('ordersin.destroy', $o->id) }}" method="POST">
+                                        <form action="{{ route('orders.destroy', $o->id) }}" method="POST">
                                             @csrf
                                             @method('delete')
                                             <button type="submit" class="btn btn-sm btn-icon btn-danger mx-3"
@@ -56,19 +57,13 @@
                                 </div>
                             </td>
                             <td scope="row">{{ $loop->iteration }}</td>
+                            <td> {{ $o->ename }}</td>
+                            <td> {{ $o->cname }}</td>
                             <td> {{ $o->product_name }}</td>
-                            <td> {{ $o->name }}</td>
                             <td> {{ $o->quantity }}</td>
                             <td> {{ $o->rent_date }}</td>
                             <td> {{ $o->return_date }}</td>
-                            <td> 
-                                @if ($o->status == 'orderin')
-                                    <label class="badge badge-warning">{{ $o->status }}</label>
-                                @endif
-                                @if($o->status == 'Panding')
-                                    <label class="badge badge-danger">{{ $o->status }}</label>
-                                @endif
-                            </td>
+                            <td> <label class="badge badge-success">{{ $o->status }}</label></td>
                         </tr>
                     @endforeach
                 </tbody>
