@@ -14,7 +14,8 @@ class HistoryController extends Controller
      */
     public function index()
     {
-        //
+        $product = Product::all();
+        return view('users.history', compact('product'));
     }
 
     /**
