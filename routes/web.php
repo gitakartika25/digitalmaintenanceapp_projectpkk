@@ -69,12 +69,15 @@ Route::middleware(['auth', 'user'])->group(function () {
     Route::get('/store', [ProductController::class, 'index2'])->name('store');
 
     Route::get('/detailproduct/{id}', [ProductController::class, 'detailproduct'])->name('product.detailproduct');
+    Route::get('/cart', [CartController::class, 'index2'])->name('cart.index2');
+    Route::delete('/cart/{id}', [CartController::class, 'destroy'])->name('cart.destroy');
+    // Route::resource('/cart', CartController::class);
 
     Route::get('/ordersin', function () {
         return view('admin.ordersin');
     });
     Route::get('/addtocard', [CartController::class, 'addtocard']);
-    Route::get('/cart', [CartController::class, 'index']);
+    
 
     Route::get('/about', function () {
         return view('users.about');

@@ -178,7 +178,7 @@
               <li><a href="/home">Home</a></li>
               <li><a href="/about">About</a></li>
               <li><a href="/store">Store</a></li>
-              <li><a href="/cart">Cart</a></li>
+              <li><a href="{{url('cart')}}">Cart</a></li>
             </ul>
           </div>
 

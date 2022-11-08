@@ -42,6 +42,13 @@ class CartController extends Controller
         return view('users.cart', ['snap_token'=>$snapToken]);
     }
 
+    public function index2(){
+        $cart = transaction_detail::all();
+        return view('users.cart', compact ('cart'));
+
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -82,7 +89,7 @@ class CartController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
@@ -105,7 +112,10 @@ class CartController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $cart = transaction_detail::find($id);
+        $cart->delete();
+
+        return redirect()->route('cart')->with('success', 'Data berhasil dihapus !');
     }
 
     public function addtocard(Request $request){
