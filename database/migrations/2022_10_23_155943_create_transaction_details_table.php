@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('transaction_details', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('product_id');
-            $table->unsignedBigInteger('transaction_id');
+            $table->foreignId('products_id')->constrained();
+            $table->foreignId('transactions_id')->constrained();
             $table->string('note');
 
             $table->timestamps();
