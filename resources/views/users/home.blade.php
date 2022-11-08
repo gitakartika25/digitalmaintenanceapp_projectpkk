@@ -96,20 +96,22 @@
             <div class="row">
               <div class="col-md-12 block-3 products-wrap d-flex">
                 <div class="nonloop-block-3 owl-carousel">
-                          @foreach ($product as $p)
-                            <div class="text-center item mb-4 item-v2">
-                                <form action="{{ url('detailproduct/' . $p->id) }}" method="POST"
-                                    enctype="multipart/form-data">
-                                    @method('put')
-                                    <span class="onsale">Rent</span>
-                                    <a href="{{ url('detailproduct/' . $p->id) }}"><img
-                                            src="{{ asset('storage/' . $p->image) }}" style="width: 300px"></a>
-                                    <h3 class="text-dark"><a
-                                            href="{{ url('detailproduct/' . $p->id) }}"></a>{{ $p->product_name }}</h3>
-                                    <p class="price"> Rp{{ $p->price }}</p>
-                                </form>
+                    @foreach ($product as $p)
+                    <div class="card col-md-12 text-center item mb-3 item-v2 px-auto mx-0 " >
+                        <form action="{{ url('detailproduct/' . $p->id) }}" method="POST" enctype="multipart/form-data">
+                            @method('put')
+                            <span class="onsale">Rent</span>
+                            <a href="{{ url('detailproduct/' . $p->id) }}"><img src="{{ asset('storage/' . $p->image) }}"
+                                    style="width: 100%" class="card-img-top"></a>
+                            <div class="card-body">
+                                <h3 class="text-dark"><a
+                                        href="{{ url('detailproduct/' . $p->id) }}"></a>{{ $p->product_name }}</h3>
+                                <p class="price"> Rp{{ $p->price }}</p>
+                                <a href="{{ url('detailproduct/' . $p->id) }}" class="btn btn-primary">Detail Product</a>
                             </div>
-                            @endforeach
+                        </form>
+                    </div>
+                @endforeach
                         </div>
                     </div>
             </div>
