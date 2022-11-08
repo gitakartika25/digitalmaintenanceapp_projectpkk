@@ -7,5 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Orders extends Model
 {
+    protected $table = 'transactions';
+    // protected $filable = ['employee_id'];
+    protected $guarded = ['id'];
     use HasFactory;
 }
