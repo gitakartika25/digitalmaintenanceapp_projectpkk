@@ -18,9 +18,11 @@ class OrdersinController extends Controller
     public function index()
     {
         $orderin = DB::table('transactions')
-        ->join('products', 'products.id', '=', 'transactions.product_id')
+        ->join('transaction_details', 'transactions.id', '=', 'transaction_details.transactions_id')
+        ->join('products', 'products.id', '=', 'transaction_details.products_id')
         ->join('users', 'users.id', '=', 'transactions.customer_id')
-        ->where('employe_id', null)
+        ->where('employee_id', null)
+        ->select('products.product_name', 'transactions.*', 'transaction_details.*', 'users.name')
         ->get();
         // dd($orderin);
         return view('admin.ordersin', compact('orderin'));
@@ -33,10 +35,7 @@ class OrdersinController extends Controller
      */
     public function create()
     {
-        $product = Product::all();
-        $customer = User::all()->where('role_id', 1);
-        return view('admin.add_ordersin', compact('product', 'customer'));
-        // dd('ini orderin');
+
     }
 
     /**
@@ -47,18 +46,7 @@ class OrdersinController extends Controller
      */
     public function store(Request $request)
     {
-        $data = Ordersin::create([
-            'product_id' =>$request->productid,
-            'customer_id' =>$request->customerid,
-            'quantity' =>$request->quantity,
-            'rent_date' =>$request->rentdate,
-            'return_date' =>$request->returndate,
-            'payment_status' =>$request->status,
-            'token' =>$request->token,
-        ]);
 
-        // dd($data);
-        return redirect('ordersin');
     }
 
     /**

@@ -63,7 +63,7 @@
                             <td> {{ $o->quantity }}</td>
                             <td> {{ $o->rent_date }}</td>
                             <td> {{ $o->return_date }}</td>
-                            <td> <label class="badge badge-warning">In Process</label></td>
+                            <td> <label class="badge badge-warning">{{ $o->status }}</label></td>
                         </tr>
                     @endforeach
                 </tbody>

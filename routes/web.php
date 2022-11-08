@@ -85,6 +85,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('userCRUD', UserController::class);
     Route::resource('orders', OrdersController::class);
     Route::resource('ordersin', OrdersinController::class);
+    Route::get('/history', [OrdersController::class, 'history']);
 });
 
 // Route::get('/profile/profinsi/{id}', [ProfileController::class, 'kota'])->name('profile.profinsi');
