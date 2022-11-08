@@ -30,7 +30,7 @@
             <tbody>
               @foreach ($data as $d)
               <tr>
-                <td> <img src="{{ asset('storage/'.$d->photo) }}" alt="">
+                <td> <img src="{{ asset('storage/' .$d->foto) }}" alt="">
                 
                 </td>
                 <td> {{ $d->id }}</td>

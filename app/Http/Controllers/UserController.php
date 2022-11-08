@@ -41,22 +41,18 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $file =  $request->file('photo')->store('img');
+        $file =  $request->file('foto')->store('img');
         User::create([
-            'name'=>$request->name,
-            'email'=> $request->email,
-            'password'=>$request->password,
-            'role_id'=>3,
-            'photo'=>$file,
-            'addres'=>$request->address,
-            'telephone'=>$request->telephone,
-    
-    
-    
-    
+            'name'=> $request -> name,
+            'email'=> $request -> email,
+            'password'=> $request -> password,
+            'role_id'=> 3,
+            'addres'=> $request -> address,
+            'telephone'=> $request -> telephone,
+            'foto'=> $file,
             ]);
 
-           
+           //dd($request);
             return redirect('userCRUD')->with('success','Data berhasil masuk');
     }
 
