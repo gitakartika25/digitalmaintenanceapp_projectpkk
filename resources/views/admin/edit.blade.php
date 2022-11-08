@@ -26,7 +26,7 @@
               </div>
               <div class="form-group">
                   <label for="exampleInputName1">address</label>
-                  <input type="text" class="form-control @error('address') is-invalid @enderror" name="address"  value="{{ $data->address }}">
+                  <input type="text" class="form-control @error('addres') is-invalid @enderror" name="addres"  value="{{ $data->addres }}">
               </div>
               <div class="form-group">
                   <label for="exampleInputName1">telephone</label>
@@ -37,7 +37,7 @@
                   <div></div>
                     <img src="{{ asset('storage/' .$data->photo) }}" alt="" width="200px">
                     <br>
-                    <input type="file" name="photo" class="file-upload-default @error('photo') is-invalid @enderror" value="{{ old('photo') }}">
+                    <input type="file" name="photo" class="file-upload-default @error('foto') is-invalid @enderror" value="{{ old('foto') }}">
                     <div></div>
                     <div class="input-group col-xs-12">
                       <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">

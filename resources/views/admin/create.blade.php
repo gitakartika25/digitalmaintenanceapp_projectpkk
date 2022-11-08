@@ -42,7 +42,7 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleInputName1">address</label>
-                    <input type="text" class="form-control" name="address" placeholder="input packaging...">
+                    <input type="text" class="form-control" name="addres" placeholder="input packaging...">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputName1">telephone</label>
