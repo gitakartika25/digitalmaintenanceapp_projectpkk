@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\transactions;
+use App\Models\transaction_detail;
 use Illuminate\Http\Request;
 use Veritrans;
 class CartController extends Controller
@@ -104,5 +106,39 @@ class CartController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function addtocard(Request $request){
+        $lastid = "";
+        $idproduct = $request->query('products');
+        $quantity = $request->query('qua');
+        $userid = $request->query('userid');
+        $datatransaction = transactions::all();
+        foreach ($datatransaction as $a) {
+            if ($a['customer_id']==$userid){
+                transaction_detail::create([
+                    'products_id' => $idproduct,
+                    'transactions_id'=>$a['id'],
+                    'quantity'=>$quantity,
+                    'note'=>'testnote'
+                ]);
+                return redirect('/store');
+            }
+            $lastid=$a['id'];
+        }
+        transactions::create([
+            'customer_id' => $userid,
+            'rent_date'=>date('Y-m-d'),
+            'return_date'=>date('Y-m-d'),
+            'status'=>'orderin',
+            'token'=>'token'
+        ]);
+        transaction_detail::create([
+            'products_id' => $idproduct,
+            'transactions_id'=>(int)$lastid+1,
+            'quantity'=>$quantity,
+            'note'=>'testnote'
+        ]);
+        return redirect('/store');
     }
 }

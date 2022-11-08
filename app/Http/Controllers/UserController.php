@@ -117,7 +117,7 @@ class UserController extends Controller
         }catch (\Throwable $th) {
            
 
-            $validator['foto'] = $data->photo;
+            $validator['foto'] = $data->foto;
 
             //  dd($validator);
               $data->update($validator);
