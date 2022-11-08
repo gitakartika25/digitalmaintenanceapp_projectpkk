@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\History;
 use Illuminate\Http\Request;
 
-class TransactionDetailController extends Controller
+class HistoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,8 @@ class TransactionDetailController extends Controller
      */
     public function index()
     {
-        //
+        $product = Product::all();
+        return view('users.history', compact('product'));
     }
 
     /**
@@ -40,10 +42,10 @@ class TransactionDetailController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\History  $history
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(History $history)
     {
         //
     }
@@ -51,10 +53,10 @@ class TransactionDetailController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\History  $history
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(History $history)
     {
         //
     }
@@ -63,10 +65,10 @@ class TransactionDetailController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\History  $history
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, History $history)
     {
         //
     }
@@ -74,10 +76,10 @@ class TransactionDetailController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\History  $history
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(History $history)
     {
         //
     }

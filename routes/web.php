@@ -33,6 +33,7 @@ use App\Http\Controllers\OrdersinController;
 Auth::routes();
 
 // Halaman Admin
+
 Route::get('/index', function () {
     return view('master.index');
 });
@@ -68,6 +69,8 @@ Route::get('/', function () {
 // Halaman Admin
 
 
+
+
 Route::middleware(['auth', 'admin'])->group(function () {
     // Route::get('/userCRUD', function () {
     //     return view('admin.useradminCRUD');
@@ -88,26 +91,40 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/history', [OrdersController::class, 'history']);
 });
 
+
 // Route::get('/profile/profinsi/{id}', [ProfileController::class, 'kota'])->name('profile.profinsi');
 
 
-///halaman user
+
+//Halaman User
 Route::get('/', function () {
     return view('master.index_user');
 });
+
+Route::get('/home', [HomeController::class, 'index'])->name('user.index'); //jangan dimasukkan middleware
+
 Route::middleware(['auth', 'user'])->group(function () {
+
+    Route::get('/profile/profinsi/{id}', [ProfileController::class, 'kota'])->name('profile.profinsi');
 
     Route::get('/user', function () {
         return view('users.home');
     });
     Route::resource('profile', ProfileController::class);
 
+
     Route::get('/user', [HomeController::class, 'index'])->name('user.index');
     // Route::get('/home', [HomeController::class, 'index'])->name('user.index');
+
     Route::get('/store', [ProductController::class, 'index2'])->name('store');
+
     Route::get('/detailproduct/{id}', [ProductController::class, 'detailproduct'])->name('product.detailproduct');
-    
-    Route::get('/cart',[CartController::class, 'index']);
+
+    Route::get('/ordersin', function () {
+        return view('admin.ordersin');
+    });
+    Route::get('/addtocard', [CartController::class, 'addtocard']);
+    Route::get('/cart', [CartController::class, 'index']);
 
     Route::get('/about', function () {
         return view('users.about');
@@ -122,11 +139,13 @@ Route::middleware(['auth', 'user'])->group(function () {
         return view('users.checkout');
     });
 
+    Route::get('/history', function () {
+        return view('users.history');
+    });
+
     Route::get('/thankyou', function () {
         return view('users.thankyou');
     });
+
+    Route::post('/getkabupaten', [ProfileController::class, 'getkabupaten'])->name('getkabupaten');
 });
-
-
-Route::post('/getkabupaten', [ProfileController::class, 'getkabupaten'])->name('getkabupaten');
-

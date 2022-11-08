@@ -386,8 +386,7 @@
             </a>
             <div class="collapse" id="auth">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{{ asset('template/pages/samples/login.html') }}"> Employees</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{ asset('template/pages/samples/register.html') }}"> Members </a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ url('userCRUD') }}">Data User</a></li>
               </ul>
             </div>
           </li>

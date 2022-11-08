@@ -28,6 +28,7 @@ class User extends Authenticatable
         'districts',
         'villages',
         'addres',
+        'telephone',
         'foto',
         'password',
         'role_id',

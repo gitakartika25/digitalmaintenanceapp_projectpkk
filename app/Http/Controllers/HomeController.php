@@ -27,7 +27,7 @@ class HomeController extends Controller
     {
 
         if (Auth::user()->role_id == '2') {
-            return redirect('dashboard');
+            return view('admin.dashboard');
         } elseif (Auth::user()->role_id == '1') {
             $product = Product::all();
             return view('users.home', compact('product'));

@@ -30,14 +30,14 @@
             <tbody>
               @foreach ($data as $d)
               <tr>
-                <td> <img src="{{ asset('storage/'.$d->photo) }}" alt="">
+                <td> <img src="{{ asset('storage/' .$d->foto) }}" alt="">
                 
                 </td>
                 <td> {{ $d->id }}</td>
                 <td> {{ $d->name }}</td>
                 <td> {{ $d->email }}</td>
                 <td> **************</td>
-                <td> {{ $d->address }}</td>
+                <td> {{ $d->addres}}</td>
                 <td> {{ $d->telephone }}</td>
                 <td class="">
                     <div class="d-flex align-items-center list-user-action">
@@ -74,8 +74,6 @@
         </div>
       </div>
     </div>
-  </div>
-</div>
 
 
   @endsection
