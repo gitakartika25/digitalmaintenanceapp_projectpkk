@@ -41,14 +41,14 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $file =  $request->file('photo')->store('public/img');
+        $file =  $request->file('photo')->store('img');
         User::create([
             'name'=>$request->name,
             'email'=> $request->email,
             'password'=>$request->password,
             'role_id'=>3,
             'photo'=>$file,
-            'address'=>$request->address,
+            'addres'=>$request->address,
             'telephone'=>$request->telephone,
     
     
@@ -100,7 +100,7 @@ class UserController extends Controller
             'name' => 'required|string',
             'email' => 'required|string',
             'password' => 'required|string',
-            'address' => 'required|string',
+            'addres' => 'required|string',
             'telephone' => 'required|string',
             
             
