@@ -85,7 +85,7 @@
                   </ul>
                 </li> --}}
                 <li class="@if(Request::is('about')) active @endif"><a href="/about">About</a></li>
-                <li class="@if(Request::is('contact')) active @endif"><a href="/contact">Contact</a></li>
+                <!-- <li class="@if(Request::is('contact')) active @endif"><a href="/contact">Contact</a></li> -->
               </ul>
             </nav>
           </div>
@@ -167,8 +167,7 @@
 
             <div class="block-7">
               <h3 class="footer-heading mb-4">About <strong class="text-primary">Laborative</strong></h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius quae reiciendis distinctio voluptates
-                sed dolorum excepturi iure eaque, aut unde.</p>
+              <p>Expert bussines partner to rental tools or device about laboratorium all categories.</p>
             </div>
 
           </div>
@@ -202,7 +201,7 @@
               Copyright &copy;
               <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made
               with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank"
-                class="text-primary">Colorlib</a>. Downloaded from <a href="https://themeslab.org/" target="_blank">Themeslab</a>
+                class="text-primary">C++ Team</a>
               <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
             </p>
           </div>
