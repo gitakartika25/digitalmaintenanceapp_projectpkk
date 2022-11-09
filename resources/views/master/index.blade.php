@@ -50,12 +50,12 @@
           </li>
         </ul>
         <ul class="navbar-nav navbar-nav-right">
-          <li class="nav-item dropdown">
+          {{-- <li class="nav-item dropdown">
             <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
               <i class="icon-bell mx-0"></i>
               <span class="count"></span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+            </a> --}}
+            {{-- <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
               <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
               <a class="dropdown-item preview-item">
                 <div class="preview-thumbnail">
@@ -96,11 +96,12 @@
                   </p>
                 </div>
               </a>
-            </div>
+            </div> --}}
           </li>
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-              <img src="{{ asset('template/images/faces/face28.jpg') }}" alt="profile"/>
+              <img src="{{ asset('storage/' .Auth::user()->foto) }}" alt="profile"/>
+              {{ Auth::user()->name }}
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
               <a class="dropdown-item">
@@ -157,9 +158,9 @@
           <li class="nav-item">
             <a class="nav-link active" id="todo-tab" data-toggle="tab" href="#todo-section" role="tab" aria-controls="todo-section" aria-expanded="true">TO DO LIST</a>
           </li>
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a class="nav-link" id="chats-tab" data-toggle="tab" href="#chats-section" role="tab" aria-controls="chats-section">CHATS</a>
-          </li>
+          </li> --}}
         </ul>
         <div class="tab-content" id="setting-content">
           <div class="tab-pane fade show active scroll-wrapper" id="todo-section" role="tabpanel" aria-labelledby="todo-section">
@@ -220,7 +221,7 @@
                 </li>
               </ul>
             </div>
-            <h4 class="px-3 text-muted mt-5 font-weight-light mb-0">Events</h4>
+            {{-- <h4 class="px-3 text-muted mt-5 font-weight-light mb-0">Events</h4>
             <div class="events pt-4 px-3">
               <div class="wrapper d-flex mb-2">
                 <i class="ti-control-record text-primary mr-2"></i>
@@ -228,15 +229,15 @@
               </div>
               <p class="mb-0 font-weight-thin text-gray">Creating component page build a js</p>
               <p class="text-gray mb-0">The total number of sessions</p>
-            </div>
-            <div class="events pt-4 px-3">
+            </div> --}}
+            {{-- <div class="events pt-4 px-3">
               <div class="wrapper d-flex mb-2">
                 <i class="ti-control-record text-primary mr-2"></i>
                 <span>Feb 7 2018</span>
               </div>
               <p class="mb-0 font-weight-thin text-gray">Meeting with Alisa</p>
               <p class="text-gray mb-0 ">Call Sarah Graves</p>
-            </div>
+            </div> --}}
           </div>
           <!-- To do section tab ends -->
           <div class="tab-pane fade" id="chats-section" role="tabpanel" aria-labelledby="chats-section">

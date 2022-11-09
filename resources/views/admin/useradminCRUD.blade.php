@@ -1,6 +1,6 @@
 @extends('master.index')
 
-@section('title', 'dashboard')
+@section('title', 'Data User')
 
 @section('content')
 <h1>Data User</h1>
