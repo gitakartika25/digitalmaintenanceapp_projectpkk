@@ -96,7 +96,7 @@ class OrdersController extends Controller
     }
     public function history()
     {
-        $orders = DB::table('transactions')
+        $history = DB::table('transactions')
         ->join('transaction_details', 'transactions.id', '=', 'transaction_details.transactions_id')
         ->join('products', 'products.id', '=', 'transaction_details.products_id')
         ->join('users as c', 'c.id', '=', 'transactions.customer_id', )
@@ -105,6 +105,6 @@ class OrdersController extends Controller
         ->where('status', 'selesai')
         ->get();
         // dd($orders);
-        return view('admin.history', compact('orders'));
+        return view('admin.history', compact('history'));
     }
 }

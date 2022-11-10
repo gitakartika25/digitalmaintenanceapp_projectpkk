@@ -26,7 +26,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($orders as $o)
+                    @foreach ($history as $o)
                         <tr>
                             <td class="">
                                 <div class="d-flex align-items-center list-user-action">
