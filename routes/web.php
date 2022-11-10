@@ -76,6 +76,7 @@ Route::get('/about', function () {
 Route::get('/store', [ProductController::class, 'index2'])->name('store'); //jangan dimasukkan middleware
 
 
+// Route::post('/cartpay', [CartController::class, 'index']);
 //Halaman user middleware
 Route::middleware(['auth', 'user'])->group(function () {
     
@@ -86,6 +87,9 @@ Route::middleware(['auth', 'user'])->group(function () {
         Route::get('/detailproduct/{id}', [ProductController::class, 'detailproduct'])->name('product.detailproduct'); 
     
         Route::get('/cart', [CartController::class, 'index2'])->name('cart.index2');
+        Route::get('/cartpay', [CartController::class, 'index'])->name('cart.index');
+        // Route::get('/updatetoken', [CartController::class, 'updatetoken'])->name('cart.index');
+        Route::get('/cartpayajax', [CartController::class, 'ajaxpay'])->name('cart.index');
         
         Route::get('/cart/{id}', [CartController::class, 'destroy'])->name('destroy');
         
@@ -120,3 +124,5 @@ Route::middleware(['auth', 'user'])->group(function () {
       
     
     });
+
+    Route::get('/updatetoken', [CartController::class, 'updatetoken']);
