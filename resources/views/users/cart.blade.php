@@ -27,12 +27,17 @@
                                     <th class="product-name">Product</th>
                                     <th class="product-price">Price</th>
                                     <th class="product-quantity">Quantity</th>
-                                    {{-- <th class="product-total">Total</th> --}}
+                                    <th class="product-price">total</th>
                                     <th class="product-remove">Remove</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                    {{$total = 0}};
+                                    {{$harga = 0}};
+                                   
                                 @foreach ($cart as $c)
+                                {{$harga = $c->product->price * $c->quantity}};
+                                {{$total += $harga}}
                                     @csrf
                                     <tr>
                                       <td>
@@ -48,6 +53,8 @@
                                         </td>
                                         <td>Rp{{ $c->product->price }}</td>
                                         <td> {{ $c->quantity }} </td>
+                                        <td> Rp{{ $harga }} </td>
+                              
                                         <td>
                                             <a href="/cart/{{ $c->id }}" class="btn btn-danger"
                                                 onclick="return confirm('Are you sure you want to delete this item ?')">
@@ -60,6 +67,8 @@
                                                 </svg>
                                             </a>
                                         </td>
+
+                                    
                                     </tr>
                                 @endforeach
 
@@ -89,20 +98,12 @@
                                     <h3 class="text-black h4 text-uppercase">Cart Totals</h3>
                                 </div>
                             </div>
-                            <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <span class="text-black">Subtotal</span>
-                                </div>
-                                <div class="col-md-6 text-right">
-                                    <strong class="text-black">Rp{{ $c->product->price }}</strong>
-                                </div>
-                            </div>
                             <div class="row mb-5">
                                 <div class="col-md-6">
                                     <span class="text-black">Total</span>
                                 </div>
                                 <div class="col-md-6 text-right">
-                                    <strong class="text-black">Rp{{ $c->product->price }}</strong>
+                                    <strong class="text-black">Rp{{ $total }}</strong>
                                 </div>
                             </div>
 
