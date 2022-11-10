@@ -2,7 +2,7 @@
 @section('title', 'Cart')
 
 @section('content')
-
+        
     <div class="bg-light py-3">
         <div class="container">
             <div class="row">
@@ -27,7 +27,7 @@
                                     <th class="product-name">Product</th>
                                     <th class="product-price">Price</th>
                                     <th class="product-quantity">Quantity</th>
-                                    <th class="product-price">total</th>
+                                    {{-- <th class="product-total">Total</th> --}}
                                     <th class="product-remove">Remove</th>
                                 </tr>
                             </thead>
@@ -99,19 +99,34 @@
                                     <h3 class="text-black h4 text-uppercase">Cart Totals</h3>
                                 </div>
                             </div>
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <span class="text-black">Subtotal</span>
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    <strong class="text-black">Rp{{ $c->product->price }}</strong>
+                                </div>
+                            </div>
                             <div class="row mb-5">
                                 <div class="col-md-6">
                                     <span class="text-black">Total</span>
                                 </div>
                                 <div class="col-md-6 text-right">
+                                    <!-- <strong value="{{ $c->product->price }}" id="total2" class="text-black">Rp{{ $c->product->price }}</strong> -->
+                                    <input type="hidden" value="{{ $total }}" id="datatotal">
+                                    <input type="hidden" value="{{ Auth::user()->name}}" id="namepay">
+                                    <input type="hidden" value="{{ Auth::user()->id}}" id="idpay">
                                     <strong class="text-black">Rp{{ $total }}</strong>
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-md-12">
-                                    <button class="btn btn-primary btn-lg btn-block" id="pay-button">Proceed To
+                                    <button class="btn btn-primary btn-lg btn-block">Proceed To
                                         Checkout</button>
+                                        
+                                        <!-- <div id="div1"><h2>Let jQuery AJAX Change This Text</h2></div>
+                                        <button value="as">Get External Content</button> -->
                                 </div>
                             </div>
                         </div>
@@ -120,12 +135,51 @@
             </div>
         </div>
     </div>
-    {{-- <script type="text/javascript">
+    
+    <script>
+        $(document).ready(function(){
+            var token = "";
+            $("button").click(function(){
+                var total = $("#datatotal").val();
+                var name = $("#namepay").val();
+                var id = $("#idpay").val();
+                $.ajax({url: "http://127.0.0.1:8000/cartpay?total="+total+"&name="+name, success: function(result){
+                  token = result;
+                    $.ajax({url: "http://127.0.0.1:8000/updatetoken?token="+token+"&id="+id, success: function(resulttoken){
+                    console.log(resulttoken);
+                    }});
+                  window.snap.pay(result, {
+                    onSuccess: function(result){
+                        /* You may add your own implementation here */
+                        alert("payment success!"); console.log(result);
+                        $.ajax({url: "http://127.0.0.1:8000/updatestatus?id="+id, success: function(resultstatus){
+                        console.log(resultstatus);
+                        }});
+                    },
+                    onPending: function(result){
+                        /* You may add your own implementation here */
+                        alert("wating your payment!"); console.log(result);
+                    },
+                    onError: function(result){
+                        /* You may add your own implementation here */
+                        alert("payment failed!"); console.log(result);
+                    },
+                    onClose: function(){
+                        /* You may add your own implementation here */
+                        alert('you closed the popup without finishing the payment');
+                    }
+                    })
+                }});
+                console.log(token);
+            });
+        });
+    </script>
+    <script type="text/javascript">
       // For example trigger on button clicked, or any time you need
       var payButton = document.getElementById('pay-button');
       payButton.addEventListener('click', function () {
         // Trigger snap popup. @TODO: Replace TRANSACTION_TOKEN_HERE with your transaction token
-        window.snap.pay('{{$snap_token}}', {
+        window.snap.pay('{{ $snapToken }}', {
           onSuccess: function(result){
             /* You may add your own implementation here */
             alert("payment success!"); console.log(result);
@@ -145,5 +199,5 @@
         })
         // customer will be redirected after completing payment pop-up
       });
-  </script> --}}
+  </script> 
 @endsection
