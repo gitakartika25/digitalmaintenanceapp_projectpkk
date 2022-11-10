@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\transactions;
 use App\Models\transaction_detail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Veritrans;
 class CartController extends Controller
 {
@@ -43,9 +45,19 @@ class CartController extends Controller
     }
 
     public function index2(){
-        $cart = transaction_detail::all();
-        $cartnumb = transaction_detail::count();
-        return view('users.cart', compact ('cart','cartnumb'));
+
+        $transaction=transactions::all()->where('customer_id', Auth::user()->id)->first();
+         $cart = transaction_detail::all()->where('transactions_id', $transaction->id);
+        // ->join('transactions', 'transactions.id', '=', 'transactions_detail.transactions_id')
+        // ->where('customer_id', Auth::user()->id);
+        // foreach($transaction as $t){
+        //  dd($cart);
+        // }
+        $total = 0;
+        $harga = 0;
+        
+        $cartnumb = transaction_detail::all()->where('customer_id', Auth::user()->id)->count();
+        return view('users.cart', compact ('cart','cartnumb','total','harga'));
 
     }
 

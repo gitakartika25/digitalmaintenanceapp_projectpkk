@@ -31,11 +31,11 @@ class HomeController extends Controller
             return view('admin.dashboard');
         } elseif (Auth::user()->role_id == '1') {
             $product = Product::all();
-            $cartnumb = transaction_detail::count();
+            $cartnumb = transaction_detail::all()->where('customer_id', Auth::user()->id)->count();
             return view('users.home', compact('product', 'cartnumb'));
         }else{
             $product = Product::all();
-            $cartnumb = transaction_detail::count();
+            $cartnumb = transaction_detail::all()->where('customer_id', Auth::user()->id)->count();
             return view('users.home', compact('product', 'cartnumb'));
         }
 

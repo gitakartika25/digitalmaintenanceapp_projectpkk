@@ -3,6 +3,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ProductCategoryController;
+use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
@@ -106,10 +107,12 @@ Route::middleware(['auth', 'user'])->group(function () {
             return view('users.checkout');
         });
         
-        Route::get('/history', function () {
-            $cartnumb = transaction_detail::count();
-            return view('users.history', compact('cartnumb'));
-        });
+        // Route::get('/history', function () {
+        //     $cartnumb = transaction_detail::count();
+        //     return view('users.history', compact('cartnumb'));
+        // });
+
+        Route::resource('/history', HistoryController::class);
         
         Route::get('/thankyou', function () {
             return view('users.thankyou');

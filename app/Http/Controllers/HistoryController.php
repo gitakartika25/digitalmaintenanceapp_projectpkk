@@ -1,9 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use App\Models\History;
+use App\Models\transactions;
+use App\Models\transaction_detail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HistoryController extends Controller
 {
@@ -14,8 +17,22 @@ class HistoryController extends Controller
      */
     public function index()
     {
-        $product = Product::all();
-        return view('users.history', compact('product'));
+        $historyUser = DB::table('transactions')
+        ->join('users','users.id','=','transactions.employee_id')
+        ->join('transaction_details', 'transactions.id', '=', 'transaction_details.transactions_id')
+        ->join('products', 'products.id', '=', 'transaction_details.products_id')
+       
+         ->select('transactions.*', 'transaction_details.*', 'products.product_name', 'users.name')
+        ->where('status', 'selesai')->where('customer_id', Auth::user()->id)
+        ->get();
+        // $historyUser=transactions::all()->where('customer_id', Auth::user()->id)->where('status','=','selesai');
+        $cartnumb = transaction_detail::count();
+        // $history = history::all()->where(''); 
+      
+        //  dd($historyUser);
+        return view('users.history', compact('historyUser','cartnumb'));
+
+       
     }
 
     /**

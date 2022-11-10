@@ -14,21 +14,30 @@
           <table class="table table-hover">
             <thead>
               <tr>
-                <th>id</th>
-                <th>image</th>
+                <th>No</th>
+                <th>Employ</th>
+              
                 <th>Product</th>
-                <th>price</th>
-                <th>quantity</th>
-                <th>total</th>
+                <th>Quantity</th>
+                <th>Rent date</th>
+                <th>Return date</th>
+                <th>Status</th>
               </tr>
             </thead>
             <tbody>
+              @foreach ($historyUser as $h)
               <tr>
-                <td>Jacob</td>
-                <td>Photoshop</td>
-                <td class="text-danger"> 28.76% <i class="ti-arrow-down"></i></td>
-                <td><label class="badge badge-danger">Pending</label></td>
+                 
+                  <td scope="row">{{ $loop->iteration }}</td>
+                  <td> {{ $h->name }}</td>
+                  {{-- <td> {{ $h->cname }}</td> --}}
+                   <td> {{ $h->product_name }}</td> 
+                  <td> {{ $h->quantity}}</td>
+                  <td> {{ $h->rent_date }}</td>
+                  <td> {{ $h->return_date }}</td>
+                  <td> <label class="badge badge-success">{{ $h->status }}</label></td>
               </tr>
+          @endforeach
             </tbody>
           </table>
         </div>

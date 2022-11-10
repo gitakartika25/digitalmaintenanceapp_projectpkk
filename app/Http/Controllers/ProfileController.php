@@ -67,7 +67,7 @@ class ProfileController extends Controller
         $profinsi = Http::get('https://emsifa.github.io/api-wilayah-indonesia/api/provinces.json');
         $prof = $profinsi->json();
         // dd($prof);
-        $cartnumb = transaction_detail::count();
+        $cartnumb = transaction_detail::all()->where('customer_id', Auth::user()->id)->count();
         foreach ($profile as $alamat) {
             // Yg tampil di select
             $provinces = Http::get('http://www.emsifa.com/api-wilayah-indonesia/api/provinces/' . $alamat->provinces . '.json');

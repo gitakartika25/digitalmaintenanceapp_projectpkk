@@ -32,12 +32,13 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                    {{$total = 0}};
-                                    {{$harga = 0}};
+                                    
                                    
                                 @foreach ($cart as $c)
-                                {{$harga = $c->product->price * $c->quantity}};
-                                {{$total += $harga}}
+                                <?php
+                                $harga = $c->product->price * $c->quantity;
+                                $total += $harga;
+                                ?>
                                     @csrf
                                     <tr>
                                       <td>

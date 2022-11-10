@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\transaction_detail;
@@ -25,7 +25,7 @@ class ProductController extends Controller
     public function index2()
     {
         $product = Product::all();
-        $cartnumb = transaction_detail::count();
+        $cartnumb = transaction_detail::all()->where('customer_id', Auth::user()->id)->count();
         return view('users.store',  compact('product', 'cartnumb'));
     }
 
@@ -33,7 +33,7 @@ class ProductController extends Controller
     public function detailproduct($id)
     {
         $product = Product::find($id);
-        $cartnumb = transaction_detail::count();
+        $cartnumb = transaction_detail::all()->where('customer_id', Auth::user()->id)->count();
         return view('users.detailproduct', compact('product', 'cartnumb'));
     }
 
