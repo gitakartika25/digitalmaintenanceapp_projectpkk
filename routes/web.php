@@ -94,6 +94,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
 // Route::get('/profile/profinsi/{id}', [ProfileController::class, 'kota'])->name('profile.profinsi');
 
+Route::resource('profile', ProfileController::class);
 
 
 //Halaman User
@@ -110,8 +111,6 @@ Route::middleware(['auth', 'user'])->group(function () {
     Route::get('/user', function () {
         return view('users.home');
     });
-    Route::resource('profile', ProfileController::class);
-
 
     Route::get('/user', [HomeController::class, 'index'])->name('user.index');
     // Route::get('/home', [HomeController::class, 'index'])->name('user.index');

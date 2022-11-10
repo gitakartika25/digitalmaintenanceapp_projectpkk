@@ -86,7 +86,12 @@ class ProfileController extends Controller
             $lvil = $lopvil->json();
         }
         // dd($lreg);
-        return view('users.profile', compact('profile', 'prof', 'pro', 'reg', 'dis', 'vil', 'lreg', 'ldis', 'lvil'));
+        if(Auth::user()->role_id == 2){
+            return view('admin.profile_admin', compact('profile', 'prof', 'pro', 'reg', 'dis', 'vil', 'lreg', 'ldis', 'lvil'));
+        }
+        elseif(Auth::user()->role_id == 1){
+            return view('users.profile', compact('profile', 'prof', 'pro', 'reg', 'dis', 'vil', 'lreg', 'ldis', 'lvil'));
+        }
     }
 
     /**
