@@ -2,7 +2,7 @@
 @section('title', 'Cart')
 
 @section('content')
-
+        
     <div class="bg-light py-3">
         <div class="container">
             <div class="row">
@@ -102,14 +102,19 @@
                                     <span class="text-black">Total</span>
                                 </div>
                                 <div class="col-md-6 text-right">
-                                    <strong class="text-black">Rp{{ $c->product->price }}</strong>
+                                    <strong value="{{ $c->product->price }}" id="total2" class="text-black">Rp{{ $c->product->price }}</strong>
+                                    <input type="hidden" value="{{ $c->product->price }}" id="datatotal">
+                                    <input type="hidden" value="{{ Auth::user()->name}}" id="namepay">
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-md-12">
-                                    <button class="btn btn-primary btn-lg btn-block" id="pay-button">Proceed To
+                                    <button class="btn btn-primary btn-lg btn-block">Proceed To
                                         Checkout</button>
+                                        
+                                        <!-- <div id="div1"><h2>Let jQuery AJAX Change This Text</h2></div>
+                                        <button value="as">Get External Content</button> -->
                                 </div>
                             </div>
                         </div>
@@ -118,12 +123,45 @@
             </div>
         </div>
     </div>
-    {{-- <script type="text/javascript">
+    
+    <script>
+        $(document).ready(function(){
+            $("button").click(function(){
+                var total = $("#datatotal").val();
+                var name = $("#namepay").val();
+                // console.log(str);
+                $.ajax({url: "http://127.0.0.1:8000/cartpay?total="+total+"&name="+name, success: function(result){
+                  $("#div1").html(result);  
+                  window.snap.pay(result, {
+                    onSuccess: function(result){
+                        /* You may add your own implementation here */
+                        alert("payment success!"); console.log(result);
+                    },
+                    onPending: function(result){
+                        /* You may add your own implementation here */
+                        alert("wating your payment!"); console.log(result);
+                    },
+                    onError: function(result){
+                        /* You may add your own implementation here */
+                        alert("payment failed!"); console.log(result);
+                    },
+                    onClose: function(){
+                        /* You may add your own implementation here */
+                        alert('you closed the popup without finishing the payment');
+                    }
+                    })
+                }}
+                
+                );
+            });
+        });
+    </script>
+    <script type="text/javascript">
       // For example trigger on button clicked, or any time you need
       var payButton = document.getElementById('pay-button');
       payButton.addEventListener('click', function () {
         // Trigger snap popup. @TODO: Replace TRANSACTION_TOKEN_HERE with your transaction token
-        window.snap.pay('{{$snap_token}}', {
+        window.snap.pay('{{ $snapToken }}', {
           onSuccess: function(result){
             /* You may add your own implementation here */
             alert("payment success!"); console.log(result);
@@ -143,5 +181,5 @@
         })
         // customer will be redirected after completing payment pop-up
       });
-  </script> --}}
+  </script> 
 @endsection

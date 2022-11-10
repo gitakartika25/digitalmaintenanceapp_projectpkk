@@ -13,17 +13,51 @@ class CartController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         ////
+        
+        $total = $request->query('total');
+        $name = $request->query('name');
         // // Set your Merchant Server Key
-        // \Midtrans\Config::$serverKey = 'SB-Mid-server-tbxZcKbGDBZvnJfKqFUvEA56';
-        // // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
-        // \Midtrans\Config::$isProduction = false;
-        // // Set sanitization on (default)
-        // \Midtrans\Config::$isSanitized = true;
-        // // Set 3DS transaction for credit card to true
-        // \Midtrans\Config::$is3ds = true;
+        \Midtrans\Config::$serverKey = 'SB-Mid-server-tbxZcKbGDBZvnJfKqFUvEA56';
+        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+        \Midtrans\Config::$isProduction = false;
+        // Set sanitization on (default)
+        \Midtrans\Config::$isSanitized = true;
+        // Set 3DS transaction for credit card to true
+        \Midtrans\Config::$is3ds = true;
+        
+        $params = array(
+            'transaction_details' => array(
+                'order_id' => rand(),
+                'gross_amount' => $total,
+            ),
+            'customer_details' => array(
+                'first_name' => $name,
+                'last_name' => '',
+                'email' => 'budi.pra@example.com',
+                'phone' => '08111222333',
+            ),
+        );
+        
+        $snapToken = \Midtrans\Snap::getSnapToken($params);
+        // dd($snapToken);
+        return $snapToken;
+    }
+
+    public function index2(){
+        $cart = transaction_detail::all();
+        $cartnumb = transaction_detail::count();
+        ////
+        // // Set your Merchant Server Key
+        \Midtrans\Config::$serverKey = 'SB-Mid-server-tbxZcKbGDBZvnJfKqFUvEA56';
+        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+        \Midtrans\Config::$isProduction = false;
+        // Set sanitization on (default)
+        \Midtrans\Config::$isSanitized = true;
+        // Set 3DS transaction for credit card to true
+        \Midtrans\Config::$is3ds = true;
         
         $params = array(
             'transaction_details' => array(
@@ -38,16 +72,16 @@ class CartController extends Controller
             ),
         );
         
-        // $snapToken = \Midtrans\Snap::getSnapToken($params);
-        // return view('users.cart', ['snap_token'=>$snapToken]);
-    }
-
-    public function index2(){
-        $cart = transaction_detail::all();
-        $cartnumb = transaction_detail::count();
-        return view('users.cart', compact ('cart','cartnumb'));
+        $snapToken = \Midtrans\Snap::getSnapToken($params);
+        // $datapay = ['snap_token'=>$snapToken];
+        // dd($snapToken);
+        return view('users.cart', compact ('cart','cartnumb','snapToken'));
 
     }
+    public function ajaxpay() {
+        $msg = "This is a simple message.";
+        return response()->json(array('msg'=> $msg), 200);
+     }
 
 
     /**
