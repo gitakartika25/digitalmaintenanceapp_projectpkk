@@ -82,6 +82,16 @@ class CartController extends Controller
         $msg = "This is a simple message.";
         return response()->json(array('msg'=> $msg), 200);
      }
+    public function updatetoken(Request $request) {
+        $token = $request->query('token');
+        $id = $request->query('id');
+        transactions::where('customer_id', $id)
+              ->first()
+              ->update(['token' => $token]);
+        // return $updatetoken;
+        // $updatetoken->update(['token'=>$token]);
+        return "success";
+    }
 
 
     /**

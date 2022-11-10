@@ -88,6 +88,7 @@ Route::middleware(['auth', 'user'])->group(function () {
     
         Route::get('/cart', [CartController::class, 'index2'])->name('cart.index2');
         Route::get('/cartpay', [CartController::class, 'index'])->name('cart.index');
+        // Route::get('/updatetoken', [CartController::class, 'updatetoken'])->name('cart.index');
         Route::get('/cartpayajax', [CartController::class, 'ajaxpay'])->name('cart.index');
         
         Route::get('/cart/{id}', [CartController::class, 'destroy'])->name('destroy');
@@ -123,3 +124,5 @@ Route::middleware(['auth', 'user'])->group(function () {
       
     
     });
+
+    Route::get('/updatetoken', [CartController::class, 'updatetoken']);

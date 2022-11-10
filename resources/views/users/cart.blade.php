@@ -27,7 +27,7 @@
                                     <th class="product-name">Product</th>
                                     <th class="product-price">Price</th>
                                     <th class="product-quantity">Quantity</th>
-                                    <th class="product-price">total</th>
+                                    {{-- <th class="product-total">Total</th> --}}
                                     <th class="product-remove">Remove</th>
                                 </tr>
                             </thead>
@@ -98,18 +98,24 @@
                                     <h3 class="text-black h4 text-uppercase">Cart Totals</h3>
                                 </div>
                             </div>
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <span class="text-black">Subtotal</span>
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    <strong class="text-black">Rp{{ $c->product->price }}</strong>
+                                </div>
+                            </div>
                             <div class="row mb-5">
                                 <div class="col-md-6">
                                     <span class="text-black">Total</span>
                                 </div>
                                 <div class="col-md-6 text-right">
-<<<<<<< HEAD
-                                    <strong value="{{ $c->product->price }}" id="total2" class="text-black">Rp{{ $c->product->price }}</strong>
-                                    <input type="hidden" value="{{ $c->product->price }}" id="datatotal">
+                                    <!-- <strong value="{{ $c->product->price }}" id="total2" class="text-black">Rp{{ $c->product->price }}</strong> -->
+                                    <input type="hidden" value="{{ $total }}" id="datatotal">
                                     <input type="hidden" value="{{ Auth::user()->name}}" id="namepay">
-=======
+                                    <input type="hidden" value="{{ Auth::user()->id}}" id="idpay">
                                     <strong class="text-black">Rp{{ $total }}</strong>
->>>>>>> c4b851c210d5eac191377145796c8c4e336ba00e
                                 </div>
                             </div>
 
@@ -131,12 +137,16 @@
     
     <script>
         $(document).ready(function(){
+            var token = "";
             $("button").click(function(){
                 var total = $("#datatotal").val();
                 var name = $("#namepay").val();
-                // console.log(str);
+                var id = $("#idpay").val();
                 $.ajax({url: "http://127.0.0.1:8000/cartpay?total="+total+"&name="+name, success: function(result){
-                  $("#div1").html(result);  
+                  token = result;
+                    $.ajax({url: "http://127.0.0.1:8000/updatetoken?token="+token+"&id="+id, success: function(resulttoken){
+                    console.log(resulttoken);
+                    }});
                   window.snap.pay(result, {
                     onSuccess: function(result){
                         /* You may add your own implementation here */
@@ -155,9 +165,8 @@
                         alert('you closed the popup without finishing the payment');
                     }
                     })
-                }}
-                
-                );
+                }});
+                console.log(token);
             });
         });
     </script>
