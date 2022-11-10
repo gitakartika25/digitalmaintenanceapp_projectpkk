@@ -151,6 +151,9 @@
                     onSuccess: function(result){
                         /* You may add your own implementation here */
                         alert("payment success!"); console.log(result);
+                        $.ajax({url: "http://127.0.0.1:8000/updatestatus?id="+id, success: function(resultstatus){
+                        console.log(resultstatus);
+                        }});
                     },
                     onPending: function(result){
                         /* You may add your own implementation here */

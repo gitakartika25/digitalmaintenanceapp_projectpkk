@@ -78,18 +78,19 @@ class CartController extends Controller
         return view('users.cart', compact ('cart','cartnumb','snapToken'));
 
     }
-    public function ajaxpay() {
-        $msg = "This is a simple message.";
-        return response()->json(array('msg'=> $msg), 200);
+    public function updatestatus(Request $request) {
+        $id = $request->query('id');
+        transactions::where('customer_id', $id)
+              ->first()
+              ->update(['token' => $token]);
+        return "success";
      }
     public function updatetoken(Request $request) {
         $token = $request->query('token');
         $id = $request->query('id');
         transactions::where('customer_id', $id)
               ->first()
-              ->update(['token' => $token]);
-        // return $updatetoken;
-        // $updatetoken->update(['token'=>$token]);
+              ->update(['status' => 'orderin']);
         return "success";
     }
 
