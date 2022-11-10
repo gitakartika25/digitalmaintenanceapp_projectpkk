@@ -167,7 +167,7 @@ class CartController extends Controller
                     'quantity'=>$quantity,
                     'note'=>'testnote'
                 ]);
-                return redirect('/store');
+                return redirect('/cart');
             }
             $lastid=$a['id'];
         }
