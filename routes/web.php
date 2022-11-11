@@ -89,7 +89,7 @@ Route::resource('profile', ProfileController::class);
         Route::resource('orders', OrdersController::class);
         Route::resource('ordersin', OrdersinController::class);
         Route::get('/historya', [OrdersController::class, 'history']);
-});
+// });
 
 
 
@@ -148,7 +148,7 @@ Route::get('/about', function () {
 Route::get('/store', [ProductController::class, 'index2'])->name('store'); //jangan dimasukkan middleware
 
 
-
+});
 // Route::post('/cartpay', [CartController::class, 'index']);
 //Halaman user middleware
 
@@ -202,5 +202,3 @@ Route::middleware(['auth', 'user'])->group(function () {
       
     
     });
-
-    // Route::get('/updatetoken', [CartController::class, 'updatetoken']);

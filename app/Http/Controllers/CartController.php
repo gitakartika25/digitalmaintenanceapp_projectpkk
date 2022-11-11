@@ -88,7 +88,7 @@ class CartController extends Controller
         $cartnumb = transaction_detail::all()->where('transactions_id',$getIdTrans->id)->count();
         return $cartnumb;
     }
-     public function updatestatus(Request $request) {
+     public function updatetoken(Request $request) {
          $id = $request->query('id');
          $token = $request->query('token');
          transactions::where('customer_id', $id)
@@ -96,8 +96,7 @@ class CartController extends Controller
                ->update(['token' => $token]);
          return "success";
       }
-    public function updatetoken(Request $request) {
-        $token = $request->query('token');
+    public function updatestatus(Request $request) {
         $id = $request->query('id');
         transactions::where('customer_id', $id)
               ->first()
@@ -197,7 +196,7 @@ class CartController extends Controller
             'customer_id' => $userid,
             'rent_date'=>date('Y-m-d'),
             'return_date'=>date('Y-m-d'),
-            'status'=>'orderin',
+            'status'=>'unpaid',
             'token'=>'token'
         ]);
         transaction_detail::create([
