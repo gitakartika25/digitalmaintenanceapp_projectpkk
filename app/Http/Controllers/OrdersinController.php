@@ -86,6 +86,8 @@ class OrdersinController extends Controller
         $ordersin->employee_id = $request->employ;
         $ordersin->status = $request->status;
         $ordersin->save();
+
+        return redirect('ordersin');
     }
 
     /**
