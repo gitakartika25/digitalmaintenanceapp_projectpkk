@@ -49,6 +49,8 @@ class CartController extends Controller
     }
 
     public function index2(){
+        $total = 0;
+        $harga = 0;
         $cart = transaction_detail::all();
         $cartnumb = transaction_detail::count();
         ////
@@ -77,11 +79,12 @@ class CartController extends Controller
         $snapToken = \Midtrans\Snap::getSnapToken($params);
         // $datapay = ['snap_token'=>$snapToken];
         // dd($snapToken);
-        return view('users.cart', compact ('cart','cartnumb','snapToken'));
+        return view('users.cart', compact ('cart','cartnumb','snapToken', 'total','harga'));
 
     }
     public function updatestatus(Request $request) {
         $id = $request->query('id');
+        $token = $request->query('token');
         transactions::where('customer_id', $id)
               ->first()
               ->update(['token' => $token]);
