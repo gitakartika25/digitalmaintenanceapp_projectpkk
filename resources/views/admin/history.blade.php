@@ -58,7 +58,7 @@
                             </td>
                             <td scope="row">{{ $loop->iteration }}</td>
                             <td> {{ $o->ename }}</td>
-                            <td> {{ $o->cname }}</td>
+                            <td> {{ $o->note }}</td>
                             <td> {{ $o->product_name }}</td>
                             <td> {{ $o->quantity }}</td>
                             <td> {{ $o->rent_date }}</td>
