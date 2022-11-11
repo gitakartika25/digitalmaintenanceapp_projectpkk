@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\transaction_detail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -30,7 +31,12 @@ class HomeController extends Controller
             return view('admin.dashboard');
         } elseif (Auth::user()->role_id == '1') {
             $product = Product::all();
-            return view('users.home', compact('product'));
+            $cartnumb = transaction_detail::all()->where('customer_id', Auth::user()->id)->count();
+            return view('users.home', compact('product', 'cartnumb'));
+        }else{
+            $product = Product::all();
+            $cartnumb = transaction_detail::all()->where('customer_id', Auth::user()->id)->count();
+            return view('users.home', compact('product', 'cartnumb'));
         }
 
           

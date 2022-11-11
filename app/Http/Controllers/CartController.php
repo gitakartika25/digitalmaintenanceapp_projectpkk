@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\transactions;
 use App\Models\transaction_detail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Veritrans;
 class CartController extends Controller
 {
@@ -13,10 +15,48 @@ class CartController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         ////
-        // Set your Merchant Server Key
+        
+        $total = $request->query('total');
+        $name = $request->query('name');
+        // // Set your Merchant Server Key
+        \Midtrans\Config::$serverKey = 'SB-Mid-server-tbxZcKbGDBZvnJfKqFUvEA56';
+        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+        \Midtrans\Config::$isProduction = false;
+        // Set sanitization on (default)
+        \Midtrans\Config::$isSanitized = true;
+        // Set 3DS transaction for credit card to true
+        \Midtrans\Config::$is3ds = true;
+        
+        $params = array(
+            'transaction_details' => array(
+                'order_id' => rand(),
+                'gross_amount' => $total,
+            ),
+            'customer_details' => array(
+                'first_name' => $name,
+                'last_name' => '',
+                'email' => 'budi.pra@example.com',
+                'phone' => '08111222333',
+            ),
+        );
+        
+        $snapToken = \Midtrans\Snap::getSnapToken($params);
+        // dd($snapToken);
+        return $snapToken;
+    }
+
+    public function index2(){
+        $total = 0;
+        $harga = 0;
+        $getIdTrans = transactions::all()->where('customer_id',Auth::user()->id)->first();
+        // dd($getIdTrans);
+        $cart = transaction_detail::all()->where('transactions_id',$getIdTrans->id);
+        $cartnumb = transaction_detail::all()->where('transactions_id',$getIdTrans->id)->count();
+        ////
+        // // Set your Merchant Server Key
         \Midtrans\Config::$serverKey = 'SB-Mid-server-tbxZcKbGDBZvnJfKqFUvEA56';
         // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
         \Midtrans\Config::$isProduction = false;
@@ -39,8 +79,27 @@ class CartController extends Controller
         );
         
         $snapToken = \Midtrans\Snap::getSnapToken($params);
-        return view('users.cart', ['snap_token'=>$snapToken]);
+        
+        return view('users.cart', compact ('cart','cartnumb','snapToken', 'total','harga'));
+
     }
+    public function updatestatus(Request $request) {
+        $id = $request->query('id');
+        $token = $request->query('token');
+        transactions::where('customer_id', $id)
+              ->first()
+              ->update(['token' => $token]);
+        return "success";
+     }
+    public function updatetoken(Request $request) {
+        $token = $request->query('token');
+        $id = $request->query('id');
+        transactions::where('customer_id', $id)
+              ->first()
+              ->update(['status' => 'orderin']);
+        return "success";
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -82,7 +141,7 @@ class CartController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
@@ -105,7 +164,10 @@ class CartController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $cart = transaction_detail::find($id);
+        $cart->delete();
+
+        return redirect()->route('cart.index2')->with('success', 'Data berhasil dihapus !');
     }
 
     public function addtocard(Request $request){
@@ -122,7 +184,7 @@ class CartController extends Controller
                     'quantity'=>$quantity,
                     'note'=>'testnote'
                 ]);
-                return redirect('/store');
+                return redirect('/cart');
             }
             $lastid=$a['id'];
         }

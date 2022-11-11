@@ -60,12 +60,11 @@
             <div class="block-38-img">
               <div class="block-38-header">
                 <img src="{{ asset('template_user/images/IMG_9218.JPG') }}" alt="Image placeholder" class="mb-4">
-                <h3 class="block-38-heading h4">Elizabeth Graham</h3>
-                <p class="block-38-subheading">CEO/Co-Founder</p>
+                <h3 class="block-38-heading h4">Muhammad Dhomanhuri Malik Illyas A., Md. S., Tr., T.</h3>
+                <p class="block-38-subheading">Head Electronics Laborative</p>
               </div>
               <div class="block-38-body">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae aut minima nihil sit distinctio
-                  recusandae doloribus ut fugit officia voluptate soluta. </p>
+                <p>President director of company laborative branch Electronics </p>
               </div>
             </div>
           </div>
@@ -74,13 +73,12 @@
           <div class="block-38 text-center">
             <div class="block-38-img">
               <div class="block-38-header">
-                <img src="{{ asset('template_user/images/person_2.jpg') }}" alt="Image placeholder" class="mb-4">
-                <h3 class="block-38-heading h4">Jennifer Greive</h3>
-                <p class="block-38-subheading">Co-Founder</p>
+                <img src="{{ asset('template_user/images/gita.jpeg') }}" alt="Image placeholder" class="mb-4">
+                <h3 class="block-38-heading h4">Gita Kartika Pariwara A.Md.Kom</h3>
+                <p class="block-38-subheading">Head Informatics Laborative</p>
               </div>
               <div class="block-38-body">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae aut minima nihil sit distinctio
-                  recusandae doloribus ut fugit officia voluptate soluta. </p>
+                <p>President director of company laborative branch Informatics </p>
               </div>
             </div>
           </div>
@@ -91,13 +89,12 @@
           <div class="block-38 text-center">
             <div class="block-38-img">
               <div class="block-38-header">
-                <img src="{{ asset('template_user/images/person_5.jpg') }}" alt="Image placeholder" class="mb-4">
-                <h3 class="block-38-heading h4">Elizabeth Graham</h3>
-                <p class="block-38-subheading">CEO/Co-Founder</p>
+                <img src="{{ asset('template_user/images/arya.jpeg') }}" alt="Image placeholder" class="mb-4">
+                <h3 class="block-38-heading h4">Arya Putra Hadi Yulianto S., Tr., T.</h3>
+                <p class="block-38-subheading">Head Telekomunication Laborative</p>
               </div>
               <div class="block-38-body">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae aut minima nihil sit distinctio
-                  recusandae doloribus ut fugit officia voluptate soluta. </p>
+                <p>President director of company laborative branch Telekomunication. </p>
               </div>
             </div>
           </div>
@@ -107,12 +104,11 @@
             <div class="block-38-img">
               <div class="block-38-header">
                 <img src="{{ asset('template_user/images/person_1.jpg') }}" alt="Image placeholder" class="mb-4">
-                <h3 class="block-38-heading h4">Jennifer Greive</h3>
-                <p class="block-38-subheading">Co-Founder</p>
+                <h3 class="block-38-heading h4">Azzam</h3>
+                <p class="block-38-subheading">Head Kimia Laborative</p>
               </div>
               <div class="block-38-body">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae aut minima nihil sit distinctio
-                  recusandae doloribus ut fugit officia voluptate soluta. </p>
+                <p>President director of company laborative branch Kimia. </p>
               </div>
             </div>
           </div>

@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('histories', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('transactions_id')->constrained('transactions');
+            $table->foreignId('transactions_detail_id')->constrained('transaction_details');
             
             $table->timestamps();
         });

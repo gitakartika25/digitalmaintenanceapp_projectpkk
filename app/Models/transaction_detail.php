@@ -8,6 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class transaction_detail extends Model
 {
     protected $guarded = ['id'];
+    protected $table = 'transaction_details';
     use HasFactory;
-    // protected $guarded = ['id'];
+
+    
+    public function product(){
+
+        return $this ->belongsTo(Product::class, 'products_id');
+    }
+
 }

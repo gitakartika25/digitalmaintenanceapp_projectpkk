@@ -17,25 +17,28 @@
   <link rel="stylesheet" href="{{ asset('template_user/css/owl.carousel.min.css') }}">
   <link rel="stylesheet" href="{{ asset('template_user/css/owl.theme.default.min.css') }}">
 
+ <!-- inject:css -->
+ {{-- <link rel="stylesheet" href="{{ asset('template/css/vertical-layout-light/style.css') }}"> --}}
+ <!-- endinject -->
+ {{-- <link rel="shortcut icon" href="{{ asset('template/images/favicon.png') }}" /> --}}
 
   <link rel="stylesheet" href="{{ asset('template_user/css/aos.css') }}">
 
   <link rel="stylesheet" href="{{ asset('template_user/css/style.css') }}">
+  
 
   <style>
     a.btn-hover:hover{
       color: black !important;
     }
   </style>
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   
     <!-- @TODO: replace SET_YOUR_CLIENT_KEY_HERE with your client key -->
     <script type="text/javascript"
       src="https://app.sandbox.midtrans.com/snap/snap.js"
       data-client-key="SB-Mid-client-jn_QXOuWTdYCj_Jj"></script>
     <!-- Note: replace with src="https://app.midtrans.com/snap/snap.js" for Production environment -->
-
-
 </head>
 
 <body>
@@ -85,7 +88,7 @@
                   </ul>
                 </li> --}}
                 <li class="@if(Request::is('about')) active @endif"><a href="/about">About</a></li>
-                <li class="@if(Request::is('contact')) active @endif"><a href="/contact">Contact</a></li>
+                <!-- <li class="@if(Request::is('contact')) active @endif"><a href="/contact">Contact</a></li> -->
               </ul>
             </nav>
           </div>
@@ -99,20 +102,22 @@
                       <a class="btn btn-primary btn-hover text-light" style="border-radius: 20px;" href="{{ route('register') }}">Register</a>
               @endif
             @else
-            <a href="#" class="icons-btn d-inline-block js-search-open"><span class="icon-search"></span></a>
-            <a href="/cart" class="icons-btn d-inline-block bag"><span class="icon-shopping-bag"></span><span class="number">2</span></a>
-            <a href="/history" class="btn btn-rounded btn-icon"><span class="icon-history"></span></a>
+           
+            <a href="/cart" class="icons-btn d-inline-block bag"><span class="icon-shopping-bag"></span><span class="number">{{ $cartnumb }}</span></a>
+            <a href="/history" class="icons-btn d-inline-block book"><span class="icon-book"></span></a>
+
             <a class="nav-item dropdown">
               {{-- <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                   {{ Auth::user()->name }}
               </a> --}}
 
-              <a href="#" class="icons-btn d-inline-block bag" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                  <span class="icon-user"></span>
+              <a href="#" class="icons-btn d-inline-block user" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                <span class=""> <img src="{{ asset('storage/' .Auth::user()->foto) }}" width="30px" height="30px" style="border:1px solid black; border-radius: 50%" alt="profile"/></span></a>{{ Auth::user()->name }}
               </a>
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="{{ route ('profile.edit', Auth::user()->id) }}">
                     <i class="fa-solid fa-gear"></i>&nbsp;&nbsp;Profile
+                   
                   </a>
 
                   <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -167,8 +172,7 @@
 
             <div class="block-7">
               <h3 class="footer-heading mb-4">About <strong class="text-primary">Laborative</strong></h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius quae reiciendis distinctio voluptates
-                sed dolorum excepturi iure eaque, aut unde.</p>
+              <p>Expert bussines partner to rental tools or device about laboratorium all categories.</p>
             </div>
 
           </div>
@@ -178,7 +182,7 @@
               <li><a href="/home">Home</a></li>
               <li><a href="/about">About</a></li>
               <li><a href="/store">Store</a></li>
-              <li><a href="/cart">Cart</a></li>
+              <li><a href="{{url('cart')}}">Cart</a></li>
             </ul>
           </div>
 
@@ -202,7 +206,7 @@
               Copyright &copy;
               <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made
               with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank"
-                class="text-primary">Colorlib</a>. Downloaded from <a href="https://themeslab.org/" target="_blank">Themeslab</a>
+                class="text-primary">C++ Team</a>
               <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
             </p>
           </div>
