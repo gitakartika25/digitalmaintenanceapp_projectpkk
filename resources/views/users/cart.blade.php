@@ -27,7 +27,7 @@
                                     <th class="product-name">Product</th>
                                     <th class="product-price">Price</th>
                                     <th class="product-quantity">Quantity</th>
-                                    {{-- <th class="product-total">Total</th> --}}
+                                    <th class="product-total">Total</th>
                                     <th class="product-remove">Remove</th>
                                 </tr>
                             </thead>
@@ -99,14 +99,14 @@
                                     <h3 class="text-black h4 text-uppercase">Cart Totals</h3>
                                 </div>
                             </div>
-                            <div class="row mb-3">
-                                <div class="col-md-6">
+                            {{-- <div class="row mb-3">
+                                {{-- <div class="col-md-6">
                                     <span class="text-black">Subtotal</span>
                                 </div>
                                 <div class="col-md-6 text-right">
                                     <strong class="text-black">Rp{{ $c->product->price }}</strong>
-                                </div>
-                            </div>
+                                </div> 
+                            </div> --}}
                             <div class="row mb-5">
                                 <div class="col-md-6">
                                     <span class="text-black">Total</span>
