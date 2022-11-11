@@ -89,6 +89,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('orders', OrdersController::class);
     Route::resource('ordersin', OrdersinController::class);
     Route::get('/historya', [OrdersController::class, 'history']);
+    Route::get('proses/{proses}', [OrdersinController::class, 'proses'])->name('proses');
 });
 
 
