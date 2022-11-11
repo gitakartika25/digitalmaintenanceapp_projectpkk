@@ -51,8 +51,10 @@ class CartController extends Controller
     public function index2(){
         $total = 0;
         $harga = 0;
-        $cart = transaction_detail::all();
-        $cartnumb = transaction_detail::count();
+        $getIdTrans = transactions::all()->where('customer_id',Auth::user()->id)->first();
+        // dd($getIdTrans);
+        $cart = transaction_detail::all()->where('transactions_id',$getIdTrans->id);
+        $cartnumb = transaction_detail::all()->where('transactions_id',$getIdTrans->id)->count();
         ////
         // // Set your Merchant Server Key
         \Midtrans\Config::$serverKey = 'SB-Mid-server-tbxZcKbGDBZvnJfKqFUvEA56';
@@ -77,8 +79,7 @@ class CartController extends Controller
         );
         
         $snapToken = \Midtrans\Snap::getSnapToken($params);
-        // $datapay = ['snap_token'=>$snapToken];
-        // dd($snapToken);
+        
         return view('users.cart', compact ('cart','cartnumb','snapToken', 'total','harga'));
 
     }
