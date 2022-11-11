@@ -6,7 +6,22 @@
         <div class="card-body">
             <h4 class="card-title">Product</h4>
 
-            <a href="{{ url('product/create') }}" class="btn btn-primary">Add Product</a>
+
+            <div class="row ">
+                <div class="col-7">
+                    <a href="{{ url('product/create') }}" class="btn btn-primary">Add Product</a>
+                </div>
+                <div class="col-3">
+                    <form action="" method="POST">
+                    @csrf
+                    <input class="form-control" style="border-radius: 12px" type="text" name="q"
+                        placeholder="Search here..." />
+                </div>
+                <div class="col">
+                        <button class="btn btn-primary">Search</button>
+                    </form>
+                </div>
+            </div>
 
 
             <div class="table-responsive">
@@ -16,7 +31,7 @@
                         <tr>
                             <th>Action</th>
                             <th>No</th>
-                            {{-- <th>Id</th> --}}
+                            <th>Id</th>
                             <th>Image</th>
                             <th>Product</th>
                             <th>Category</th>
@@ -60,6 +75,7 @@
                                     </div>
                                 </td>
                                 <td scope="row">{{ $loop->iteration }}</td>
+                                <td> {{ $p->id }}</td>
                                 <td> <img src="{{ asset('storage/' . $p->image) }}" alt=""></td>
                                 <td> {{ $p->product_name }}</td>
                                 <td> {{ $p->category->category }}</td>
@@ -73,6 +89,10 @@
                         @endforeach
                     </tbody>
                 </table>
+                <br>
+                <div class="d-flex">
+                    {{ $product->links() }}
+                </div>
             </div>
         </div>
     </div>
