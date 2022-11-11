@@ -94,6 +94,7 @@ class ProfileController extends Controller
         elseif(Auth::user()->role_id == 1){
             return view('users.profile', compact('profile', 'prof', 'pro', 'reg', 'dis', 'vil', 'lreg', 'ldis', 'lvil'));
         }
+    }
 
     /**
      * Update the specified resource in storage.
