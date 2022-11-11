@@ -103,7 +103,7 @@
               @endif
             @else
            
-            <a href="/cart" class="icons-btn d-inline-block bag"><span class="icon-shopping-bag"></span><span class="number">{{ $cartnumb }}</span></a>
+            <a href="/cart" class="icons-btn d-inline-block bag"><span class="icon-shopping-bag"></span><span class="number"><div id="cartt"></div></span></a>
             <a href="/history" class="icons-btn d-inline-block book"><span class="icon-book"></span></a>
             <a class="nav-item dropdown">
               {{-- <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -216,7 +216,15 @@
   </div>
   
 
-
+  <script>
+    // A $( document ).ready() block.
+    $( document ).ready(function() {
+      $.get( "{{url('cartcount')}}", function( data ) {
+        $( "#cartt" ).html( data );
+        // alert( "Load was performed."+data );
+      });
+    });
+  </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <script src="{{ asset('template_user/js/jquery-3.3.1.min.js') }}"></script>

@@ -83,14 +83,19 @@ class CartController extends Controller
         return view('users.cart', compact ('cart','cartnumb','snapToken', 'total','harga'));
 
     }
-    public function updatestatus(Request $request) {
-        $id = $request->query('id');
-        $token = $request->query('token');
-        transactions::where('customer_id', $id)
-              ->first()
-              ->update(['token' => $token]);
-        return "success";
-     }
+    public function cartcount() {
+        $getIdTrans = transactions::all()->where('customer_id',Auth::user()->id)->first();
+        $cartnumb = transaction_detail::all()->where('transactions_id',$getIdTrans->id)->count();
+        return $cartnumb;
+    }
+     public function updatestatus(Request $request) {
+         $id = $request->query('id');
+         $token = $request->query('token');
+         transactions::where('customer_id', $id)
+               ->first()
+               ->update(['token' => $token]);
+         return "success";
+      }
     public function updatetoken(Request $request) {
         $token = $request->query('token');
         $id = $request->query('id');

@@ -79,6 +79,8 @@ Route::get('/store', [ProductController::class, 'index2'])->name('store'); //jan
 
 // Route::post('/cartpay', [CartController::class, 'index']);
 //Halaman user middleware
+
+// Route::get('/cartcount', [CartController::class, 'cartcount']);
 Route::middleware(['auth', 'user'])->group(function () {
     
         Route::resource('profile', ProfileController::class);
@@ -89,6 +91,7 @@ Route::middleware(['auth', 'user'])->group(function () {
     
         Route::get('/cart', [CartController::class, 'index2'])->name('cart.index2');
         Route::get('/cartpay', [CartController::class, 'index'])->name('cart.index');
+        Route::get('/cartcount', [CartController::class, 'cartcount'])->name('cart.cartcount');
         Route::get('/updatetoken', [CartController::class, 'updatetoken'])->name('cart.index');
         Route::get('/updatestatus', [CartController::class, 'updatestatus'])->name('cart.index');
         
