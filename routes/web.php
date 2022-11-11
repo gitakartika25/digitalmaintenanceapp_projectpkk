@@ -6,6 +6,7 @@ use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 
@@ -45,6 +46,7 @@ Route::get('/index', function () {
 // Halaman Admin middleware
 Route::middleware(['auth', 'admin'])->group(function () {
 
+
     // Route::get('/userCRUD', function () {
     //     return view('admin.useradminCRUD');
     // });
@@ -73,6 +75,12 @@ Route::resource('profile', ProfileController::class);
         Route::get('dashboard', function () {
             return view('admin.dashboard');
         });
+
+        // Route::get('dashboard', function () {
+        //     return view('admin.dashboard');
+        // });
+        Route::resource('dashboard', DashboardController::class);
+
     
         // Route::get('/dashboard', [HomeController::class, 'index'])->name('admin.dashboard');
         Route::resource('product', ProductController::class);
