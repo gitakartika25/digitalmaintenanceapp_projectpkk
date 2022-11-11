@@ -23,6 +23,7 @@ class OrdersController extends Controller
         ->join('users as c', 'c.id', '=', 'transactions.customer_id', )
         ->join('users as e', 'e.id', '=', 'transactions.employee_id')
         ->select('transactions.*', 'transaction_details.*', 'products.product_name', 'c.name as cname', 'e.name as ename')
+        ->where('status', 'onproces')
         ->get();
         // dd($orders);
         return view('admin.orders', compact('orders'));
@@ -95,7 +96,7 @@ class OrdersController extends Controller
     }
     public function history()
     {
-        $orders = DB::table('transactions')
+        $history = DB::table('transactions')
         ->join('transaction_details', 'transactions.id', '=', 'transaction_details.transactions_id')
         ->join('products', 'products.id', '=', 'transaction_details.products_id')
         ->join('users as c', 'c.id', '=', 'transactions.customer_id', )
@@ -104,6 +105,6 @@ class OrdersController extends Controller
         ->where('status', 'selesai')
         ->get();
         // dd($orders);
-        return view('admin.history', compact('orders'));
+        return view('admin.history', compact('history'));
     }
 }

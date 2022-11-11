@@ -105,6 +105,7 @@
            
             <a href="/cart" class="icons-btn d-inline-block bag"><span class="icon-shopping-bag"></span><span class="number">{{ $cartnumb }}</span></a>
             <a href="/history" class="icons-btn d-inline-block book"><span class="icon-book"></span></a>
+
             <a class="nav-item dropdown">
               {{-- <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                   {{ Auth::user()->name }}
