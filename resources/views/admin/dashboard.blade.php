@@ -9,35 +9,35 @@
                     <div class="card card-tale">
                         <div class="card-body">
                             <p class="mb-4">Total Products</p>
-                            <p class="fs-30 mb-2">4006</p>
-                            <p>10.00% (30 days)</p>
+                            <p class="fs-30 mb-2">{{ $product }}</p>
+                            {{-- <p>10.00% (30 days)</p> --}}
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3 mb-4 stretch-card transparent">
                     <div class="card card-dark-blue">
                         <div class="card-body">
-                            <p class="mb-4">Total Orders</p>
-                            <p class="fs-30 mb-2">61344</p>
-                            <p>22.00% (30 days)</p>
+                            <p class="mb-4">Total Orders In</p>
+                            <p class="fs-30 mb-2">{{ $orderin }}</p>
+                            {{-- <p>22.00% (30 days)</p> --}}
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3 mb-4  stretch-card transparent">
                     <div class="card card-light-blue">
                         <div class="card-body">
-                            <p class="mb-4">Total Employees</p>
-                            <p class="fs-30 mb-2">34040</p>
-                            <p>2.00% (30 days)</p>
+                            <p class="mb-4">Total Orders Out</p>
+                            <p class="fs-30 mb-2">{{ $orderout }}</p>
+                            {{-- <p>2.00% (30 days)</p> --}}
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3 mb-4 stretch-card transparent">
                     <div class="card card-light-danger">
                         <div class="card-body">
-                            <p class="mb-4">Total Members</p>
-                            <p class="fs-30 mb-2">47033</p>
-                            <p>0.22% (30 days)</p>
+                            <p class="mb-4">Total Employee</p>
+                            <p class="fs-30 mb-2">{{ $employee }}</p>
+                            {{-- <p>0.22% (30 days)</p> --}}
                         </div>
                     </div>
                 </div>
