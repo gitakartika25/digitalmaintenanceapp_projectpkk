@@ -104,7 +104,7 @@
               {{ Auth::user()->name }}
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-              <a class="dropdown-item">
+              <a class="dropdown-item" href="{{url('profile/'.Auth::user()->id.'/edit')}}">
                 <i class="ti-settings text-primary"></i>
                 Settings
               </a>
@@ -463,6 +463,57 @@
   <script src="{{ asset('template/js/Chart.roundedBarCharts.js') }}"></script>
   <!-- End custom js for this page-->
   @yield('js')
+  {{-- Add js --}}
+  <script>
+    function preview() {
+    frame.src=URL.createObjectURL(event.target.files[0]);
+  }
+  // function azzam(id){
+  //   console.log(id);
+  //     $.ajax({
+  //       type: "get",
+  //       url:`http://www.emsifa.com/api-wilayah-indonesia/api/regencies/${id}.json`,
+  //       dataType: "json",
+  //       success: function(response){
+  //         console.log(response);
+  //         $('#a').children().remove();
+  //         response.map((value)=>{
+  //           $('#a').append($('<option>',{
+  //             value:value.id,
+  //             text:value.name,
+  //           }));
+  //         })
+  //       }
+  //     });
+  // }
+
+
+  function daerah(jenis, id){
+    let dr
+    if(jenis == 'provinces'){
+      dr = 'regencies'
+    }else if(jenis == 'regencies'){
+      dr = 'districts'
+    }else if(jenis == 'districts'){
+      dr = 'villages'
+    }
+      $.ajax({
+        type: "get",
+        url:`http://www.emsifa.com/api-wilayah-indonesia/api/${dr}/${id}.json`,
+        dataType: "json",
+        success: function(response){
+          $(`#${dr}`).children().remove();
+          response.map((value)=>{
+            $(`#${dr}`).append($('<option>',{
+              value:value.id,
+              text:value.name,
+            }));
+          })
+        }
+      });
+  }
+
+</script>
 </body>
 
 </html>

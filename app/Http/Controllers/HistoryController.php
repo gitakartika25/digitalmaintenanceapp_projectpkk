@@ -21,9 +21,8 @@ class HistoryController extends Controller
         ->join('users','users.id','=','transactions.employee_id')
         ->join('transaction_details', 'transactions.id', '=', 'transaction_details.transactions_id')
         ->join('products', 'products.id', '=', 'transaction_details.products_id')
-       
-         ->select('transactions.*', 'transaction_details.*', 'products.product_name', 'users.name')
-        ->where('status', 'selesai')->where('customer_id', Auth::user()->id)
+        ->select('transactions.*', 'transaction_details.quantity', 'products.product_name', 'users.name')
+        ->where('transactions.status','=', 'selesai')->where('transactions.customer_id', Auth::user()->id)
         ->get();
         // $historyUser=transactions::all()->where('customer_id', Auth::user()->id)->where('status','=','selesai');
         $cartnumb = transaction_detail::count();

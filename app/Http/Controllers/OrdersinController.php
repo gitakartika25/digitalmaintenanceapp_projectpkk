@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Ordersin;
 use App\Models\Product;
+use App\Models\transactions;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class OrdersinController extends Controller
@@ -80,7 +82,12 @@ class OrdersinController extends Controller
      */
     public function update(Request $request, Ordersin $ordersin)
     {
-        //
+        // dd($ordersin);
+        $ordersin->employee_id = $request->employ;
+        $ordersin->status = $request->status;
+        $ordersin->save();
+
+        return redirect('ordersin');
     }
 
     /**
@@ -93,4 +100,12 @@ class OrdersinController extends Controller
     {
         //
     }
+    // public function proses(Request $request, Ordersin $ordersin)
+    // {
+    //     $data = transactions::find($ordersin);
+    //     $data->update([
+    //         'employee_id' =>$request->employ,
+    //     ]);
+    //     dd($data);
+    // }
 }

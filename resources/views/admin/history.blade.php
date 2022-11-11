@@ -6,7 +6,7 @@
     <div class="card-body">
         <h4 class="card-title">History</h4>
 
-        <a href="{{ url('orders/create') }}" class="btn btn-primary">Add Orders</a>
+        {{-- <a href="{{ url('orders/create') }}" class="btn btn-primary">Add Orders</a> --}}
 
 
         <div class="table-responsive">
@@ -14,7 +14,7 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>Action</th>
+                        {{-- <th>Action</th> --}}
                         <th>No</th>
                         <th>Employ</th>
                         <th>Customer</th>
@@ -26,9 +26,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($orders as $o)
+                    @foreach ($history as $o)
                         <tr>
-                            <td class="">
+                            {{-- <td class="">
                                 <div class="d-flex align-items-center list-user-action">
                                     <a class="btn btn-sm btn-icon btn-primary py-2"
                                         href="{{ url('orders/' . $o->id . '/edit') }}">
@@ -55,10 +55,10 @@
                                         </form>
                                     </a>
                                 </div>
-                            </td>
+                            </td> --}}
                             <td scope="row">{{ $loop->iteration }}</td>
                             <td> {{ $o->ename }}</td>
-                            <td> {{ $o->cname }}</td>
+                            <td> {{ $o->note }}</td>
                             <td> {{ $o->product_name }}</td>
                             <td> {{ $o->quantity }}</td>
                             <td> {{ $o->rent_date }}</td>
