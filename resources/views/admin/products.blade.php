@@ -8,10 +8,13 @@
 
 
             <div class="row ">
-                <div class="col-7">
+                <div class="ml-3">
                     <a href="{{ url('product/create') }}" class="btn btn-primary">Add Product</a>
                 </div>
-                <div class="col-3">
+                <div class="ml-3">
+                    <a href="/product/cetak_pdf" class="btn btn-success" target="_blank">CETAK PDF</a>
+                </div>
+                {{-- <div class="col-3">
                     <form action="" method="POST">
                     @csrf
                     <input class="form-control" style="border-radius: 12px" type="text" name="q"
@@ -20,7 +23,7 @@
                 <div class="col">
                         <button class="btn btn-primary">Search</button>
                     </form>
-                </div>
+                </div> --}}
             </div>
 
 
