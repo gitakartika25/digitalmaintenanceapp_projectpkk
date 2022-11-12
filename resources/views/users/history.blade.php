@@ -1,5 +1,5 @@
 @extends('master.index_user')
-@section('title', 'Detail Produk')
+@section('title', 'History')
 
 @section('content')
 
