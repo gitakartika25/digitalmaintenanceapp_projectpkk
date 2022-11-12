@@ -24,7 +24,7 @@ class OrdersinController extends Controller
         ->join('products', 'products.id', '=', 'transaction_details.products_id')
         ->join('users', 'users.id', '=', 'transactions.customer_id')
         ->where('employee_id', null)
-        ->select('products.product_name', 'transactions.*', 'transaction_details.*', 'users.name')
+        ->select('products.product_name', 'transactions.*', 'transaction_details.*', 'users.name', 'transactions.id as idt')
         ->get();
         // dd($orderin);
         return view('admin.ordersin', compact('orderin'));

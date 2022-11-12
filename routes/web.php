@@ -72,9 +72,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
 Route::resource('profile', ProfileController::class);
 
-        Route::get('dashboard', function () {
-            return view('admin.dashboard');
-        });
+        // Route::get('dashboard', function () {
+        //     return view('admin.dashboard');
+        // });
 
         // Route::get('dashboard', function () {
         //     return view('admin.dashboard');
@@ -83,12 +83,12 @@ Route::resource('profile', ProfileController::class);
 
     
         // Route::get('/dashboard', [HomeController::class, 'index'])->name('admin.dashboard');
-        Route::resource('product', ProductController::class);
-        Route::resource('category', ProductCategoryController::class);
-        Route::resource('userCRUD', UserController::class);
-        Route::resource('orders', OrdersController::class);
-        Route::resource('ordersin', OrdersinController::class);
-        Route::get('/historya', [OrdersController::class, 'history']);
+        // Route::resource('product', ProductController::class);
+        // Route::resource('category', ProductCategoryController::class);
+        // Route::resource('userCRUD', UserController::class);
+        // Route::resource('orders', OrdersController::class);
+        // Route::resource('ordersin', OrdersinController::class);
+        // Route::get('/historya', [OrdersController::class, 'history']);
 // });
 
 

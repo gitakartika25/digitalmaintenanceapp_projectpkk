@@ -29,7 +29,10 @@
                         <tr>
                             <td class="">
                                 <div class="d-flex align-items-center list-user-action">
-                                    <form action="{{route('ordersin.update', $o->id)}}" method="POST">
+                                    {{-- @foreach ($transaction as $t)
+                                        {{$t->id}}
+                                    @endforeach --}}
+                                    <form action="{{route('ordersin.update', $o->idt)}}" method="POST">
                                         @csrf
                                         @method('PUT')
                                         <input type="hidden" value="{{Auth::user()->id}}" name="employ">
