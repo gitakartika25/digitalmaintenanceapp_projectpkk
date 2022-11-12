@@ -35,7 +35,11 @@ class TestimoniesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = testimonies::create([
+            'testimonies' => $request->testimonies,
+        ]);
+
+        return redirect('history');
     }
 
     /**

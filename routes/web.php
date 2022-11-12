@@ -20,6 +20,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\MidtransController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\OrdersinController;
+use App\Http\Controllers\TestimoniesController;
 use App\Models\Product;
 use App\Models\transaction_detail;
 
@@ -89,7 +90,7 @@ Route::resource('profile', ProfileController::class);
         Route::resource('orders', OrdersController::class);
         Route::resource('ordersin', OrdersinController::class);
         Route::get('/historya', [OrdersController::class, 'history']);
-});
+// });
 
 
 
@@ -140,6 +141,8 @@ Route::middleware(['auth', 'user'])->group(function () {
     Route::get('/checkout', function () {
         return view('users.checkout');
     });
+});
+
 
 Route::get('/about', function () {
     $cartnumb = transaction_detail::count();
@@ -153,6 +156,7 @@ Route::get('/store', [ProductController::class, 'index2'])->name('store'); //jan
 //Halaman user middleware
 Route::middleware(['auth', 'user'])->group(function () {
     
+        Route::resource('testimonies', TestimoniesController::class);
         Route::resource('profile', ProfileController::class);
         
         Route::get('/user', [HomeController::class, 'index'])->name('user.index');
