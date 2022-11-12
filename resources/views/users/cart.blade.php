@@ -113,26 +113,55 @@
                                     <strong class="text-black">Rp{{ $c->product->price }}</strong>
                                 </div> 
                             </div> --}}
+                            
+                            <div class="row mb-5">
+                                <div class="col-md-6">
+                                    <span class="text-black">Jumlah hari</span>
+                                </div>
+                                <div class="col-md-6 text-right">
+                                <input type="hidden" value="{{ $total }}" id="datatotal">
+                                    <input type="hidden" value="{{ Auth::user()->name}}" id="namepay">
+                                    <input type="hidden" value="{{ Auth::user()->id}}" id="idpay">
+                                    <div class="input-group mb-3" style="max-width: 220px;">
+                                        <div class="input-group-prepend">
+                                            <button id="kuranghari" class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
+                                        </div>
+                                        <input id="jumlah" type="text" class="form-control text-center" value="1" placeholder=""
+                                            aria-label="Example text with button addon" aria-describedby="button-addon1">
+                                        <div class="input-group-append">
+                                            <button id="tambahhari" class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-5">
+                                <div class="col-md-6">
+                                    <span class="text-black">Sub total</span>
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    <strong class="text-black">Rp. {{ $total }}</strong>
+                                </div>
+                            </div>
+                            <div class="row mb-5">
+                                <div class="col-md-6">
+                                    <span class="text-black">Ongkir</span>
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    <strong class="text-black">Rp. 15.000</strong>
+                                </div>
+                            </div>
                             <div class="row mb-5">
                                 <div class="col-md-6">
                                     <span class="text-black">Total</span>
                                 </div>
                                 <div class="col-md-6 text-right">
-                                   
-                                    <input type="hidden" value="{{ $total }}" id="datatotal">
-                                    <input type="hidden" value="{{ Auth::user()->name}}" id="namepay">
-                                    <input type="hidden" value="{{ Auth::user()->id}}" id="idpay">
-                                    <strong class="text-black">Rp{{ $total }}</strong>
+                                    <strong class="text-black" id="totalbayar">Rp. {{ $total+15000 }}</strong>
                                 </div>
                             </div>
-
                             <div class="row">
                                 <div class="col-md-12">
-                                    <button class="btn btn-primary btn-lg btn-block">Proceed To
+                                    <button id="cekout" class="btn btn-primary btn-lg btn-block">Proceed To
                                         Checkout</button>
-                                        
-                                        <!-- <div id="div1"><h2>Let jQuery AJAX Change This Text</h2></div>
-                                        <button value="as">Get External Content</button> -->
                                 </div>
                             </div>
                         </div>
@@ -145,8 +174,17 @@
     <script>
         $(document).ready(function(){
             var token = "";
-            $("button").click(function(){
+            let fitotal;
+            $("#tambahhari").click(function(){
+                var jumlahhari = $("#jumlah").val();
+                
                 var total = $("#datatotal").val();
+                console.log(jumlahhari);
+                 fitotal = jumlahhari*total+parseInt(total)+15000;
+                $('#totalbayar').html("Rp. "+fitotal);
+            });
+            $("#cekout").click(function(){
+                var total = fitotal;
                 var name = $("#namepay").val();
                 var id = $("#idpay").val();
                 $.ajax({url: "http://127.0.0.1:8000/cartpay?total="+total+"&name="+name, success: function(result){
