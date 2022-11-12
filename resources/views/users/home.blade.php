@@ -14,8 +14,7 @@
 
                             <div class="row justify-content-center mb-5">
                                 <div class="col-lg-6 text-center">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis ex perspiciatis non
-                                        quibusdam vel quidem.</p>
+                                    <p>Expert bussines partner to rental tools or device about laboratorium all categories.</p>
                                 </div>
                             </div>
 
@@ -35,8 +34,7 @@
                             </h1>
                             <div class="row justify-content-center mb-5">
                                 <div class="col-lg-6 text-center">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis ex perspiciatis non
-                                        quibusdam vel quidem.</p>
+                                    <p>Expert bussines partner to rental tools or device about laboratorium all categories.</p>
                                 </div>
                             </div>
                             <p><a href="/store" class="btn btn-primary px-5 py-3">Shop Now</a></p>
@@ -55,8 +53,7 @@
                     <div class="feature">
                         <span class="wrap-icon flaticon-test-tubes"></span>
                         <h3><a href="#">Biology Laboratory Equipment</a></h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa laborum voluptates excepturi neque
-                            labore .</p>
+                        <p>Provide rental tools or device in biology laboratory equipment.</p>
                         <p><a href="#" class="d-flex align-items-center"><span class="mr-2">Learn more</span> <span
                                     class="icon-keyboard_arrow_right"></span></a></p>
                     </div>
@@ -65,8 +62,7 @@
                     <div class="feature">
                         <span class="wrap-icon flaticon-test-tubes"></span>
                         <h3><a href="#">Chemical Laboratory Equipment</a></h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa laborum voluptates excepturi neque
-                            labore .</p>
+                        <p>Provide rental tools or device in Chemical laboratory equipment.</p>
                         <p><a href="#" class="d-flex align-items-center"><span class="mr-2">Learn more</span> <span
                                     class="icon-keyboard_arrow_right"></span></a></p>
                     </div>
@@ -75,8 +71,7 @@
                     <div class="feature">
                         <span class="wrap-icon flaticon-test-tubes"></span>
                         <h3><a href="#">Physics Laboratory Equipment</a></h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa laborum voluptates excepturi neque
-                            labore .</p>
+                        <p>Provide rental tools or device in Physics laboratory equipment.</p>
                         <p><a href="#" class="d-flex align-items-center"><span class="mr-2">Learn more</span> <span
                                     class="icon-keyboard_arrow_right"></span></a></p>
                     </div>
@@ -118,18 +113,7 @@
         </div>
     </div>
 
-    <div class="site-section bg-image overlay" style="background-image: url('../template_user/images/hero_bg_2.jpg');">
-        <div class="container">
-            <div class="row justify-content-center text-center">
-                <div class="col-lg-7">
-                    <h3 class="text-white">Sign up for discount up to 55% OFF</h3>
-                    <p class="text-white">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo omnis voluptatem
-                        consectetur quam.</p>
-                    <p class="mb-0"><a href="#" class="btn btn-outline-white">Sign up</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
+    
 
     <div class="site-section">
         <div class="container">
@@ -144,56 +128,44 @@
 
                             <div class="testimony">
                                 <blockquote>
-                                    <img src="{{ asset('template_user/images/person_1.jpg') }}" alt="Image"
+                                    <img src="{{ asset('template_user/images/IMG_9218.JPG') }}" alt="Image"
                                         class="img-fluid">
-                                    <p>&ldquo;Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo omnis
-                                        voluptatem consectetur quam tempore obcaecati maiores voluptate aspernatur iusto
-                                        eveniet, placeat ab quod tenetur ducimus. Minus ratione sit quaerat unde.&rdquo;</p>
+                                    <p>&ldquo; as a member, i am very happy to using laborative rental laboratorium
+                                        its provide me with the newest and good quality tools&rdquo;</p>
                                 </blockquote>
 
-                                <p class="author">&mdash; Kelly Holmes</p>
+                                <p class="author">&mdash; Muhammad Dhomanhuri Malik Illyas A., Md. S., Tr., T.</p>
                             </div>
 
                             <div class="testimony">
                                 <blockquote>
-                                    <img src="{{ asset('template_user/images/person_2.jpg') }}" alt="Image"
+                                    <img src="{{ asset('template_user/images/gita.jpeg') }}" alt="Image"
                                         class="img-fluid">
-                                    <p>&ldquo;Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo omnis
-                                        voluptatem consectetur quam tempore
-                                        obcaecati maiores voluptate aspernatur iusto eveniet, placeat ab quod tenetur
-                                        ducimus. Minus ratione sit quaerat
-                                        unde.&rdquo;</p>
+                                    <p>&ldquo;laborative give me the best experiences when it comes to laboratorium equipment
+                                        need and supply&rdquo;</p>
                                 </blockquote>
 
-                                <p class="author">&mdash; Rebecca Morando</p>
+                                <p class="author">&mdash; Gita Kartika Pariwara A.Md.Kom</p>
                             </div>
 
                             <div class="testimony">
                                 <blockquote>
-                                    <img src="{{ asset('template_user/images/person_3.jpg') }}" alt="Image"
+                                    <img src="{{ asset('template_user/images/arya.jpeg') }}" alt="Image"
                                         class="img-fluid">
-                                    <p>&ldquo;Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo omnis
-                                        voluptatem consectetur quam tempore
-                                        obcaecati maiores voluptate aspernatur iusto eveniet, placeat ab quod tenetur
-                                        ducimus. Minus ratione sit quaerat
-                                        unde.&rdquo;</p>
+                                    <p>&ldquo;laboratorium is a complex environment, needs the expert solution and maintenance. laborative can provide that solution&rdquo;</p>
                                 </blockquote>
 
-                                <p class="author">&mdash; Lucas Gallone</p>
+                                <p class="author">&mdash; Arya Putra Hadi Yulianto S., Tr., T.</p>
                             </div>
 
                             <div class="testimony">
                                 <blockquote>
                                     <img src="{{ asset('template_user/images/person_4.jpg') }}" alt="Image"
                                         class="img-fluid">
-                                    <p>&ldquo;Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo omnis
-                                        voluptatem consectetur quam tempore
-                                        obcaecati maiores voluptate aspernatur iusto eveniet, placeat ab quod tenetur
-                                        ducimus. Minus ratione sit quaerat
-                                        unde.&rdquo;</p>
+                                    <p>&ldquo; i love laborative because its the best and the only one in the world&rdquo;</p>
                                 </blockquote>
 
-                                <p class="author">&mdash; Andrew Neel</p>
+                                <p class="author">&mdash; Azzam Al Faruq S.Kom </p>
                             </div>
 
                         </div>
@@ -204,20 +176,17 @@
                         <h2 class="mb-5">Why <strong class="text-primary">Us</strong></h2>
                         <div class="step-number d-flex mb-4">
                             <span>1</span>
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo omnis voluptatem consectetur
-                                quam tempore</p>
+                            <p>Expert bussines partner to rental tools or device about laboratorium all categories.</p>
                         </div>
 
                         <div class="step-number d-flex mb-4">
                             <span>2</span>
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo omnis voluptatem consectetur
-                                quam tempore</p>
+                            <p>provide the newest and the best qualities equipment</p>
                         </div>
 
                         <div class="step-number d-flex mb-4">
                             <span>3</span>
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo omnis voluptatem consectetur
-                                quam tempore</p>
+                            <p>provide delivery and weekly maintenance of your equpment</p>
                         </div>
                     </div>
                 </div>
