@@ -183,6 +183,14 @@
                  fitotal = jumlahhari*total+parseInt(total)+15000;
                 $('#totalbayar').html("Rp. "+fitotal);
             });
+            $("#kuranghari").click(function(){
+                var jumlahhari = $("#jumlah").val();
+                
+                var total = $("#datatotal").val();
+                console.log(jumlahhari);
+                 fitotal = jumlahhari*total+parseInt(total)+15000;
+                $('#totalbayar').html("Rp. "+fitotal);
+            });
             $("#cekout").click(function(){
                 var total = fitotal;
                 var name = $("#namepay").val();
