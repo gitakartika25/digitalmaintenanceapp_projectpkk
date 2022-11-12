@@ -8,6 +8,7 @@ use App\Models\ProductCategory;
 use App\Models\transaction_detail;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Validator;
+use PDF;
 
 class ProductController extends Controller
 {
@@ -18,7 +19,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $product = Product::all();
+        $product = Product::paginate(3);
         return view('admin.products', compact('product'));
     }
 
@@ -160,5 +161,13 @@ class ProductController extends Controller
         $product->delete();
 
         return redirect()->route('product.index')->with('success', 'Data berhasil dihapus !');
+    }
+
+    public function cetak_pdf()
+    {
+        $product = Product::all();
+ 
+    	$pdf = PDF::loadview('product_pdf',['product'=>$product]);
+    	return $pdf->stream();
     }
 }

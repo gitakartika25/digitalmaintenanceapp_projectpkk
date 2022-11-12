@@ -12,6 +12,7 @@ use App\Http\Controllers\HomeController;
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Routing\Router;
+
 use Symfony\Component\HttpKernel\Profiler\Profile;
 
 use App\Http\Controllers\UserController;
@@ -53,6 +54,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('ordersin', OrdersinController::class);
     Route::get('/historya', [OrdersController::class, 'history']);
     Route::resource('profile', ProfileController::class);
+    Route::get('/product/cetak_pdf', [ProductController::class, 'cetak_pdf']);
 });
 
 
@@ -106,7 +108,8 @@ Route::middleware(['auth', 'user'])->group(function () {
         });
         
         Route::post('/getkabupaten', [ProfileController::class, 'getkabupaten'])->name('getkabupaten');
-        Route::get('/profile/profinsi/{id}', [ProfileController::class, 'kota'])->name('profile.profinsi');
-      
-    
+        
+        
     });
+    
+    Route::get('/profile/profinsi/{id}', [ProfileController::class, 'kota'])->name('profile.profinsi');
