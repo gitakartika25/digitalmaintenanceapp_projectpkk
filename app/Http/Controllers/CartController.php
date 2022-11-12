@@ -216,6 +216,7 @@ class CartController extends Controller
         // dd()
         $datatransaction = transactions::all();
         foreach ($datatransaction as $a) {
+            // dd('aaaa');
             if ($a['customer_id']==$userid && $a['status']=='unpaid'){
                 transaction_detail::create([
                     'products_id' => $idproduct,
@@ -225,19 +226,21 @@ class CartController extends Controller
                 ]);
                 return redirect('/store');
             }
-            $lastid=$a['id'];
         }
         // dd('end foreach');
-        transactions::create([
+        $datatrans=transactions::create([
             'customer_id' => $userid,
             'rent_date'=>date('Y-m-d'),
             'return_date'=>date('Y-m-d'),
             'status'=>'unpaid',
             'token'=>'token'
         ]);
+
+        // dd($datatrans->id);
+
         transaction_detail::create([
             'products_id' => $idproduct,
-            'transactions_id'=>(int)$lastid+1,
+            'transactions_id'=>$datatrans->id,
             'quantity'=>$quantity,
             'note'=>'testnote'
         ]);
