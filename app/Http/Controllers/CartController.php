@@ -51,8 +51,36 @@ class CartController extends Controller
     public function index2(){
         $total = 0;
         $harga = 0;
-        $getIdTrans = transactions::all()->where('customer_id',Auth::user()->id)->first();
-        // dd($getIdTrans);
+        $getIdTrans = transactions::all()->where('customer_id',Auth::user()->id)->where('status', 'unpaid')->first();
+        if($getIdTrans==null){
+            ////
+            // // Set your Merchant Server Key
+            \Midtrans\Config::$serverKey = 'SB-Mid-server-tbxZcKbGDBZvnJfKqFUvEA56';
+            // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+            \Midtrans\Config::$isProduction = false;
+            // Set sanitization on (default)
+            \Midtrans\Config::$isSanitized = true;
+            // Set 3DS transaction for credit card to true
+            \Midtrans\Config::$is3ds = true;
+            
+            $params = array(
+                'transaction_details' => array(
+                    'order_id' => rand(),
+                    'gross_amount' => 10000,
+                ),
+                'customer_details' => array(
+                    'first_name' => 'budi',
+                    'last_name' => 'pratama',
+                    'email' => 'budi.pra@example.com',
+                    'phone' => '08111222333',
+                ),
+            );
+            
+            $snapToken = \Midtrans\Snap::getSnapToken($params);
+            
+            return view('users.cart', compact ('snapToken', 'total','harga'));
+        }
+        
         $cart = transaction_detail::all()->where('transactions_id',$getIdTrans->id);
         $cartnumb = transaction_detail::all()->where('transactions_id',$getIdTrans->id)->count();
         ////
@@ -80,11 +108,12 @@ class CartController extends Controller
         
         $snapToken = \Midtrans\Snap::getSnapToken($params);
         
-        return view('users.cart', compact ('cart','cartnumb','snapToken', 'total','harga'));
+        return view('users.cart', compact ('cart','snapToken', 'total','harga'));
 
     }
     public function cartcount() {
-        $getIdTrans = transactions::all()->where('customer_id',Auth::user()->id)->first();
+        $getIdTrans = transactions::all()->where('customer_id',Auth::user()->id)->where('status', 'unpaid')->first();
+
         $cartnumb = transaction_detail::all()->where('transactions_id',$getIdTrans->id)->count();
         return $cartnumb;
     }
@@ -169,8 +198,13 @@ class CartController extends Controller
     public function destroy($id)
     {
         $cart = transaction_detail::find($id);
+        $cartId =$cart->transactions_id;
         $cart->delete();
-
+        $datatransId = transaction_detail::all()->where('transactions_id',$cartId)->first();
+        if($datatransId==null){
+            $transTemp = transactions::find($cartId);
+            $transTemp->delete();
+        }
         return redirect()->route('cart.index2')->with('success', 'Data berhasil dihapus !');
     }
 
@@ -179,19 +213,21 @@ class CartController extends Controller
         $idproduct = $request->query('products');
         $quantity = $request->query('qua');
         $userid = $request->query('userid');
+        // dd()
         $datatransaction = transactions::all();
         foreach ($datatransaction as $a) {
-            if ($a['customer_id']==$userid){
+            if ($a['customer_id']==$userid && $a['status']=='unpaid'){
                 transaction_detail::create([
                     'products_id' => $idproduct,
                     'transactions_id'=>$a['id'],
                     'quantity'=>$quantity,
                     'note'=>'testnote'
                 ]);
-                return redirect('/cart');
+                return redirect('/store');
             }
             $lastid=$a['id'];
         }
+        // dd('end foreach');
         transactions::create([
             'customer_id' => $userid,
             'rent_date'=>date('Y-m-d'),
@@ -205,6 +241,8 @@ class CartController extends Controller
             'quantity'=>$quantity,
             'note'=>'testnote'
         ]);
-        return redirect('/store');
+        // dd('each');
+        return redirect('/cart');
     }
 }
+

@@ -19,6 +19,8 @@
             <div class="row mb-5">
                 <form class="col-md-12" method="post">
                     <div class="site-blocks-table">
+                        
+                        @if(isset($cart))
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
@@ -33,7 +35,6 @@
                             </thead>
                             <tbody>
                                     
-                                   
                                 @foreach ($cart as $c)
                                 <?php
                                 $harga = $c->product->price * $c->quantity;
@@ -75,6 +76,11 @@
 
                             </tbody>
                         </table>
+                        @endif
+                        @if(!isset($cart))
+                        choose tools to checkout
+                        @endif
+                        
                     </div>
                 </form>
             </div>
@@ -112,7 +118,7 @@
                                     <span class="text-black">Total</span>
                                 </div>
                                 <div class="col-md-6 text-right">
-                                    <!-- <strong value="{{ $c->product->price }}" id="total2" class="text-black">Rp{{ $c->product->price }}</strong> -->
+                                   
                                     <input type="hidden" value="{{ $total }}" id="datatotal">
                                     <input type="hidden" value="{{ Auth::user()->name}}" id="namepay">
                                     <input type="hidden" value="{{ Auth::user()->id}}" id="idpay">

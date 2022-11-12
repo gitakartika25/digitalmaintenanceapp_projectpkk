@@ -87,7 +87,7 @@ class OrdersinController extends Controller
         $ordersin->status = $request->status;
         $ordersin->save();
 
-        return redirect('ordersin');
+        return redirect('orders');
     }
 
     /**

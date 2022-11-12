@@ -103,7 +103,7 @@
               @endif
             @else
            
-            <a href="/cart" class="icons-btn d-inline-block bag"><span class="icon-shopping-bag"></span><span class="number"><div id="cartt"></div></span></a>
+            <a href="{{ url('/cart') }}" class="icons-btn d-inline-block bag"><span class="icon-shopping-bag"></span><span class="number"><div id="cartt"></div></span></a>
             <a href="/history" class="icons-btn d-inline-block book"><span class="icon-book"></span></a>
 
             <a class="nav-item dropdown">
